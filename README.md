@@ -1,18 +1,36 @@
 # Universal Sambat SDK
 
-Open-source Nepali Bikram Sambat datepicker and BS/AD converter built with pure vanilla JavaScript and CSS.
+Open-source cross-platform Bikram Sambat date SDK for JavaScript, web UI, backend validation, framework adapters, mobile wrappers, and native integrations.
 
-Universal Sambat SDK turns ordinary HTML inputs into interactive Nepali calendar widgets. It supports single-date selection, date ranges, multiple dates, time selection, BS to AD conversion, AD to BS conversion, themes, presets, validation, and export-friendly values for real forms.
+Universal Sambat SDK gives applications a complete Nepali date layer. It includes a pure BS/AD conversion engine, browser calendar widgets, form-friendly hidden AD exports, React/Vue/Angular/Svelte/Web Component adapters, Node/Python/Laravel helpers, mobile/native package scaffolds, CLI templates, visual themes, and a full static demo site.
 
 [Live demo](https://kushalkhadkaa.github.io/universal-sambat-sdk/) · [API docs](https://kushalkhadkaa.github.io/universal-sambat-sdk/docs.html) · [Customizer](https://kushalkhadkaa.github.io/universal-sambat-sdk/customizer.html)
 
 ## Introduction
 
-Most web projects in Nepal eventually need to accept dates in Bikram Sambat while still storing or exchanging Gregorian dates with databases, APIs, analytics systems, and international tools. Universal Sambat SDK solves that problem as a drop-in frontend library.
+Most projects in Nepal eventually need to accept dates in Bikram Sambat while still storing or exchanging Gregorian dates with databases, APIs, analytics systems, and international tools. Universal Sambat SDK solves that problem as a reusable date SDK rather than a one-off widget.
 
 It gives users a familiar Nepali calendar interface and gives developers reliable structured data. A selected date can be displayed in Nepali, formatted in English, converted to AD, written to a hidden backend field, used inside a booking workflow, or styled through a custom theme without changing the core library.
 
-The project is designed for public websites, dashboards, booking systems, admin panels, hospital systems, travel flows, event forms, and any HTML form that needs a clean Nepali date experience.
+The project is designed for public websites, dashboards, booking systems, admin panels, hospital systems, travel flows, event forms, backend services, and any product that needs accurate Nepali date handling.
+
+## SDK Scope
+
+Universal Sambat SDK is organized as one core date engine plus multiple integration surfaces.
+
+```mermaid
+flowchart LR
+  Core["BS/AD Core Engine"] --> Browser["Vanilla JS Calendar UI"]
+  Core --> Converter["Standalone Converter Widget"]
+  Core --> Backend["Node / Python / Laravel Helpers"]
+  Browser --> Frameworks["React / Vue / Angular / Svelte"]
+  Browser --> WebComponents["Web Components"]
+  Browser --> Mobile["React Native / Flutter WebView Bridges"]
+  Core --> Native["Flutter / iOS Swift / Android Kotlin Engines"]
+  Browser --> Demo["Static Demo, Docs, Customizer, Playground"]
+```
+
+Use the core engine when you only need conversion and validation. Use the browser UI when you need form inputs. Use the adapters when your app already lives in a framework or native stack.
 
 ## Screenshots
 
@@ -54,9 +72,9 @@ The project is designed for public websites, dashboards, booking systems, admin 
 
 ## What It Does
 
-Universal Sambat SDK provides a browser-ready calendar UI for the Nepali Bikram Sambat calendar. It lets users select BS dates while giving developers structured date objects, formatted strings, and synchronized AD values for backend systems.
+Universal Sambat SDK provides a browser-ready calendar UI and reusable conversion utilities for the Nepali Bikram Sambat calendar. It lets users select BS dates while giving developers structured date objects, formatted strings, and synchronized AD values for backend systems.
 
-The library is useful for:
+The SDK is useful for:
 
 - Nepali date fields in forms
 - hotel check-in and checkout flows
@@ -67,6 +85,8 @@ The library is useful for:
 - BS to AD converter tools
 - Nepali calendar dashboards
 - bilingual Nepali/English interfaces
+- API validation and normalization
+- cross-platform BS date integrations
 
 ## Features
 
@@ -118,7 +138,7 @@ All calendar data, conversion utilities, UI behavior, themes, and helper APIs ar
 
 ## How It Works
 
-The library has three main layers:
+The SDK has four main layers:
 
 1. Calendar data
    Static month-length data defines how many days each BS month contains between 1970 BS and 2100 BS.
@@ -129,11 +149,35 @@ The library has three main layers:
 3. Datepicker UI
    The UI layer binds to an input or container, renders the current BS month, handles navigation and selection, then writes formatted output back to the page.
 
+4. Integrations
+   Framework, backend, mobile, and native packages wrap the same calendar concepts for app-specific workflows.
+
 The browser only needs:
 
 ```html
 <link rel="stylesheet" href="dist/nepali-datepicker.css">
 <script src="dist/nepali-datepicker.js"></script>
+```
+
+### Graphical Runtime Flow
+
+```mermaid
+sequenceDiagram
+  participant Dev as Developer
+  participant UI as Calendar UI
+  participant Engine as BS/AD Engine
+  participant Form as HTML Form
+  participant API as Backend/API
+
+  Dev->>UI: new NepaliDatePicker(selector, options)
+  UI->>Engine: load BS month data and current date
+  UI->>UI: render popup or inline calendar
+  Dev->>UI: user selects BS date
+  UI->>Engine: validate and convert BS <-> AD
+  Engine-->>UI: structured date object
+  UI->>Form: write formatted BS value
+  UI->>Form: sync hidden AD value when configured
+  Form->>API: submit stable Gregorian date
 ```
 
 ## Easy to Use
@@ -210,7 +254,7 @@ The generator is useful because it does not only show a configuration object. It
 
 ## System Architecture
 
-Universal Sambat SDK is designed as a static, dependency-free frontend library. It does not require a server, database, package manager, or runtime framework. The browser loads one CSS bundle and one JavaScript bundle, then the library attaches datepicker behavior to normal HTML elements.
+Universal Sambat SDK is designed around a dependency-free browser runtime and reusable conversion engines. The basic browser integration does not require a server, database, package manager, or runtime framework. The browser loads one CSS bundle and one JavaScript bundle, then the SDK attaches calendar behavior to normal HTML elements.
 
 ```text
 HTML page
@@ -246,6 +290,24 @@ HTML page
         |-- Converter widget layer
               |-- standalone BS/AD conversion panel
               |-- reusable dashboard-style converter UI
+```
+
+### Package Architecture
+
+```mermaid
+flowchart TB
+  Root["universal-sambat-sdk"]
+  Root --> Dist["dist/ browser bundles"]
+  Root --> Src["src/ core browser source"]
+  Root --> Packages["packages/ integrations"]
+  Packages --> React["@universal-sambat-sdk/react"]
+  Packages --> Vue["@universal-sambat-sdk/vue"]
+  Packages --> Angular["@universal-sambat-sdk/angular"]
+  Packages --> Node["@universal-sambat-sdk/node"]
+  Packages --> Flutter["universal_sambat_sdk"]
+  Packages --> Laravel["kushal-khadka/universal-sambat-sdk"]
+  Packages --> Python["universal-sambat-sdk"]
+  Root --> Site["index/docs/customizer/playground pages"]
 ```
 
 ### Runtime Flow
@@ -287,7 +349,7 @@ Callbacks run and optional hidden AD field is synchronized
 | Picker core | Builds and controls the interactive UI | Calendar popup/inline widget |
 | Theme system | Applies visual design through CSS variables | 22 ready-made themes |
 | Page assets | Power the demo, docs, and customizer pages | Public showcase website |
-| SEO/AI files | Help search engines and AI tools understand the project | `robots.txt`, `sitemap.xml`, `llms.txt` |
+| SEO files | Help search engines understand the project | `robots.txt`, `sitemap.xml` |
 
 ### Data Flow for a Selected Date
 
@@ -330,10 +392,9 @@ Demo and documentation assets
   -> assets/fonts/
   -> assets/screenshots/
 
-Search and AI discovery
+Search discovery
   -> robots.txt
   -> sitemap.xml
-  -> llms.txt
 ```
 
 Users who only want the datepicker in their own project need the `dist/` files. Users who want to explore the full demo can open the GitHub Pages site.
@@ -386,6 +447,22 @@ BS date = calendar table position at elapsed day count
 
 This approach favors correctness over guessing. If a requested date falls outside the supported calendar range, the utility throws or rejects it rather than silently returning a wrong date.
 
+### Conversion Flow
+
+```mermaid
+flowchart TD
+  Input["Input Date"] --> Direction{"Conversion direction?"}
+  Direction -->|"BS to AD"| ValidateBS["Validate BS year/month/day"]
+  ValidateBS --> CountBS["Count days from 1970-01-01 BS"]
+  CountBS --> AddAD["Add offset to 1913-04-13 AD"]
+  AddAD --> OutputAD["Return AD date"]
+
+  Direction -->|"AD to BS"| ValidateAD["Validate Gregorian date"]
+  ValidateAD --> CountAD["Count days from 1913-04-13 AD"]
+  CountAD --> WalkBS["Walk BS year/month table"]
+  WalkBS --> OutputBS["Return BS date"]
+```
+
 ## DatePicker Algorithm
 
 The datepicker UI works through a predictable lifecycle:
@@ -426,7 +503,13 @@ The datepicker UI works through a predictable lifecycle:
 
 ## Installation
 
-Download or copy the `dist/` folder into your project.
+Use npm or copy the `dist/` folder into your project.
+
+```bash
+npm install universal-sambat-sdk
+```
+
+For static HTML, use the bundled files directly:
 
 ```html
 <link rel="stylesheet" href="dist/nepali-datepicker.css">
@@ -472,6 +555,29 @@ For a production form, the most common pattern is to display BS to the user and 
 ```
 
 This gives the user a Nepali datepicker while keeping the backend value in a standard Gregorian format.
+
+## Technical Step-by-Step Integration
+
+1. Choose the integration surface.
+   Use `dist/` for plain HTML, `@universal-sambat-sdk/react` for React, `@universal-sambat-sdk/node` for backend conversion, or the platform package that matches your stack.
+
+2. Load the visual assets.
+   Browser widgets need `dist/nepali-datepicker.css`. The conversion helpers alone do not need CSS.
+
+3. Initialize the picker or converter.
+   Attach `NepaliDatePicker` to an input, inline container, or custom component wrapper.
+
+4. Decide your storage format.
+   For most production apps, display BS to the user and store AD in the database.
+
+5. Configure constraints.
+   Add `minDate`, `maxDate`, `futureOnly`, `pastOnly`, `disabledDates`, or `disabledDaysOfWeek` based on the business rule.
+
+6. Connect callbacks.
+   Use `onChange`, `onRangeChange`, `onOpen`, `onClose`, and `renderDay` to integrate with your app state.
+
+7. Test edge cases.
+   Test month boundaries, unsupported dates, disabled dates, range selection, mobile viewport behavior, and backend AD submission.
 
 ## Usage Examples
 
@@ -652,7 +758,6 @@ high-contrast, festive-dashain, mountain-mist, tropical-teal
 │   ├── js/
 │   ├── fonts/
 │   └── screenshots/
-├── llms.txt
 ├── robots.txt
 ├── sitemap.xml
 └── LICENSE
@@ -718,7 +823,7 @@ Yes. Use the `renderDay(day, cell)` hook to add classes, styles, labels, or tool
 
 No. It supports Nepali and English UI/output, including optional Devanagari digit rendering.
 
-## AI and Search Friendliness
+## Search Friendliness
 
 The project includes:
 
@@ -729,7 +834,6 @@ The project includes:
 - JSON-LD software metadata
 - `robots.txt`
 - `sitemap.xml`
-- `llms.txt` for AI assistant retrieval
 
 ## License
 

@@ -61,8 +61,6 @@
     "packages/",
     "src/",
     "README.md",
-    "ECOSYSTEM.md",
-    "CONTRIBUTING.md",
     "LICENSE"
   ],
   "engines": {

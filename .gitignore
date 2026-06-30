@@ -9,6 +9,12 @@ scratch/
 .claude/
 .vscode/
 .idea/
+llms.txt
+
+# Keep only the main GitHub README public
+*.md
+**/*.md
+!/README.md
 
 # Dependencies
 node_modules/
