@@ -107,7 +107,7 @@ function scaffoldReact(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'vite', build: 'vite build', preview: 'vite preview' },
-    dependencies: { react: '^18.2.0', 'react-dom': '^18.2.0', '@universal-sambat-sdk/react': '^1.2.0' },
+    dependencies: { react: '^18.2.0', 'react-dom': '^18.2.0', 'universal-sambat-sdk': '^1.2.0', '@universal-sambat-sdk/react': '^1.2.0' },
     devDependencies: { '@vitejs/plugin-react': '^4.0.0', vite: '^5.0.0' },
   }, null, 2));
   write(dir, 'vite.config.js', `import { defineConfig } from 'vite';\nimport react from '@vitejs/plugin-react';\nexport default defineConfig({ plugins: [react()] });\n`);
@@ -115,13 +115,13 @@ function scaffoldReact(dir, name, theme, lang) {
   write(dir, 'src/main.jsx', `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App.jsx';\nReactDOM.createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);\n`);
   write(dir, 'src/App.jsx', `import React, { useState } from 'react';
 import { NepaliDatePicker } from '@universal-sambat-sdk/react';
-import '@universal-sambat-sdk/react/dist/style.css';
+import 'universal-sambat-sdk/css';
 
 export default function App() {
   const [date, setDate] = useState('');
   return (
     <div style={{ padding: 32 }}>
-      <h1>Nepali DatePicker — React</h1>
+      <h1>Universal Sambat SDK — React</h1>
       <NepaliDatePicker
         theme="${theme}"
         lang="${lang}"
@@ -140,7 +140,7 @@ function scaffoldVue(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'vite', build: 'vite build' },
-    dependencies: { vue: '^3.4.0', '@universal-sambat-sdk/vue': '^1.2.0' },
+    dependencies: { vue: '^3.4.0', 'universal-sambat-sdk': '^1.2.0', '@universal-sambat-sdk/vue': '^1.2.0' },
     devDependencies: { '@vitejs/plugin-vue': '^5.0.0', vite: '^5.0.0' },
   }, null, 2));
   write(dir, 'vite.config.js', `import { defineConfig } from 'vite';\nimport vue from '@vitejs/plugin-vue';\nexport default defineConfig({ plugins: [vue()] });\n`);
@@ -148,7 +148,7 @@ function scaffoldVue(dir, name, theme, lang) {
   write(dir, 'src/main.js', `import { createApp } from 'vue';\nimport App from './App.vue';\ncreateApp(App).mount('#app');\n`);
   write(dir, 'src/App.vue', `<template>
   <div style="padding:32px">
-    <h1>Nepali DatePicker — Vue 3</h1>
+    <h1>Universal Sambat SDK — Vue 3</h1>
     <NepaliDatePicker v-model="date" theme="${theme}" lang="${lang}" />
     <p v-if="date">Selected: {{ date }}</p>
   </div>
@@ -157,7 +157,7 @@ function scaffoldVue(dir, name, theme, lang) {
 <script setup>
 import { ref } from 'vue';
 import { NepaliDatePicker } from '@universal-sambat-sdk/vue';
-import '@universal-sambat-sdk/vue/dist/style.css';
+import 'universal-sambat-sdk/css';
 const date = ref('');
 </script>
 `);
@@ -168,7 +168,7 @@ function scaffoldNext(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'next dev', build: 'next build', start: 'next start' },
-    dependencies: { next: '^14.0.0', react: '^18.2.0', 'react-dom': '^18.2.0', '@universal-sambat-sdk/react': '^1.2.0' },
+    dependencies: { next: '^14.0.0', react: '^18.2.0', 'react-dom': '^18.2.0', 'universal-sambat-sdk': '^1.2.0', '@universal-sambat-sdk/react': '^1.2.0' },
   }, null, 2));
   write(dir, 'next.config.js', `/** @type {import('next').NextConfig} */\nmodule.exports = {};\n`);
   write(dir, 'app/layout.jsx', `export const metadata = { title: '${name}' };\nexport default function RootLayout({ children }) { return <html><body>{children}</body></html>; }\n`);
@@ -181,7 +181,7 @@ export default function Page() {
   const [date, setDate] = useState('');
   return (
     <main style={{ padding: 32 }}>
-      <h1>Nepali DatePicker — Next.js</h1>
+      <h1>Universal Sambat SDK — Next.js</h1>
       <NepaliDatePicker theme="${theme}" lang="${lang}" onChange={setDate} />
       {date && <p>Selected: {date}</p>}
     </main>
@@ -195,7 +195,7 @@ function scaffoldSvelte(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'vite', build: 'vite build' },
-    dependencies: { '@universal-sambat-sdk/svelte': '^1.2.0' },
+    dependencies: { 'universal-sambat-sdk': '^1.2.0', '@universal-sambat-sdk/svelte': '^1.2.0' },
     devDependencies: { svelte: '^5.0.0', '@sveltejs/vite-plugin-svelte': '^3.0.0', vite: '^5.0.0' },
   }, null, 2));
   write(dir, 'vite.config.js', `import { defineConfig } from 'vite';\nimport { svelte } from '@sveltejs/vite-plugin-svelte';\nexport default defineConfig({ plugins: [svelte()] });\n`);
@@ -206,7 +206,7 @@ function scaffoldSvelte(dir, name, theme, lang) {
   let date = $state('');
 </script>
 <div style="padding:32px">
-  <h1>Nepali DatePicker — Svelte 5</h1>
+  <h1>Universal Sambat SDK — Svelte 5</h1>
   <NepaliDatePicker bind:value={date} theme="${theme}" lang="${lang}" />
   {#if date}<p>Selected: {date}</p>{/if}
 </div>
@@ -217,7 +217,7 @@ function scaffoldAngular(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'ng serve', build: 'ng build' },
-    dependencies: { '@angular/common': '^17.0.0', '@angular/core': '^17.0.0', '@angular/forms': '^17.0.0', '@angular/platform-browser': '^17.0.0', '@angular/platform-browser-dynamic': '^17.0.0', '@universal-sambat-sdk/angular': '^1.2.0', rxjs: '^7.8.0', 'zone.js': '^0.14.0' },
+    dependencies: { '@angular/common': '^17.0.0', '@angular/core': '^17.0.0', '@angular/forms': '^17.0.0', '@angular/platform-browser': '^17.0.0', '@angular/platform-browser-dynamic': '^17.0.0', 'universal-sambat-sdk': '^1.2.0', '@universal-sambat-sdk/angular': '^1.2.0', rxjs: '^7.8.0', 'zone.js': '^0.14.0' },
     devDependencies: { '@angular/cli': '^17.0.0', '@angular/compiler-cli': '^17.0.0', typescript: '~5.2.0' },
   }, null, 2));
   fs.mkdirSync(path.join(dir, 'src/app'), { recursive: true });
@@ -233,7 +233,7 @@ import { NepaliDatePickerDirective } from '@universal-sambat-sdk/angular';
   imports: [FormsModule, NepaliDatePickerDirective],
   template: \`
     <div style="padding:32px">
-      <h1>Nepali DatePicker — Angular</h1>
+      <h1>Universal Sambat SDK — Angular</h1>
       <input nepaliDatePicker [(ngModel)]="date" [ndpOptions]="{theme:'${theme}',lang:'${lang}'}" placeholder="${lang === 'ne' ? 'मिति छान्नुहोस्' : 'Select date'}">
       <p *ngIf="date">Selected: {{ date }}</p>
     </div>
@@ -254,13 +254,13 @@ function scaffoldVanilla(dir, name, theme, lang) {
 <head>
   <meta charset="UTF-8">
   <title>${name}</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/universal-sambat-sdk@latest/dist/nepali-datepicker.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/universal-sambat-sdk@latest/dist/nepali-datepicker.css">
 </head>
 <body style="font-family:system-ui;padding:32px">
-  <h1>Nepali DatePicker — Vanilla JS</h1>
+  <h1>Universal Sambat SDK — Vanilla JS</h1>
   <input id="ndp" type="text" placeholder="${lang === 'ne' ? 'मिति छान्नुहोस्' : 'Select date'}" readonly style="padding:8px;font-size:16px">
   <p id="out"></p>
-  <script src="https://cdn.jsdelivr.net/npm/universal-sambat-sdk@latest/dist/nepali-datepicker.min.js"><\/script>
+  <script src="https://cdn.jsdelivr.net/npm/universal-sambat-sdk@latest/dist/nepali-datepicker.js"><\/script>
   <script>
     new NepaliDatePicker('#ndp', {
       theme: '${theme}',
