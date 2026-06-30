@@ -9,6 +9,11 @@ scratch/
 .claude/
 .vscode/
 .idea/
+llms.txt
+
+# Non-runtime documentation
+*.md
+**/*.md
 
 # Dependencies
 node_modules/

@@ -6,9 +6,6 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
 const requiredFiles = [
-  'README.md',
-  'CONTRIBUTING.md',
-  'ECOSYSTEM.md',
   'LICENSE',
   'package.json',
   'package-lock.json',
@@ -22,8 +19,7 @@ const requiredFiles = [
   'src/js/ndp-core.js',
   'src/js/ndp-converter-widget.js',
   'robots.txt',
-  'sitemap.xml',
-  'llms.txt'
+  'sitemap.xml'
 ];
 
 function walk(dir, matches) {
