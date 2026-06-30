@@ -1,0 +1,34 @@
+/* Theme: festive-dashain */
+.ndp-theme-festive-dashain {
+  --ndp-primary:         #c8960c;
+  --ndp-primary-dark:    #a87a08;
+  --ndp-bg:              #fffbef;
+  --ndp-body-bg:         #fffbef;
+  --ndp-header-bg:       linear-gradient(135deg, #7b1b02 0%, #c0390b 40%, #c8960c 100%);
+  --ndp-header-text:     #fff8d0;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #fff5e0;
+  --ndp-border:          #f5d890;
+  --ndp-day-text:        #2d1800;
+  --ndp-weekday-text:    #c8960c;
+  --ndp-ad-text:         #d4a060;
+  --ndp-hover-bg:        rgba(200,150,12,0.12);
+  --ndp-today-bg:        rgba(200,150,12,0.12);
+  --ndp-selected-bg:     #c8960c;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(200,150,12,0.14);
+  --ndp-range-hover-bg:  rgba(200,150,12,0.22);
+  --ndp-holiday-color:   #c0390b;
+  --ndp-nav-bg:          rgba(255,248,208,0.15);
+  --ndp-nav-hover-bg:    rgba(255,248,208,0.3);
+  --ndp-title-bg:        rgba(255,248,208,0.15);
+  --ndp-title-hover-bg:  rgba(255,248,208,0.3);
+  --ndp-shadow:          0 12px 40px rgba(200,150,12,0.25), 0 0 0 2px rgba(200,150,12,0.1);
+  --ndp-shadow-inline:   0 4px 20px rgba(200,150,12,0.15);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #fff5e0;
+  --ndp-input-border:    #f5d890;
+  --ndp-muted:           #c0a060;
+}

@@ -1,0 +1,82 @@
+{
+  "name": "nepali-datepicker-studio",
+  "version": "1.2.0",
+  "description": "The most advanced Bikram Sambat (BS) date picker library for the modern web. Pure vanilla JS, zero dependencies, 22 themes, bilingual Nepali/English UI, and BS-AD conversion.",
+  "license": "MIT",
+  "author": "Kushal Khadka <kushalkhadkaa@gmail.com> (https://github.com/kushalkhadkaa)",
+  "homepage": "https://kushalkhadkaa.github.io/nepali-datepicker-studio/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kushalkhadkaa/nepali-datepicker-studio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kushalkhadkaa/nepali-datepicker-studio/issues"
+  },
+  "keywords": [
+    "nepali-datepicker", "nepali-calendar", "bikram-sambat", "bs-calendar",
+    "bs-ad-converter", "datepicker", "calendar", "nepal", "nepali-date",
+    "vanilla-js", "zero-dependency", "react-nepali", "vue-nepali", "angular-nepali"
+  ],
+  "sideEffects": ["dist/nepali-datepicker.css", "dist/themes/*.css"],
+  "main": "dist/nepali-datepicker.cjs.js",
+  "module": "dist/nepali-datepicker.esm.js",
+  "browser": "dist/nepali-datepicker.js",
+  "style": "dist/nepali-datepicker.css",
+  "types": "dist/nepali-datepicker.d.ts",
+  "exports": {
+    ".": {
+      "import":  "./dist/nepali-datepicker.esm.js",
+      "require": "./dist/nepali-datepicker.cjs.js",
+      "browser": "./dist/nepali-datepicker.js",
+      "types":   "./dist/nepali-datepicker.d.ts"
+    },
+    "./css":        "./dist/nepali-datepicker.css",
+    "./themes/*":   "./dist/themes/*.css",
+    "./react":      "./packages/react/src/index.jsx",
+    "./vue":        "./packages/vue/src/index.js",
+    "./angular":    "./packages/angular/src/index.ts",
+    "./svelte":     "./packages/svelte/src/NepaliDatePicker.svelte",
+    "./web-components": "./packages/web-components/src/index.js",
+    "./node":       "./packages/node/src/index.js"
+  },
+  "files": [
+    "dist/",
+    "packages/",
+    "src/",
+    "README.md",
+    "ECOSYSTEM.md",
+    "CONTRIBUTING.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "dev":         "vite",
+    "build":       "vite build",
+    "compile":     "node scripts/build.js && node scripts/build-css.js",
+    "compile:js":  "node scripts/build.js",
+    "compile:css": "node scripts/build-css.js",
+    "compile:types": "node scripts/build-types.js",
+    "compile:all": "npm run compile && npm run compile:types",
+    "server":      "node src/node/server.js",
+    "test":        "node tests/calendar-utils.test.js",
+    "test:all":    "node tests/calendar-utils.test.js && node tests/conversion.test.js",
+    "lint":        "node scripts/lint.js",
+    "prepublishOnly": "npm run compile:all"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react":     ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "peerDependenciesMeta": {
+    "react":     { "optional": true },
+    "react-dom": { "optional": true }
+  },
+  "devDependencies": {
+    "vite": "^4.4.5",
+    "@vitejs/plugin-react": "^4.0.3",
+    "prop-types": "^15.8.1"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@nepali-datepicker-studio/node",
+  "version": "1.2.0",
+  "description": "Node.js server-side BS↔AD conversion utilities, Express middleware, Fastify plugin, Zod schema.",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "engines": { "node": ">=16.0.0" },
+  "files": ["src/", "README.md"],
+  "license": "MIT",
+  "author": "Kushal Khadka",
+  "keywords": ["nepali-datepicker", "nodejs", "express", "bikram-sambat", "bs-ad-converter", "nepal"]
+}

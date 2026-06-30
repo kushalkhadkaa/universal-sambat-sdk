@@ -1,0 +1,34 @@
+/* Theme: forest-green */
+.ndp-theme-forest-green {
+  --ndp-primary:         #1e7e34;
+  --ndp-primary-dark:    #196429;
+  --ndp-bg:              #f0faf2;
+  --ndp-body-bg:         #f0faf2;
+  --ndp-header-bg:       linear-gradient(135deg, #0f4020 0%, #1e7e34 100%);
+  --ndp-header-text:     #d4f5da;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #e8f7eb;
+  --ndp-border:          #b8e5c0;
+  --ndp-day-text:        #0d2e15;
+  --ndp-weekday-text:    #1e7e34;
+  --ndp-ad-text:         #7bc08a;
+  --ndp-hover-bg:        rgba(30,126,52,0.1);
+  --ndp-today-bg:        rgba(30,126,52,0.1);
+  --ndp-selected-bg:     #1e7e34;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(30,126,52,0.12);
+  --ndp-range-hover-bg:  rgba(30,126,52,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 12px 40px rgba(30,126,52,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(30,126,52,0.12);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #e8f7eb;
+  --ndp-input-border:    #b8e5c0;
+  --ndp-muted:           #7bc08a;
+}

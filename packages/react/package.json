@@ -1,0 +1,13 @@
+{
+  "name": "@nepali-datepicker-studio/react",
+  "version": "1.2.0",
+  "description": "React component and hooks for Nepali DatePicker Studio — BS/AD datepicker, range, multiple, TypeScript ready.",
+  "main": "src/index.jsx",
+  "module": "src/index.jsx",
+  "types": "src/index.d.ts",
+  "files": ["src/", "README.md"],
+  "license": "MIT",
+  "author": "Kushal Khadka",
+  "peerDependencies": { "react": ">=16.8.0", "react-dom": ">=16.8.0", "nepali-datepicker-studio": ">=1.2.0" },
+  "keywords": ["nepali-datepicker", "react", "bikram-sambat", "bs-datepicker", "nepal"]
+}

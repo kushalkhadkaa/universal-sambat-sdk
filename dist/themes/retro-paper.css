@@ -1,0 +1,34 @@
+/* Theme: retro-paper */
+.ndp-theme-retro-paper {
+  --ndp-primary:         #5c3d11;
+  --ndp-primary-dark:    #4a2e0a;
+  --ndp-bg:              #f5ead0;
+  --ndp-body-bg:         #f5ead0;
+  --ndp-header-bg:       #3d2508;
+  --ndp-header-text:     #e8d5a3;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #eedad5;
+  --ndp-border:          #c8b080;
+  --ndp-day-text:        #3d2508;
+  --ndp-weekday-text:    #8b6520;
+  --ndp-ad-text:         #c8a870;
+  --ndp-hover-bg:        rgba(92,61,17,0.1);
+  --ndp-today-bg:        rgba(92,61,17,0.1);
+  --ndp-selected-bg:     #5c3d11;
+  --ndp-selected-text:   #e8d5a3;
+  --ndp-range-bg:        rgba(92,61,17,0.12);
+  --ndp-range-hover-bg:  rgba(92,61,17,0.2);
+  --ndp-holiday-color:   #8b0000;
+  --ndp-nav-bg:          rgba(232,213,163,0.12);
+  --ndp-nav-hover-bg:    rgba(232,213,163,0.25);
+  --ndp-title-bg:        rgba(232,213,163,0.12);
+  --ndp-title-hover-bg:  rgba(232,213,163,0.25);
+  --ndp-shadow:          0 8px 30px rgba(92,61,17,0.2), 4px 4px 0 rgba(92,61,17,0.08);
+  --ndp-shadow-inline:   0 4px 16px rgba(92,61,17,0.12);
+  --ndp-radius:          6px;
+  --ndp-btn-radius:      4px;
+  --ndp-day-radius:      4px;
+  --ndp-input-bg:        #eedad5;
+  --ndp-input-border:    #c8b080;
+  --ndp-muted:           #a08040;
+}

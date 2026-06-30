@@ -1,0 +1,2174 @@
+/**
+ * NepaliDatePickerPro — ndp-base.css
+ * Core layout, structure, typography — theme-agnostic.
+ */
+
+/* -- Google Fonts ------------------------------------------─ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+
+/* -- CSS Reset / Base -------------------------------------- */
+.ndp-picker *,
+.ndp-converter *,
+.ndp-picker *::before,
+.ndp-picker *::after,
+.ndp-converter *::before,
+.ndp-converter *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* -- Picker Container --------------------------------------─ */
+.ndp-picker {
+  font-family: 'Noto Sans Devanagari', 'Roboto Slab', serif;
+  width: 300px;
+  border-radius: var(--ndp-radius, 14px);
+  background: var(--ndp-bg, #fff);
+  box-shadow: var(--ndp-shadow, 0 10px 40px rgba(0,0,0,0.18));
+  overflow: hidden;
+  border: 1px solid var(--ndp-border, rgba(0,0,0,0.08));
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform, opacity;
+}
+
+.ndp-picker.ndp-inline {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  z-index: auto !important;
+  box-shadow: var(--ndp-shadow-inline, 0 4px 20px rgba(0,0,0,0.1));
+  margin-top: 8px;
+}
+
+/* -- Header ------------------------------------------------─ */
+.ndp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 10px 10px;
+  background: var(--ndp-header-bg, var(--ndp-primary, #c0392b));
+  border-bottom: 1px solid var(--ndp-header-border, transparent);
+  gap: 4px;
+}
+
+.ndp-nav-btn {
+  background: var(--ndp-nav-bg, rgba(255,255,255,0.15));
+  border: none;
+  color: var(--ndp-header-text, #fff);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ndp-btn-radius, 8px);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.ndp-nav-btn:hover {
+  background: var(--ndp-nav-hover-bg, rgba(255,255,255,0.25));
+  transform: scale(1.1);
+}
+
+.ndp-nav-btn:active { transform: scale(0.95); }
+
+.ndp-title-area {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+}
+
+.ndp-title-year,
+.ndp-title-month {
+  background: var(--ndp-title-bg, rgba(255,255,255,0.15));
+  border: none;
+  color: var(--ndp-header-text, #fff);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.ndp-title-year:hover,
+.ndp-title-month:hover {
+  background: var(--ndp-title-hover-bg, rgba(255,255,255,0.25));
+}
+
+/* -- Body --------------------------------------------------─ */
+.ndp-body {
+  padding: 10px 8px 8px;
+  background: var(--ndp-body-bg, var(--ndp-bg, #fff));
+}
+
+/* -- Weekday Row -------------------------------------------- */
+.ndp-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 4px;
+}
+
+.ndp-weekday {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ndp-weekday-text, #999);
+  padding: 4px 0 6px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.ndp-weekday-holiday {
+  color: var(--ndp-holiday-color, #e74c3c);
+}
+
+/* -- Days Grid ---------------------------------------------- */
+.ndp-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+/* -- Day Cell ----------------------------------------------─ */
+.ndp-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: var(--ndp-day-radius, 8px);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+  outline: none;
+  min-height: 32px;
+  padding: 2px 0;
+}
+
+.ndp-day:hover:not(.ndp-disabled):not(.ndp-day-empty) {
+  background: var(--ndp-hover-bg, rgba(192,57,43,0.1));
+  transform: scale(1.06);
+  z-index: 1;
+}
+
+.ndp-day:focus-visible {
+  outline: 2px solid var(--ndp-primary, #c0392b);
+  outline-offset: 1px;
+}
+
+.ndp-day-num {
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ndp-day-text, #222);
+  display: block;
+}
+
+.ndp-ad-day {
+  font-size: 8.5px;
+  color: var(--ndp-ad-text, #aaa);
+  line-height: 1;
+  margin-top: 1px;
+  font-family: 'Roboto Slab', serif;
+}
+
+/* -- States ------------------------------------------------─ */
+.ndp-today {
+  background: var(--ndp-today-bg, rgba(192,57,43,0.1));
+}
+
+.ndp-today .ndp-day-num {
+  color: var(--ndp-primary, #c0392b);
+  font-weight: 700;
+}
+
+.ndp-today::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--ndp-primary, #c0392b);
+}
+
+.ndp-selected {
+  background: var(--ndp-selected-bg, var(--ndp-primary, #c0392b));
+  border-radius: var(--ndp-day-radius, 8px);
+}
+
+.ndp-selected .ndp-day-num {
+  color: var(--ndp-selected-text, #fff);
+  font-weight: 700;
+}
+
+.ndp-selected .ndp-ad-day {
+  color: rgba(255,255,255,0.7);
+}
+
+.ndp-selected::after { display: none; }
+
+/* -- Range States ------------------------------------------ */
+.ndp-range-start {
+  background: var(--ndp-primary, #c0392b);
+  border-radius: var(--ndp-day-radius, 8px) 0 0 var(--ndp-day-radius, 8px);
+}
+
+.ndp-range-end {
+  background: var(--ndp-primary, #c0392b);
+  border-radius: 0 var(--ndp-day-radius, 8px) var(--ndp-day-radius, 8px) 0;
+}
+
+.ndp-range-start .ndp-day-num,
+.ndp-range-end .ndp-day-num {
+  color: #fff;
+  font-weight: 700;
+}
+
+.ndp-range-start .ndp-ad-day,
+.ndp-range-end .ndp-ad-day { color: rgba(255,255,255,0.7); }
+
+.ndp-in-range {
+  background: var(--ndp-range-bg, rgba(192,57,43,0.12));
+  border-radius: 0;
+}
+
+.ndp-in-range .ndp-day-num {
+  color: var(--ndp-primary, #c0392b);
+}
+
+.ndp-range-hover {
+  background: var(--ndp-range-hover-bg, rgba(192,57,43,0.2));
+  border-radius: 0;
+}
+
+/* -- Holiday / Weekend ------------------------------------─ */
+.ndp-holiday .ndp-day-num,
+.ndp-weekend .ndp-day-num {
+  color: var(--ndp-holiday-color, #e74c3c);
+}
+
+/* -- Disabled ----------------------------------------------─ */
+.ndp-disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.ndp-day-empty { cursor: default; }
+
+/* -- Holiday Dots ------------------------------------------─ */
+.ndp-dots {
+  display: flex;
+  gap: 2px;
+  margin-top: 1px;
+}
+
+.ndp-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+}
+
+.ndp-dot-public_holiday { background: var(--ndp-primary, #c0392b); }
+.ndp-dot-festival { background: #f39c12; }
+.ndp-dot-cultural_event { background: #27ae60; }
+
+/* -- Tooltip ------------------------------------------------ */
+.ndp-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.82);
+  color: #fff;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 10;
+  max-width: 140px;
+  white-space: normal;
+  text-align: center;
+  font-family: 'Noto Sans Devanagari', 'Roboto Slab', serif;
+}
+
+.ndp-day:hover .ndp-tooltip { opacity: 1; }
+
+/* -- Month/Year Grids --------------------------------------─ */
+.ndp-months-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 4px 0;
+}
+
+.ndp-month-cell {
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ndp-day-text, #333);
+  transition: background 0.15s, color 0.15s;
+}
+
+.ndp-month-cell:hover {
+  background: var(--ndp-hover-bg, rgba(192,57,43,0.1));
+}
+
+.ndp-month-cell.ndp-selected {
+  background: var(--ndp-primary, #c0392b);
+  color: #fff;
+}
+
+.ndp-month-cell.ndp-today {
+  color: var(--ndp-primary, #c0392b);
+  font-weight: 700;
+}
+
+.ndp-years-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.ndp-year-cell {
+  text-align: center;
+  padding: 6px 2px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ndp-day-text, #333);
+  transition: background 0.15s, color 0.15s;
+}
+
+.ndp-year-cell:hover {
+  background: var(--ndp-hover-bg, rgba(192,57,43,0.1));
+}
+
+.ndp-year-cell.ndp-selected {
+  background: var(--ndp-primary, #c0392b);
+  color: #fff;
+}
+
+.ndp-year-cell.ndp-today {
+  color: var(--ndp-primary, #c0392b);
+  font-weight: 700;
+}
+
+/* -- Footer ------------------------------------------------─ */
+.ndp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-top: 1px solid var(--ndp-border, rgba(0,0,0,0.08));
+  background: var(--ndp-footer-bg, var(--ndp-bg, #fff));
+}
+
+.ndp-today-btn,
+.ndp-clear-btn {
+  background: none;
+  border: 1px solid var(--ndp-border, rgba(0,0,0,0.12));
+  color: var(--ndp-primary, #c0392b);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.ndp-today-btn:hover,
+.ndp-clear-btn:hover {
+  background: var(--ndp-primary, #c0392b);
+  color: #fff;
+  border-color: var(--ndp-primary, #c0392b);
+}
+
+/* -- Utility ------------------------------------------------ */
+.ndp-hidden { display: none !important; }
+
+/* -- Converter Widget --------------------------------------─ */
+.ndp-converter {
+  font-family: 'Noto Sans Devanagari', 'Roboto Slab', serif;
+  background: var(--ndp-bg, #fff);
+  border-radius: var(--ndp-radius, 14px);
+  border: 1px solid var(--ndp-border, rgba(0,0,0,0.08));
+  box-shadow: var(--ndp-shadow, 0 8px 30px rgba(0,0,0,0.12));
+  overflow: hidden;
+  min-width: 280px;
+}
+
+.ndp-conv-header {
+  background: var(--ndp-header-bg, var(--ndp-primary, #c0392b));
+  padding: 14px 16px 10px;
+}
+
+.ndp-conv-title {
+  color: var(--ndp-header-text, #fff);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+
+.ndp-conv-toggle {
+  display: flex;
+  gap: 4px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.ndp-conv-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.ndp-conv-tab.active {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.ndp-conv-tab:hover { color: #fff; }
+
+.ndp-conv-body {
+  padding: 14px;
+}
+
+.ndp-conv-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ndp-conv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ndp-conv-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ndp-muted, #888);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ndp-conv-input,
+.ndp-conv-select {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1.5px solid var(--ndp-input-border, #e0e0e0);
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--ndp-day-text, #222);
+  background: var(--ndp-input-bg, #f8f8f8);
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.ndp-conv-input:focus,
+.ndp-conv-select:focus {
+  border-color: var(--ndp-primary, #c0392b);
+  background: var(--ndp-bg, #fff);
+}
+
+.ndp-conv-btn {
+  width: 100%;
+  padding: 10px;
+  background: var(--ndp-primary, #c0392b);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.ndp-conv-btn:hover {
+  background: var(--ndp-primary-dark, #a93226);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.ndp-conv-btn:active { transform: translateY(0); }
+
+.ndp-conv-result,
+.ndp-conv-placeholder {
+  background: var(--ndp-input-bg, #f8f8f8);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  color: var(--ndp-muted, #999);
+  font-size: 12px;
+  border: 1.5px dashed var(--ndp-border, #e0e0e0);
+}
+
+.ndp-conv-placeholder-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.ndp-conv-result-card {
+  background: var(--ndp-input-bg, #f8f8f8);
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--ndp-border, #e8e8e8);
+}
+
+.ndp-conv-arrow-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ndp-conv-from,
+.ndp-conv-to {
+  flex: 1;
+}
+
+.ndp-conv-from-label,
+.ndp-conv-to-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ndp-muted, #999);
+  margin-bottom: 2px;
+}
+
+.ndp-conv-from-date,
+.ndp-conv-to-date {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ndp-day-text, #222);
+  line-height: 1.3;
+}
+
+.ndp-conv-date-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+
+.ndp-conv-copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 11px;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.1s;
+  line-height: 1;
+}
+
+.ndp-conv-copy-btn:hover {
+  opacity: 1;
+}
+
+.ndp-conv-copy-btn:active {
+  transform: scale(0.9);
+}
+
+.ndp-conv-arrow {
+  font-size: 18px;
+  color: var(--ndp-primary, #c0392b);
+  font-weight: 700;
+}
+
+.ndp-conv-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ndp-conv-meta-item {
+  font-size: 11px;
+  color: var(--ndp-muted, #888);
+  background: var(--ndp-bg, #fff);
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid var(--ndp-border, #e8e8e8);
+}
+
+.ndp-conv-error {
+  background: #fef2f2;
+  border: 1.5px solid #fecaca;
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #dc2626;
+}
+
+/* -- Presets Sidebar (Range Mode) -------------------------- */
+.ndp-picker.ndp-has-presets {
+  display: flex;
+  width: 440px; /* Expand width to fit sidebar */
+}
+
+.ndp-presets-sidebar {
+  width: 140px;
+  background: var(--ndp-footer-bg, #fafafa);
+  border-right: 1px solid var(--ndp-border, #e8e8e8);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ndp-preset-btn {
+  background: var(--ndp-bg, #fff);
+  border: 1px solid var(--ndp-border, #e8e8e8);
+  color: var(--ndp-day-text, #222);
+  padding: 6px 10px;
+  border-radius: var(--ndp-btn-radius, 6px);
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.ndp-preset-btn:hover {
+  background: var(--ndp-hover-bg, rgba(192,57,43,0.06));
+  border-color: var(--ndp-primary, #c0392b);
+  color: var(--ndp-primary, #c0392b);
+}
+
+.ndp-main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* -- Time Picker Row ---------------------------------------- */
+.ndp-time-picker-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background: var(--ndp-footer-bg, #fafafa);
+  border-top: 1px solid var(--ndp-border, #e8e8e8);
+  gap: 8px;
+}
+
+.ndp-time-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ndp-muted, #777);
+}
+
+.ndp-time-select {
+  background: var(--ndp-bg, #fff);
+  border: 1px solid var(--ndp-border, #d2d2d2);
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+  color: var(--ndp-day-text, #222);
+  cursor: pointer;
+}
+
+.ndp-time-select:focus {
+  border-color: var(--ndp-primary, #c0392b);
+}
+
+.ndp-time-sep {
+  font-weight: 700;
+  color: var(--ndp-day-text, #222);
+  font-size: 12px;
+}
+
+.ndp-time-range-row {
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.ndp-time-range-col {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+/* -- Shortcuts Drawer & Info button ------------------------─ */
+.ndp-kb-help-btn {
+  background: var(--ndp-title-bg, rgba(255,255,255,0.15));
+  border: none;
+  color: var(--ndp-header-text, #fff);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  transition: background 0.2s;
+  outline: none;
+}
+
+.ndp-kb-help-btn:hover {
+  background: var(--ndp-title-hover-bg, rgba(255,255,255,0.25));
+}
+
+.ndp-kb-drawer {
+  position: absolute;
+  top: 48px;
+  right: 8px;
+  left: 8px;
+  background: var(--ndp-bg, #fff);
+  border: 1px solid var(--ndp-border, rgba(0,0,0,0.1));
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.ndp-kb-drawer-header {
+  background: var(--ndp-footer-bg, #f5f5f5);
+  padding: 6px 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ndp-day-text, #222);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--ndp-border, #e8e8e8);
+}
+
+.ndp-kb-drawer-close {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--ndp-muted, #777);
+  cursor: pointer;
+}
+
+.ndp-kb-drawer-body {
+  padding: 10px 12px;
+  font-size: 11.5px;
+  color: var(--ndp-day-text, #222);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ndp-kb-key {
+  display: inline-block;
+  background: #f0f0f0;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: 'Roboto Slab', monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* -- Fiscal Year & Duration Badges ------------------------─ */
+.ndp-footer-fy-text {
+  font-size: 9.5px;
+  color: var(--ndp-muted, #777);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.ndp-duration-badge {
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-right: 6px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ndp-select-nav {
+  background: transparent;
+  border: none;
+  color: var(--ndp-header-text, #fff);
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.ndp-select-nav option {
+  background: var(--ndp-bg, #fff);
+  color: var(--ndp-day-text, #222);
+  font-weight: normal;
+}
+
+/* -- Mobile Modal & Backdrop -------------------------------- */
+.ndp-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 999998;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.ndp-backdrop.ndp-backdrop-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* -- Validation Error State -------------------------------- */
+.ndp-input-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+  color: #ef4444 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ef4444'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 10px center !important;
+  background-size: 18px !important;
+  padding-right: 32px !important;
+}
+
+/* -- Pulse Animation for Today ------------------------------ */
+.ndp-today.ndp-today-pulse::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  border: 1.5px solid var(--ndp-primary, #c0392b);
+  animation: ndp-pulse 1.8s infinite ease-out;
+  pointer-events: none;
+  opacity: 0;
+}
+
+@keyframes ndp-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
+
+/* -- Weekend Styling ---------------------------------------- */
+.ndp-day.ndp-weekend:not(.ndp-selected):not(.ndp-range-start):not(.ndp-range-end) {
+  background: var(--ndp-footer-bg, #fafafa);
+}
+
+/* -- Responsive overrides ----------------------------------─ */
+@media (max-width: 640px) {
+  .ndp-picker.ndp-has-presets {
+    flex-direction: column;
+    width: 300px;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .ndp-presets-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--ndp-border, #e8e8e8);
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 8px;
+    gap: 8px;
+  }
+  .ndp-preset-btn {
+    white-space: nowrap;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .ndp-picker { width: calc(100vw - 16px); }
+  .ndp-day-num { font-size: 11px; }
+  .ndp-ad-day { display: none; }
+}
+
+/* -- Large Inline Calendar Theme ---------------------------- */
+.ndp-large-inline {
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto;
+}
+
+.ndp-large-inline .ndp-picker {
+  width: 100% !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 16px !important;
+  border: 1px solid var(--ndp-border, rgba(0, 0, 0, 0.08)) !important;
+}
+
+.ndp-large-inline .ndp-main-container {
+  width: 100% !important;
+}
+
+.ndp-large-inline .ndp-day {
+  height: 52px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative;
+}
+
+.ndp-large-inline .ndp-day-num {
+  font-size: 1.1rem !important;
+}
+
+.ndp-large-inline .ndp-ad-day {
+  font-size: 0.72rem !important;
+  margin-top: 2px !important;
+  opacity: 0.7;
+}
+
+.ndp-large-inline .ndp-weekday {
+  font-size: 0.92rem !important;
+  padding: 10px 0 !important;
+  font-weight: 700 !important;
+}
+
+.ndp-large-inline .ndp-header {
+  padding: 14px 10px !important;
+}
+
+.ndp-large-inline .ndp-title-area button {
+  font-size: 1.05rem !important;
+}
+
+.ndp-large-inline .ndp-nav-btn {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 1.15rem !important;
+}
+
+/* -- Availability Booking Colors ----------------------------─ */
+.ndp-booked-full {
+  background-color: rgba(239, 68, 68, 0.08) !important;
+  color: #ef4444 !important;
+  position: relative;
+}
+.ndp-booked-full::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 5px;
+  height: 5px;
+  background-color: #ef4444;
+  border-radius: 50%;
+}
+
+.ndp-booked-limited {
+  background-color: rgba(245, 158, 11, 0.08) !important;
+  color: #f59e0b !important;
+  position: relative;
+}
+.ndp-booked-limited::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 5px;
+  height: 5px;
+  background-color: #f59e0b;
+  border-radius: 50%;
+}
+
+.ndp-booked-available {
+  background-color: rgba(16, 185, 129, 0.08) !important;
+  color: #10b981 !important;
+  position: relative;
+}
+.ndp-booked-available::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 5px;
+  height: 5px;
+  background-color: #10b981;
+  border-radius: 50%;
+}
+/**
+ * NepaliDatePickerPro — ndp-themes.css
+ * 22 professional themes — each overrides CSS custom properties.
+ * Usage: add class "ndp-theme-{name}" to .ndp-picker or .ndp-converter
+ */
+
+/* ══════════════════════════════════════════════════════════════
+   1. CLASSIC LIGHT (default)
+   Clean, traditional, professional white
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-classic-light {
+  --ndp-primary:         #c0392b;
+  --ndp-primary-dark:    #a93226;
+  --ndp-bg:              #ffffff;
+  --ndp-body-bg:         #ffffff;
+  --ndp-header-bg:       #c0392b;
+  --ndp-header-text:     #ffffff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #fafafa;
+  --ndp-border:          #e8e8e8;
+  --ndp-day-text:        #2c2c2c;
+  --ndp-weekday-text:    #aaa;
+  --ndp-ad-text:         #bbb;
+  --ndp-hover-bg:        rgba(192,57,43,0.09);
+  --ndp-today-bg:        rgba(192,57,43,0.08);
+  --ndp-selected-bg:     #c0392b;
+  --ndp-selected-text:   #ffffff;
+  --ndp-range-bg:        rgba(192,57,43,0.12);
+  --ndp-range-hover-bg:  rgba(192,57,43,0.18);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.15);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.28);
+  --ndp-title-bg:        rgba(255,255,255,0.15);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.28);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.14);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.09);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #f7f7f7;
+  --ndp-input-border:    #e0e0e0;
+  --ndp-muted:           #999;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. CLASSIC DARK
+   Deep charcoal with saffron accents
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-classic-dark {
+  --ndp-primary:         #e67e22;
+  --ndp-primary-dark:    #ca6f1e;
+  --ndp-bg:              #1e1e2e;
+  --ndp-body-bg:         #1e1e2e;
+  --ndp-header-bg:       #16162a;
+  --ndp-header-text:     #f0c060;
+  --ndp-header-border:   rgba(255,255,255,0.05);
+  --ndp-footer-bg:       #16162a;
+  --ndp-border:          rgba(255,255,255,0.08);
+  --ndp-day-text:        #e8e8e8;
+  --ndp-weekday-text:    #666;
+  --ndp-ad-text:         #555;
+  --ndp-hover-bg:        rgba(230,126,34,0.15);
+  --ndp-today-bg:        rgba(230,126,34,0.12);
+  --ndp-selected-bg:     #e67e22;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(230,126,34,0.15);
+  --ndp-range-hover-bg:  rgba(230,126,34,0.22);
+  --ndp-holiday-color:   #f39c12;
+  --ndp-nav-bg:          rgba(255,255,255,0.06);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.12);
+  --ndp-title-bg:        rgba(255,255,255,0.06);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.12);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.45);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.4);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #12121e;
+  --ndp-input-border:    rgba(255,255,255,0.1);
+  --ndp-muted:           #666;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. NEPALI RED
+   Crimson / scarlet — inspired by Nepal flag
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-nepali-red {
+  --ndp-primary:         #8B0000;
+  --ndp-primary-dark:    #6b0000;
+  --ndp-bg:              #fff5f5;
+  --ndp-body-bg:         #fff5f5;
+  --ndp-header-bg:       linear-gradient(135deg, #8B0000 0%, #c0392b 100%);
+  --ndp-header-text:     #ffe8e8;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #fff0f0;
+  --ndp-border:          #ffd0d0;
+  --ndp-day-text:        #2d0000;
+  --ndp-weekday-text:    #c0392b;
+  --ndp-ad-text:         #e0aaaa;
+  --ndp-hover-bg:        rgba(139,0,0,0.08);
+  --ndp-today-bg:        rgba(139,0,0,0.1);
+  --ndp-selected-bg:     #8B0000;
+  --ndp-selected-text:   #ffe8e8;
+  --ndp-range-bg:        rgba(139,0,0,0.1);
+  --ndp-range-hover-bg:  rgba(139,0,0,0.16);
+  --ndp-holiday-color:   #c0392b;
+  --ndp-nav-bg:          rgba(255,232,232,0.15);
+  --ndp-nav-hover-bg:    rgba(255,232,232,0.28);
+  --ndp-title-bg:        rgba(255,232,232,0.15);
+  --ndp-title-hover-bg:  rgba(255,232,232,0.28);
+  --ndp-shadow:          0 12px 40px rgba(139,0,0,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(139,0,0,0.12);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #fff0f0;
+  --ndp-input-border:    #ffd0d0;
+  --ndp-muted:           #c0a0a0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. OCEAN BLUE
+   Deep ocean blues, surf whites
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-ocean-blue {
+  --ndp-primary:         #1a6fb5;
+  --ndp-primary-dark:    #155a94;
+  --ndp-bg:              #f0f7ff;
+  --ndp-body-bg:         #f0f7ff;
+  --ndp-header-bg:       linear-gradient(135deg, #0c3d6e 0%, #1a6fb5 100%);
+  --ndp-header-text:     #e0f2ff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #e8f4ff;
+  --ndp-border:          #c5ddf5;
+  --ndp-day-text:        #0d2d4e;
+  --ndp-weekday-text:    #1a6fb5;
+  --ndp-ad-text:         #7baed6;
+  --ndp-hover-bg:        rgba(26,111,181,0.1);
+  --ndp-today-bg:        rgba(26,111,181,0.1);
+  --ndp-selected-bg:     #1a6fb5;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(26,111,181,0.12);
+  --ndp-range-hover-bg:  rgba(26,111,181,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.25);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.25);
+  --ndp-shadow:          0 12px 40px rgba(26,111,181,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(26,111,181,0.12);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #e8f4ff;
+  --ndp-input-border:    #c5ddf5;
+  --ndp-muted:           #7baed6;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. FOREST GREEN
+   Earthy sage and deep forest
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-forest-green {
+  --ndp-primary:         #1e7e34;
+  --ndp-primary-dark:    #196429;
+  --ndp-bg:              #f0faf2;
+  --ndp-body-bg:         #f0faf2;
+  --ndp-header-bg:       linear-gradient(135deg, #0f4020 0%, #1e7e34 100%);
+  --ndp-header-text:     #d4f5da;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #e8f7eb;
+  --ndp-border:          #b8e5c0;
+  --ndp-day-text:        #0d2e15;
+  --ndp-weekday-text:    #1e7e34;
+  --ndp-ad-text:         #7bc08a;
+  --ndp-hover-bg:        rgba(30,126,52,0.1);
+  --ndp-today-bg:        rgba(30,126,52,0.1);
+  --ndp-selected-bg:     #1e7e34;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(30,126,52,0.12);
+  --ndp-range-hover-bg:  rgba(30,126,52,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 12px 40px rgba(30,126,52,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(30,126,52,0.12);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #e8f7eb;
+  --ndp-input-border:    #b8e5c0;
+  --ndp-muted:           #7bc08a;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. SUNSET ORANGE
+   Warm amber, coral, golden gradients
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-sunset-orange {
+  --ndp-primary:         #e05b1a;
+  --ndp-primary-dark:    #c04e15;
+  --ndp-bg:              #fff8f0;
+  --ndp-body-bg:         #fff8f0;
+  --ndp-header-bg:       linear-gradient(135deg, #b34000 0%, #e07b1a 60%, #f5a623 100%);
+  --ndp-header-text:     #fff5e0;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #fff2e0;
+  --ndp-border:          #fdd8b5;
+  --ndp-day-text:        #2e1800;
+  --ndp-weekday-text:    #e05b1a;
+  --ndp-ad-text:         #d4a070;
+  --ndp-hover-bg:        rgba(224,91,26,0.1);
+  --ndp-today-bg:        rgba(224,91,26,0.1);
+  --ndp-selected-bg:     #e05b1a;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(224,91,26,0.12);
+  --ndp-range-hover-bg:  rgba(224,91,26,0.2);
+  --ndp-holiday-color:   #c0392b;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.25);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.25);
+  --ndp-shadow:          0 12px 40px rgba(224,91,26,0.22);
+  --ndp-shadow-inline:   0 4px 20px rgba(224,91,26,0.12);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #fff2e0;
+  --ndp-input-border:    #fdd8b5;
+  --ndp-muted:           #c49060;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. ROYAL PURPLE
+   Deep purples with gold accents
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-royal-purple {
+  --ndp-primary:         #7c3aed;
+  --ndp-primary-dark:    #6d28d9;
+  --ndp-bg:              #faf5ff;
+  --ndp-body-bg:         #faf5ff;
+  --ndp-header-bg:       linear-gradient(135deg, #3b0764 0%, #7c3aed 100%);
+  --ndp-header-text:     #f3e8ff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f5f0ff;
+  --ndp-border:          #ddd0f8;
+  --ndp-day-text:        #1e0040;
+  --ndp-weekday-text:    #7c3aed;
+  --ndp-ad-text:         #b89dd8;
+  --ndp-hover-bg:        rgba(124,58,237,0.1);
+  --ndp-today-bg:        rgba(124,58,237,0.1);
+  --ndp-selected-bg:     #7c3aed;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(124,58,237,0.12);
+  --ndp-range-hover-bg:  rgba(124,58,237,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 12px 40px rgba(124,58,237,0.25);
+  --ndp-shadow-inline:   0 4px 20px rgba(124,58,237,0.14);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #f5f0ff;
+  --ndp-input-border:    #ddd0f8;
+  --ndp-muted:           #b89dd8;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. MIDNIGHT
+   Ultra-dark OLED-optimized dark mode
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-midnight {
+  --ndp-primary:         #00d4aa;
+  --ndp-primary-dark:    #00b894;
+  --ndp-bg:              #000000;
+  --ndp-body-bg:         #000000;
+  --ndp-header-bg:       #0a0a0a;
+  --ndp-header-text:     #00d4aa;
+  --ndp-header-border:   rgba(0,212,170,0.1);
+  --ndp-footer-bg:       #0a0a0a;
+  --ndp-border:          rgba(255,255,255,0.06);
+  --ndp-day-text:        #e0e0e0;
+  --ndp-weekday-text:    #444;
+  --ndp-ad-text:         #333;
+  --ndp-hover-bg:        rgba(0,212,170,0.1);
+  --ndp-today-bg:        rgba(0,212,170,0.1);
+  --ndp-selected-bg:     #00d4aa;
+  --ndp-selected-text:   #000;
+  --ndp-range-bg:        rgba(0,212,170,0.1);
+  --ndp-range-hover-bg:  rgba(0,212,170,0.16);
+  --ndp-holiday-color:   #ff6b6b;
+  --ndp-nav-bg:          rgba(255,255,255,0.04);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.1);
+  --ndp-title-bg:        rgba(255,255,255,0.04);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.1);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.8);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.7);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #0a0a0a;
+  --ndp-input-border:    rgba(255,255,255,0.08);
+  --ndp-muted:           #444;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   9. GLASSMORPHISM
+   Frosted glass with blur — light version
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-glassmorphism {
+  --ndp-primary:         #6c63ff;
+  --ndp-primary-dark:    #5a52e0;
+  --ndp-bg:              rgba(255,255,255,0.22);
+  --ndp-body-bg:         rgba(255,255,255,0.22);
+  --ndp-header-bg:       linear-gradient(135deg, rgba(108,99,255,0.8) 0%, rgba(155,89,182,0.7) 100%);
+  --ndp-header-text:     #fff;
+  --ndp-header-border:   rgba(255,255,255,0.2);
+  --ndp-footer-bg:       rgba(255,255,255,0.15);
+  --ndp-border:          rgba(255,255,255,0.35);
+  --ndp-day-text:        #222;
+  --ndp-weekday-text:    rgba(108,99,255,0.8);
+  --ndp-ad-text:         rgba(0,0,0,0.4);
+  --ndp-hover-bg:        rgba(108,99,255,0.12);
+  --ndp-today-bg:        rgba(108,99,255,0.1);
+  --ndp-selected-bg:     #6c63ff;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(108,99,255,0.12);
+  --ndp-range-hover-bg:  rgba(108,99,255,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.15);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.3);
+  --ndp-title-bg:        rgba(255,255,255,0.15);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.3);
+  --ndp-shadow:          0 16px 50px rgba(108,99,255,0.3), 0 0 0 1px rgba(255,255,255,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(108,99,255,0.15);
+  --ndp-radius:          18px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      10px;
+  --ndp-input-bg:        rgba(255,255,255,0.15);
+  --ndp-input-border:    rgba(255,255,255,0.3);
+  --ndp-muted:           rgba(0,0,0,0.45);
+}
+
+.ndp-theme-glassmorphism {
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   10. NEUMORPHISM
+   Soft shadows, embossed buttons
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-neumorphism {
+  --ndp-primary:         #0075d1;
+  --ndp-primary-dark:    #005faa;
+  --ndp-bg:              #e4ebf5;
+  --ndp-body-bg:         #e4ebf5;
+  --ndp-header-bg:       #d8e2f0;
+  --ndp-header-text:     #0075d1;
+  --ndp-header-border:   rgba(255,255,255,0.7);
+  --ndp-footer-bg:       #d8e2f0;
+  --ndp-border:          rgba(255,255,255,0.6);
+  --ndp-day-text:        #334155;
+  --ndp-weekday-text:    #94a3b8;
+  --ndp-ad-text:         #94a3b8;
+  --ndp-hover-bg:        rgba(0,117,209,0.07);
+  --ndp-today-bg:        rgba(0,117,209,0.07);
+  --ndp-selected-bg:     #0075d1;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(0,117,209,0.08);
+  --ndp-range-hover-bg:  rgba(0,117,209,0.14);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          transparent;
+  --ndp-nav-hover-bg:    rgba(0,0,0,0.04);
+  --ndp-title-bg:        transparent;
+  --ndp-title-hover-bg:  rgba(0,0,0,0.04);
+  --ndp-shadow:          6px 6px 16px #b8c8dc, -6px -6px 16px #ffffff;
+  --ndp-shadow-inline:   4px 4px 10px #b8c8dc, -4px -4px 10px #ffffff;
+  --ndp-radius:          18px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      10px;
+  --ndp-input-bg:        #e4ebf5;
+  --ndp-input-border:    rgba(255,255,255,0.5);
+  --ndp-muted:           #94a3b8;
+}
+
+.ndp-theme-neumorphism .ndp-nav-btn {
+  box-shadow: 3px 3px 8px #b8c8dc, -3px -3px 8px #ffffff;
+}
+
+.ndp-theme-neumorphism .ndp-day:hover:not(.ndp-disabled) {
+  box-shadow: inset 2px 2px 6px #b8c8dc, inset -2px -2px 6px #ffffff;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   11. GRADIENT AURORA
+   Multi-color aurora borealis gradients
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-gradient-aurora {
+  --ndp-primary:         #00c9a7;
+  --ndp-primary-dark:    #00a88a;
+  --ndp-bg:              #0d1b2a;
+  --ndp-body-bg:         #0d1b2a;
+  --ndp-header-bg:       linear-gradient(135deg, #0a1628 0%, #1a0633 35%, #002c20 70%, #0a1628 100%);
+  --ndp-header-text:     #a8f5de;
+  --ndp-header-border:   rgba(0,201,167,0.1);
+  --ndp-footer-bg:       #0a1525;
+  --ndp-border:          rgba(0,201,167,0.12);
+  --ndp-day-text:        #c8e6f0;
+  --ndp-weekday-text:    rgba(0,201,167,0.6);
+  --ndp-ad-text:         rgba(200,230,240,0.3);
+  --ndp-hover-bg:        rgba(0,201,167,0.12);
+  --ndp-today-bg:        rgba(0,201,167,0.1);
+  --ndp-selected-bg:     linear-gradient(135deg, #00c9a7 0%, #0075ff 100%);
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(0,201,167,0.1);
+  --ndp-range-hover-bg:  rgba(0,201,167,0.18);
+  --ndp-holiday-color:   #ff6b9d;
+  --ndp-nav-bg:          rgba(0,201,167,0.1);
+  --ndp-nav-hover-bg:    rgba(0,201,167,0.2);
+  --ndp-title-bg:        rgba(0,201,167,0.1);
+  --ndp-title-hover-bg:  rgba(0,201,167,0.2);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.6), 0 0 30px rgba(0,201,167,0.15);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.5);
+  --ndp-radius:          16px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      10px;
+  --ndp-input-bg:        rgba(0,201,167,0.06);
+  --ndp-input-border:    rgba(0,201,167,0.15);
+  --ndp-muted:           rgba(0,201,167,0.45);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   12. MINIMAL MONO
+   Black, white, gray — typographic minimal
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-minimal-mono {
+  --ndp-primary:         #111111;
+  --ndp-primary-dark:    #000000;
+  --ndp-bg:              #ffffff;
+  --ndp-body-bg:         #ffffff;
+  --ndp-header-bg:       #111111;
+  --ndp-header-text:     #ffffff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f5f5f5;
+  --ndp-border:          #e0e0e0;
+  --ndp-day-text:        #111;
+  --ndp-weekday-text:    #bbb;
+  --ndp-ad-text:         #ccc;
+  --ndp-hover-bg:        #f0f0f0;
+  --ndp-today-bg:        #f0f0f0;
+  --ndp-selected-bg:     #111111;
+  --ndp-selected-text:   #ffffff;
+  --ndp-range-bg:        #e8e8e8;
+  --ndp-range-hover-bg:  #ddd;
+  --ndp-holiday-color:   #111;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 8px 30px rgba(0,0,0,0.12);
+  --ndp-shadow-inline:   0 2px 10px rgba(0,0,0,0.08);
+  --ndp-radius:          4px;
+  --ndp-btn-radius:      2px;
+  --ndp-day-radius:      2px;
+  --ndp-input-bg:        #f5f5f5;
+  --ndp-input-border:    #ddd;
+  --ndp-muted:           #999;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   13. PASTEL SOFT
+   Blush pink, lavender, mint pastels
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-pastel-soft {
+  --ndp-primary:         #d481a8;
+  --ndp-primary-dark:    #c06090;
+  --ndp-bg:              #fdf5f9;
+  --ndp-body-bg:         #fdf5f9;
+  --ndp-header-bg:       linear-gradient(135deg, #d481a8 0%, #b891d4 100%);
+  --ndp-header-text:     #fff5fa;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f8edf5;
+  --ndp-border:          #f0c8df;
+  --ndp-day-text:        #4a2040;
+  --ndp-weekday-text:    #d481a8;
+  --ndp-ad-text:         #e0a8c8;
+  --ndp-hover-bg:        rgba(212,129,168,0.1);
+  --ndp-today-bg:        rgba(212,129,168,0.1);
+  --ndp-selected-bg:     #d481a8;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(212,129,168,0.12);
+  --ndp-range-hover-bg:  rgba(212,129,168,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.2);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.35);
+  --ndp-title-bg:        rgba(255,255,255,0.2);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.35);
+  --ndp-shadow:          0 12px 40px rgba(212,129,168,0.25);
+  --ndp-shadow-inline:   0 4px 20px rgba(212,129,168,0.15);
+  --ndp-radius:          20px;
+  --ndp-btn-radius:      12px;
+  --ndp-day-radius:      50%;
+  --ndp-input-bg:        #f8edf5;
+  --ndp-input-border:    #f0c8df;
+  --ndp-muted:           #d0a0c0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   14. CORPORATE BLUE
+   Professional navy/steel for enterprise
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-corporate-blue {
+  --ndp-primary:         #1e3a5f;
+  --ndp-primary-dark:    #162d4a;
+  --ndp-bg:              #f4f7fb;
+  --ndp-body-bg:         #f4f7fb;
+  --ndp-header-bg:       #1e3a5f;
+  --ndp-header-text:     #e8f0fc;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #edf2f9;
+  --ndp-border:          #cdd8e8;
+  --ndp-day-text:        #1e3a5f;
+  --ndp-weekday-text:    #4e6d92;
+  --ndp-ad-text:         #8ea8c8;
+  --ndp-hover-bg:        rgba(30,58,95,0.07);
+  --ndp-today-bg:        rgba(30,58,95,0.08);
+  --ndp-selected-bg:     #1e3a5f;
+  --ndp-selected-text:   #e8f0fc;
+  --ndp-range-bg:        rgba(30,58,95,0.08);
+  --ndp-range-hover-bg:  rgba(30,58,95,0.14);
+  --ndp-holiday-color:   #c0392b;
+  --ndp-nav-bg:          rgba(255,255,255,0.08);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.18);
+  --ndp-title-bg:        rgba(255,255,255,0.08);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.18);
+  --ndp-shadow:          0 8px 30px rgba(30,58,95,0.18);
+  --ndp-shadow-inline:   0 4px 14px rgba(30,58,95,0.1);
+  --ndp-radius:          10px;
+  --ndp-btn-radius:      6px;
+  --ndp-day-radius:      6px;
+  --ndp-input-bg:        #edf2f9;
+  --ndp-input-border:    #cdd8e8;
+  --ndp-muted:           #8ea8c8;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   15. EARTHY TERRACOTTA
+   Clay, burnt sienna, warm beige
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-earthy-terracotta {
+  --ndp-primary:         #c15a3a;
+  --ndp-primary-dark:    #a34830;
+  --ndp-bg:              #fdf5ef;
+  --ndp-body-bg:         #fdf5ef;
+  --ndp-header-bg:       linear-gradient(135deg, #6b2d1c 0%, #c15a3a 100%);
+  --ndp-header-text:     #ffe8d8;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f5ede3;
+  --ndp-border:          #e8cfc0;
+  --ndp-day-text:        #3a1a0a;
+  --ndp-weekday-text:    #c15a3a;
+  --ndp-ad-text:         #c4a090;
+  --ndp-hover-bg:        rgba(193,90,58,0.1);
+  --ndp-today-bg:        rgba(193,90,58,0.1);
+  --ndp-selected-bg:     #c15a3a;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(193,90,58,0.12);
+  --ndp-range-hover-bg:  rgba(193,90,58,0.2);
+  --ndp-holiday-color:   #a93226;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.25);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.25);
+  --ndp-shadow:          0 12px 40px rgba(193,90,58,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(193,90,58,0.12);
+  --ndp-radius:          12px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #f5ede3;
+  --ndp-input-border:    #e8cfc0;
+  --ndp-muted:           #c0a090;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   16. NEON CYBERPUNK
+   Electric neon on ultra-dark background
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-neon-cyberpunk {
+  --ndp-primary:         #00ffe0;
+  --ndp-primary-dark:    #00ccb4;
+  --ndp-bg:              #030318;
+  --ndp-body-bg:         #030318;
+  --ndp-header-bg:       #06061e;
+  --ndp-header-text:     #00ffe0;
+  --ndp-header-border:   rgba(0,255,224,0.15);
+  --ndp-footer-bg:       #06061e;
+  --ndp-border:          rgba(0,255,224,0.1);
+  --ndp-day-text:        #c8f8ff;
+  --ndp-weekday-text:    rgba(0,255,224,0.4);
+  --ndp-ad-text:         rgba(200,248,255,0.25);
+  --ndp-hover-bg:        rgba(0,255,224,0.08);
+  --ndp-today-bg:        rgba(0,255,224,0.08);
+  --ndp-selected-bg:     #00ffe0;
+  --ndp-selected-text:   #000;
+  --ndp-range-bg:        rgba(0,255,224,0.07);
+  --ndp-range-hover-bg:  rgba(0,255,224,0.13);
+  --ndp-holiday-color:   #ff0080;
+  --ndp-nav-bg:          rgba(0,255,224,0.06);
+  --ndp-nav-hover-bg:    rgba(0,255,224,0.14);
+  --ndp-title-bg:        rgba(0,255,224,0.06);
+  --ndp-title-hover-bg:  rgba(0,255,224,0.14);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.8), 0 0 30px rgba(0,255,224,0.15);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.7);
+  --ndp-radius:          8px;
+  --ndp-btn-radius:      4px;
+  --ndp-day-radius:      4px;
+  --ndp-input-bg:        rgba(0,255,224,0.04);
+  --ndp-input-border:    rgba(0,255,224,0.12);
+  --ndp-muted:           rgba(0,255,224,0.35);
+}
+
+.ndp-theme-neon-cyberpunk .ndp-picker {
+  box-shadow: 0 0 0 1px rgba(0,255,224,0.15), 0 12px 40px rgba(0,0,0,0.8);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   17. MATERIAL DESIGN
+   Google Material inspired, elevation shadows
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-material-design {
+  --ndp-primary:         #6200ea;
+  --ndp-primary-dark:    #4b00b5;
+  --ndp-bg:              #ffffff;
+  --ndp-body-bg:         #ffffff;
+  --ndp-header-bg:       #6200ea;
+  --ndp-header-text:     #ffffff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f8f6ff;
+  --ndp-border:          rgba(0,0,0,0.08);
+  --ndp-day-text:        rgba(0,0,0,0.87);
+  --ndp-weekday-text:    rgba(0,0,0,0.38);
+  --ndp-ad-text:         rgba(0,0,0,0.28);
+  --ndp-hover-bg:        rgba(98,0,234,0.08);
+  --ndp-today-bg:        rgba(98,0,234,0.08);
+  --ndp-selected-bg:     #6200ea;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(98,0,234,0.1);
+  --ndp-range-hover-bg:  rgba(98,0,234,0.16);
+  --ndp-holiday-color:   #b00020;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.25);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.25);
+  --ndp-shadow:          0 8px 10px -5px rgba(0,0,0,0.2), 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12);
+  --ndp-shadow-inline:   0 2px 4px -1px rgba(0,0,0,0.2), 0 4px 5px 0 rgba(0,0,0,0.14);
+  --ndp-radius:          4px;
+  --ndp-btn-radius:      4px;
+  --ndp-day-radius:      50%;
+  --ndp-input-bg:        #f5f5f5;
+  --ndp-input-border:    rgba(0,0,0,0.12);
+  --ndp-muted:           rgba(0,0,0,0.38);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   18. RETRO PAPER
+   Parchment paper, vintage ink aesthetic
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-retro-paper {
+  --ndp-primary:         #5c3d11;
+  --ndp-primary-dark:    #4a2e0a;
+  --ndp-bg:              #f5ead0;
+  --ndp-body-bg:         #f5ead0;
+  --ndp-header-bg:       #3d2508;
+  --ndp-header-text:     #e8d5a3;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #eedad5;
+  --ndp-border:          #c8b080;
+  --ndp-day-text:        #3d2508;
+  --ndp-weekday-text:    #8b6520;
+  --ndp-ad-text:         #c8a870;
+  --ndp-hover-bg:        rgba(92,61,17,0.1);
+  --ndp-today-bg:        rgba(92,61,17,0.1);
+  --ndp-selected-bg:     #5c3d11;
+  --ndp-selected-text:   #e8d5a3;
+  --ndp-range-bg:        rgba(92,61,17,0.12);
+  --ndp-range-hover-bg:  rgba(92,61,17,0.2);
+  --ndp-holiday-color:   #8b0000;
+  --ndp-nav-bg:          rgba(232,213,163,0.12);
+  --ndp-nav-hover-bg:    rgba(232,213,163,0.25);
+  --ndp-title-bg:        rgba(232,213,163,0.12);
+  --ndp-title-hover-bg:  rgba(232,213,163,0.25);
+  --ndp-shadow:          0 8px 30px rgba(92,61,17,0.2), 4px 4px 0 rgba(92,61,17,0.08);
+  --ndp-shadow-inline:   0 4px 16px rgba(92,61,17,0.12);
+  --ndp-radius:          6px;
+  --ndp-btn-radius:      4px;
+  --ndp-day-radius:      4px;
+  --ndp-input-bg:        #eedad5;
+  --ndp-input-border:    #c8b080;
+  --ndp-muted:           #a08040;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   19. HIGH CONTRAST (WCAG AAA)
+   Accessibility optimized — black/white/yellow
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-high-contrast {
+  --ndp-primary:         #000000;
+  --ndp-primary-dark:    #222222;
+  --ndp-bg:              #ffffff;
+  --ndp-body-bg:         #ffffff;
+  --ndp-header-bg:       #000000;
+  --ndp-header-text:     #ffff00;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f8f8f8;
+  --ndp-border:          #000000;
+  --ndp-day-text:        #000000;
+  --ndp-weekday-text:    #000000;
+  --ndp-ad-text:         #444;
+  --ndp-hover-bg:        #ffff00;
+  --ndp-today-bg:        #ffff00;
+  --ndp-selected-bg:     #000000;
+  --ndp-selected-text:   #ffffff;
+  --ndp-range-bg:        #ffff80;
+  --ndp-range-hover-bg:  #ffff60;
+  --ndp-holiday-color:   #000;
+  --ndp-nav-bg:          rgba(255,255,0,0.15);
+  --ndp-nav-hover-bg:    #ffff00;
+  --ndp-title-bg:        rgba(255,255,0,0.15);
+  --ndp-title-hover-bg:  #ffff00;
+  --ndp-shadow:          0 0 0 3px #000;
+  --ndp-shadow-inline:   0 0 0 2px #000;
+  --ndp-radius:          0;
+  --ndp-btn-radius:      0;
+  --ndp-day-radius:      0;
+  --ndp-input-bg:        #fff;
+  --ndp-input-border:    #000;
+  --ndp-muted:           #444;
+}
+
+.ndp-theme-high-contrast .ndp-nav-btn:hover {
+  color: #000;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   20. FESTIVE DASHAIN
+   Gold, saffron, crimson — festival season
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-festive-dashain {
+  --ndp-primary:         #c8960c;
+  --ndp-primary-dark:    #a87a08;
+  --ndp-bg:              #fffbef;
+  --ndp-body-bg:         #fffbef;
+  --ndp-header-bg:       linear-gradient(135deg, #7b1b02 0%, #c0390b 40%, #c8960c 100%);
+  --ndp-header-text:     #fff8d0;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #fff5e0;
+  --ndp-border:          #f5d890;
+  --ndp-day-text:        #2d1800;
+  --ndp-weekday-text:    #c8960c;
+  --ndp-ad-text:         #d4a060;
+  --ndp-hover-bg:        rgba(200,150,12,0.12);
+  --ndp-today-bg:        rgba(200,150,12,0.12);
+  --ndp-selected-bg:     #c8960c;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(200,150,12,0.14);
+  --ndp-range-hover-bg:  rgba(200,150,12,0.22);
+  --ndp-holiday-color:   #c0390b;
+  --ndp-nav-bg:          rgba(255,248,208,0.15);
+  --ndp-nav-hover-bg:    rgba(255,248,208,0.3);
+  --ndp-title-bg:        rgba(255,248,208,0.15);
+  --ndp-title-hover-bg:  rgba(255,248,208,0.3);
+  --ndp-shadow:          0 12px 40px rgba(200,150,12,0.25), 0 0 0 2px rgba(200,150,12,0.1);
+  --ndp-shadow-inline:   0 4px 20px rgba(200,150,12,0.15);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #fff5e0;
+  --ndp-input-border:    #f5d890;
+  --ndp-muted:           #c0a060;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   21. MOUNTAIN MIST
+   Himalayan misty grays and snow whites
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-mountain-mist {
+  --ndp-primary:         #607d8b;
+  --ndp-primary-dark:    #4a6470;
+  --ndp-bg:              #f8fafc;
+  --ndp-body-bg:         #f8fafc;
+  --ndp-header-bg:       linear-gradient(135deg, #455a64 0%, #78909c 100%);
+  --ndp-header-text:     #ecf4f8;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f0f5f8;
+  --ndp-border:          #cfd8dc;
+  --ndp-day-text:        #263238;
+  --ndp-weekday-text:    #90a4ae;
+  --ndp-ad-text:         #b0bec5;
+  --ndp-hover-bg:        rgba(96,125,139,0.1);
+  --ndp-today-bg:        rgba(96,125,139,0.1);
+  --ndp-selected-bg:     #607d8b;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(96,125,139,0.1);
+  --ndp-range-hover-bg:  rgba(96,125,139,0.18);
+  --ndp-holiday-color:   #c0392b;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 12px 40px rgba(96,125,139,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(96,125,139,0.12);
+  --ndp-radius:          16px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      10px;
+  --ndp-input-bg:        #f0f5f8;
+  --ndp-input-border:    #cfd8dc;
+  --ndp-muted:           #90a4ae;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   22. TROPICAL TEAL
+   Fresh teal and bright lime
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-tropical-teal {
+  --ndp-primary:         #00897b;
+  --ndp-primary-dark:    #00695c;
+  --ndp-bg:              #f0fdf9;
+  --ndp-body-bg:         #f0fdf9;
+  --ndp-header-bg:       linear-gradient(135deg, #00524a 0%, #00897b 60%, #26c6a1 100%);
+  --ndp-header-text:     #e0fff8;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #e8faf5;
+  --ndp-border:          #a7e8d8;
+  --ndp-day-text:        #00332d;
+  --ndp-weekday-text:    #00897b;
+  --ndp-ad-text:         #7ac8b8;
+  --ndp-hover-bg:        rgba(0,137,123,0.1);
+  --ndp-today-bg:        rgba(0,137,123,0.1);
+  --ndp-selected-bg:     #00897b;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(0,137,123,0.12);
+  --ndp-range-hover-bg:  rgba(0,137,123,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.26);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.26);
+  --ndp-shadow:          0 12px 40px rgba(0,137,123,0.22);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,137,123,0.12);
+  --ndp-radius:          16px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      50%;
+  --ndp-input-bg:        #e8faf5;
+  --ndp-input-border:    #a7e8d8;
+  --ndp-muted:           #7ac8b8;
+}
+
+/* -- Header gradient support ------------------------------─ */
+/* When --ndp-header-bg is a gradient, we need to handle it specially */
+.ndp-theme-nepali-red .ndp-header,
+.ndp-theme-ocean-blue .ndp-header,
+.ndp-theme-forest-green .ndp-header,
+.ndp-theme-sunset-orange .ndp-header,
+.ndp-theme-royal-purple .ndp-header,
+.ndp-theme-gradient-aurora .ndp-header,
+.ndp-theme-pastel-soft .ndp-header,
+.ndp-theme-earthy-terracotta .ndp-header,
+.ndp-theme-festive-dashain .ndp-header,
+.ndp-theme-mountain-mist .ndp-header,
+.ndp-theme-tropical-teal .ndp-header {
+  background: var(--ndp-header-bg);
+}
+
+.ndp-theme-glassmorphism .ndp-picker {
+  background: var(--ndp-bg);
+}
+
+/* Selected when bg is gradient */
+.ndp-theme-gradient-aurora .ndp-selected,
+.ndp-theme-gradient-aurora .ndp-range-start,
+.ndp-theme-gradient-aurora .ndp-range-end {
+  background: linear-gradient(135deg, #00c9a7 0%, #0075ff 100%);
+}
+/**
+ * NepaliDatePickerPro — ndp-animations.css
+ * All animations, transitions, and micro-interactions.
+ */
+
+/* -- Open / Close ------------------------------------------─ */
+.ndp-picker {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  transition:
+    opacity 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.ndp-picker.ndp-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.ndp-picker.ndp-closing {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.97);
+  pointer-events: none;
+}
+
+/* Custom Animation Types */
+.ndp-picker.ndp-anim-slide {
+  transform: translateY(20px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.ndp-picker.ndp-anim-slide.ndp-open {
+  transform: translateY(0);
+}
+.ndp-picker.ndp-anim-slide.ndp-closing {
+  transform: translateY(20px);
+}
+
+.ndp-picker.ndp-anim-fade {
+  transform: none;
+  transition: opacity 0.25s ease;
+}
+.ndp-picker.ndp-anim-fade.ndp-open {
+  transform: none;
+}
+.ndp-picker.ndp-anim-fade.ndp-closing {
+  transform: none;
+}
+
+.ndp-picker.ndp-inline {
+  opacity: 1;
+  transform: none;
+  pointer-events: all;
+}
+
+/* -- Day Cell Hover ----------------------------------------─ */
+@keyframes ndp-ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.35;
+  }
+  to {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.ndp-day:not(.ndp-disabled)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--ndp-primary, #c0392b);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+/* -- Selected Date Pulse ------------------------------------ */
+@keyframes ndp-select-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(192,57,43,0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(192,57,43,0); }
+  100% { box-shadow: 0 0 0 0 rgba(192,57,43,0); }
+}
+
+.ndp-selected {
+  animation: ndp-select-pulse 0.5s ease-out;
+}
+
+/* -- Nav Button --------------------------------------------─ */
+@keyframes ndp-nav-press {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.88); }
+  100% { transform: scale(1); }
+}
+
+.ndp-nav-btn:active {
+  animation: ndp-nav-press 0.15s ease;
+}
+
+/* -- View Transition ---------------------------------------- */
+@keyframes ndp-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ndp-days-grid,
+.ndp-months-grid,
+.ndp-years-grid {
+  animation: ndp-fade-in 0.18s ease both;
+}
+
+/* -- Today Dot Pulse ---------------------------------------- */
+@keyframes ndp-today-ping {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; transform: translateX(-50%) scale(1.5); }
+}
+
+.ndp-today::after {
+  animation: ndp-today-ping 2.4s ease-in-out infinite;
+}
+
+/* -- Converter Convert Button ------------------------------─ */
+@keyframes ndp-spin {
+  to { transform: rotate(360deg); }
+}
+
+.ndp-conv-btn:active span:first-child {
+  display: inline-block;
+  animation: ndp-spin 0.4s ease;
+}
+
+/* -- Converter Result Slide In ------------------------------ */
+@keyframes ndp-slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ndp-conv-result-card:not(.ndp-hidden) {
+  animation: ndp-slide-up 0.24s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* -- Holiday Dot Pop ---------------------------------------- */
+@keyframes ndp-dot-pop {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+.ndp-dot {
+  animation: ndp-dot-pop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* -- Range Highlight Fade ----------------------------------─ */
+.ndp-in-range {
+  transition: background 0.12s ease;
+}
+
+/* -- Tooltip Fade ------------------------------------------─ */
+@keyframes ndp-tooltip-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(2px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.ndp-day:hover .ndp-tooltip {
+  animation: ndp-tooltip-in 0.18s ease both;
+}
+
+/* -- Theme Switcher Fade ------------------------------------ */
+@keyframes ndp-theme-fade {
+  from { opacity: 0.7; }
+  to   { opacity: 1; }
+}
+
+.ndp-picker,
+.ndp-converter {
+  animation: ndp-theme-fade 0.3s ease;
+}
+
+/* -- Month Cell Hover --------------------------------------─ */
+.ndp-month-cell,
+.ndp-year-cell {
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.ndp-month-cell:hover:not(.ndp-selected),
+.ndp-year-cell:hover:not(.ndp-selected) {
+  transform: scale(1.06);
+}
+
+/* -- Glassmorphism shimmer ---------------------------------- */
+@keyframes ndp-shimmer {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
+}
+
+.ndp-theme-glassmorphism .ndp-header {
+  background-size: 200% auto;
+  animation: ndp-shimmer 3s linear infinite;
+}
+
+/* -- Aurora gradient animation ------------------------------ */
+@keyframes ndp-aurora-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.ndp-theme-gradient-aurora .ndp-header {
+  background-size: 200% 200%;
+  animation: ndp-aurora-shift 4s ease infinite;
+}
+
+/* -- Neon glow pulse ---------------------------------------- */
+@keyframes ndp-neon-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0,255,200,0.4), 0 0 20px rgba(0,255,200,0.1); }
+  50%       { box-shadow: 0 0 16px rgba(0,255,200,0.7), 0 0 30px rgba(0,255,200,0.2); }
+}
+
+.ndp-theme-neon-cyberpunk .ndp-selected {
+  animation: ndp-neon-glow 1.5s ease infinite;
+}
+
+/* -- Festive sparkle ---------------------------------------- */
+@keyframes ndp-sparkle {
+  0%   { opacity: 0; transform: scale(0) rotate(0deg); }
+  50%  { opacity: 1; transform: scale(1.2) rotate(180deg); }
+  100% { opacity: 0; transform: scale(0) rotate(360deg); }
+}
+
+.ndp-theme-festive-dashain .ndp-today::after {
+  animation: ndp-sparkle 2s ease infinite;
+}

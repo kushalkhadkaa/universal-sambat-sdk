@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Nepali DatePicker</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; background: transparent; overflow: hidden; }
+#ndp-container { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 8px; }
+#ndp-container .ndp-popup { position: static !important; display: block !important; opacity: 1 !important; transform: none !important; box-shadow: none !important; }
+</style>
+<!-- BUILD STEP: Replace this comment with inlined dist/nepali-datepicker.css content -->
+<!-- BUILD STEP: Replace this comment with inlined dist/nepali-datepicker.js content -->
+</head>
+<body>
+<div id="ndp-container">
+  <div id="ndp-inline"></div>
+</div>
+<script>
+(function () {
+  var picker = null;
+  var opts   = { theme: 'classic-dark', lang: 'ne', mode: 'single' };
+
+  function initPicker() {
+    if (typeof window.NepaliDatePicker === 'undefined') {
+      setTimeout(initPicker, 50);
+      return;
+    }
+    picker = new window.NepaliDatePicker('#ndp-inline', Object.assign({}, opts, {
+      inline: true,
+      showAdDate: true,
+      onChange: function (date) {
+        postToRN({ type: 'date-change', date: date });
+      },
+      onRangeChange: function (start, end) {
+        postToRN({ type: 'range-change', start: start, end: end });
+      },
+      onMonthChange: function (y, m) {
+        postToRN({ type: 'month-change', year: y, month: m });
+      }
+    }));
+  }
+
+  function postToRN(payload) {
+    try {
+      if (window.ReactNativeWebView) {
+        window.ReactNativeWebView.postMessage(JSON.stringify(payload));
+      } else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.reactNative) {
+        window.webkit.messageHandlers.reactNative.postMessage(JSON.stringify(payload));
+      }
+    } catch (e) {}
+  }
+
+  // Receive commands from React Native
+  function handleMessage(event) {
+    try {
+      var msg = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+      if (!msg || !msg.cmd || !picker) return;
+      switch (msg.cmd) {
+        case 'setTheme': picker.setTheme(msg.theme); break;
+        case 'setLang':  picker.setLang(msg.lang);   break;
+        case 'setMode':
+          picker.destroy();
+          opts.mode  = msg.mode;
+          opts.theme = msg.theme || opts.theme;
+          opts.lang  = msg.lang  || opts.lang;
+          initPicker();
+          break;
+        case 'setDate':  if (msg.date)  picker.setDate(msg.date);  break;
+        case 'clear':    picker.clear(); break;
+        case 'jumpTo':   picker.jumpTo(msg.year, msg.month); break;
+        case 'setOptions':
+          Object.assign(opts, msg.options || {});
+          picker.destroy();
+          initPicker();
+          break;
+      }
+    } catch (e) {}
+  }
+
+  window.addEventListener('message', handleMessage);
+  document.addEventListener('message', handleMessage);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPicker);
+  } else {
+    initPicker();
+  }
+})();
+</script>
+</body>
+</html>

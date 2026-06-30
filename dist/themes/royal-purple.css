@@ -1,0 +1,34 @@
+/* Theme: royal-purple */
+.ndp-theme-royal-purple {
+  --ndp-primary:         #7c3aed;
+  --ndp-primary-dark:    #6d28d9;
+  --ndp-bg:              #faf5ff;
+  --ndp-body-bg:         #faf5ff;
+  --ndp-header-bg:       linear-gradient(135deg, #3b0764 0%, #7c3aed 100%);
+  --ndp-header-text:     #f3e8ff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f5f0ff;
+  --ndp-border:          #ddd0f8;
+  --ndp-day-text:        #1e0040;
+  --ndp-weekday-text:    #7c3aed;
+  --ndp-ad-text:         #b89dd8;
+  --ndp-hover-bg:        rgba(124,58,237,0.1);
+  --ndp-today-bg:        rgba(124,58,237,0.1);
+  --ndp-selected-bg:     #7c3aed;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(124,58,237,0.12);
+  --ndp-range-hover-bg:  rgba(124,58,237,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 12px 40px rgba(124,58,237,0.25);
+  --ndp-shadow-inline:   0 4px 20px rgba(124,58,237,0.14);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #f5f0ff;
+  --ndp-input-border:    #ddd0f8;
+  --ndp-muted:           #b89dd8;
+}

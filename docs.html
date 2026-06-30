@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<!--
+  ==============================================================
+  Nepali DatePicker Studio
+  Most Advanced Bikram Sambat (BS) Calendar Library
+  Developed by Kushal Khadka
+  Thank you for using Nepali DatePicker Studio!
+  ==============================================================
+-->
+<html lang="en">
+<head>
+  <script src="assets/js/ndp-theme-init.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Documentation — Nepali DatePicker Studio</title>
+  <meta name="description" content="Official developer documentation for Nepali DatePicker Studio. Options, methods, callback hooks, static helpers, and integration examples.">
+  <meta name="keywords" content="nepali datepicker api, bikram sambat javascript api, nepali calendar options, bs datepicker documentation, nepali date picker methods">
+  <meta name="author" content="Kushal Khadka">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#090d16">
+  <link rel="canonical" href="https://kushalkhadkaa.github.io/nepali-datepicker-studio/docs.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="API Documentation — Nepali DatePicker Studio">
+  <meta property="og:description" content="Complete API reference for Nepali DatePicker Studio. Configuration options, public methods, events, static helpers, and integration examples.">
+  <meta property="og:url" content="https://kushalkhadkaa.github.io/nepali-datepicker-studio/docs.html">
+  <meta property="og:site_name" content="Nepali DatePicker Studio">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="API Documentation — Nepali DatePicker Studio">
+  <meta name="twitter:description" content="Complete API reference for the pure JavaScript Bikram Sambat datepicker library.">
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  
+
+  <!-- Showcase Page Styles -->
+  <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-area">
+        <span class="logo-text">Nepali DatePicker <span style="color: var(--accent);">Studio</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Playground</a></li>
+        <li><a href="customizer.html">Customizer</a></li>
+        <li><a href="docs.html" class="active">API Docs</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="about.html">About Developer</a></li>
+        <li>
+          <button id="theme-switcher-btn" class="theme-switcher-btn" aria-label="Toggle Theme" type="button">
+            <span class="theme-icon-light">&#9728; Light</span>
+          </button>
+        </li>
+        <li><a href="nepali-datepicker-pro.zip" class="btn-nav-customizer" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); display: inline-flex; align-items: center; gap: 0.35rem;" download>Download (.ZIP)</a></li>
+        <li><a href="customizer.html" class="btn-nav-customizer">Live Customizer</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Docs Workspace -->
+  <div class="docs-layout">
+    
+    <!-- Left Navigation Sticky Sidebar -->
+    <aside class="docs-sidebar">
+      <ul class="sidebar-menu">
+        <li>
+          <h4 class="sidebar-section-title">Getting Started</h4>
+          <ul class="sidebar-submenu">
+            <li><a href="#intro" class="sidebar-link active">Introduction</a></li>
+            <li><a href="#how-it-works" class="sidebar-link">How it Works</a></li>
+            <li><a href="#calendrical-logic" class="sidebar-link">BS vs AD Calendrical Logic</a></li>
+            <li><a href="#step-by-step" class="sidebar-link">Step-by-Step Setup</a></li>
+            <li><a href="#installation" class="sidebar-link">Installation</a></li>
+            <li><a href="#basic-usage" class="sidebar-link">Basic Usage</a></li>
+            <li><a href="#best-practices" class="sidebar-link">Best Practices & Tips</a></li>
+          </ul>
+        </li>
+        <li>
+          <h4 class="sidebar-section-title">API Reference</h4>
+          <ul class="sidebar-submenu">
+            <li><a href="#options" class="sidebar-link">Configuration Options</a></li>
+            <li><a href="#methods" class="sidebar-link">Instance Methods</a></li>
+            <li><a href="#callbacks" class="sidebar-link">Event Callbacks</a></li>
+            <li><a href="#static-helpers" class="sidebar-link">Static Helpers</a></li>
+          </ul>
+        </li>
+        <li>
+          <h4 class="sidebar-section-title">Additional Features</h4>
+          <ul class="sidebar-submenu">
+            <li><a href="#converter-widget" class="sidebar-link">Converter Widget</a></li>
+            <li><a href="#themes-guide" class="sidebar-link">Themes Guide</a></li>
+            <li><a href="#calendar-data" class="sidebar-link">Calendar Limits</a></li>
+            <li><a href="#faq" class="sidebar-link">FAQ Section</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="docs-content">
+      <div>
+        <h1 class="docs-title">API Documentation</h1>
+        <p class="docs-lead">Complete reference guide for installing, configuring, and extending the Nepali DatePicker Studio library.</p>
+      </div>
+
+      <!-- Section: Introduction -->
+      <section id="intro" class="docs-section">
+        <h2 class="section-anchor-title">Introduction <a href="#intro">#</a></h2>
+        <p class="docs-p">
+          <strong>Nepali DatePicker Studio</strong> is a lightweight, dependency-free JavaScript calendar widget designed explicitly for selecting Bikram Sambat (BS) dates on modern web pages. It features an advanced bidirectional AD-to-BS conversion engine, holiday mapping markers, responsive theme layouts, and robust keyboard navigation.
+        </p>
+        <p class="docs-p">
+          This library is built with <strong>pure Vanilla ES5 JavaScript and CSS</strong>, requiring zero preprocessors, zero npm build processes, and zero database storage. It acts as a drop-in asset for standard HTML forms.
+        </p>
+      </section>
+
+      <!-- Section: How it Works -->
+      <section id="how-it-works" class="docs-section">
+        <h2 class="section-anchor-title">How it Works <a href="#how-it-works">#</a></h2>
+        <p class="docs-p">
+          At its core, <strong>Nepali DatePicker Studio</strong> transforms standard HTML input fields into interactive, touch-friendly, and accessible calendar drop-down panels. It works using the following simple lifecycle:
+        </p>
+        <div style="margin: 1.5rem 0; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; gap: 1rem; align-items: flex-start; background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 10px;">
+            <div style="background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</div>
+            <div>
+              <h4 style="margin-bottom: 0.25rem; color: var(--text-primary);">DOM Binding</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary);">The library targets your input element (using CSS selectors like <code>#datepicker</code>) and attaches listeners for focus, click, and keyboard inputs.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start; background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 10px;">
+            <div style="background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</div>
+            <div>
+              <h4 style="margin-bottom: 0.25rem; color: var(--text-primary);">Floating Calendar Generation</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary);">When clicked, the picker dynamically appends a calendar container (<code>.ndp-container</code>) positioned relative to the target input. It renders the month grid based on current Bikram Sambat year and month data.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start; background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 10px;">
+            <div style="background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</div>
+            <div>
+              <h4 style="margin-bottom: 0.25rem; color: var(--text-primary);">Bidirectional Conversion</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary);">If Gregorian date labels are enabled (<code>showAdDate: true</code>), the engine converts individual BS grid dates to AD equivalents in real-time. Conversely, if you initialize with a default value, it calculates the equivalent BS grid placement.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start; background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 10px;">
+            <div style="background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">4</div>
+            <div>
+              <h4 style="margin-bottom: 0.25rem; color: var(--text-primary);">Input Synchronization</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary);">Clicking a date closes the popup, formats the selected date (e.g. <code>२०८३-०३-१५</code>), populates the text field, and fires custom developer callbacks (<code>onChange</code>).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: BS vs AD Calendrical Logic -->
+      <section id="calendrical-logic" class="docs-section">
+        <h2 class="section-anchor-title">BS vs AD Calendrical Logic <a href="#calendrical-logic">#</a></h2>
+        
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">1. What is Bikram Sambat (BS)?</h3>
+        <p class="docs-p">
+          <strong>Bikram Sambat (BS)</strong> is the official historical calendar used in Nepal. It is a solar-sidereal calendar based on ancient Hindu astronomy. The BS calendar is approximately <strong>56.7 years ahead</strong> of the Western Gregorian calendar (AD).
+        </p>
+        
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">2. Logically, how do BS and AD differ?</h3>
+        <p class="docs-p">
+          Unlike the Gregorian calendar, which has a rigid, fixed number of days per month (e.g., January always has 31 days, September always has 30 days), month lengths in Bikram Sambat <strong>are variable and change from year to year</strong>.
+        </p>
+        <p class="docs-p">
+          For instance, the first month of the Nepali year, <strong>Baisakh</strong>, might have 31 days in one year, 30 days in the next, or even 32 days in another!
+        </p>
+
+        <div style="margin: 1.5rem 0; padding: 1.25rem; background: var(--bg-tertiary); border-left: 4px solid var(--accent); border-radius: 4px;">
+          <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);"> Why are BS month lengths variable?</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+            The Bikram Sambat calendar is tied to the Sun's actual sidereal transit through the 12 zodiac signs (Rashis). Since the earth's orbit is elliptical, the Sun travels at varying speeds across the sky (described by Kepler's laws of planetary motion). The number of days in a BS month represents the exact number of days the Sun takes to traverse a specific zodiac constellation, which astronomical computations calculate as varying between 29 to 32 days.
+          </p>
+        </div>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">3. The Core Conversion Formula & Reference Epoch</h3>
+        <p class="docs-p">
+          Because BS month lengths are astronomical and variable, there is <strong>no simple mathematical formula</strong> (like leap-year calculations in AD) that can convert AD to BS directly without access to Zodiac transit tables.
+        </p>
+        <p class="docs-p">
+          Instead, the library establishes a known anchor point (the **Reference Epoch**) and utilizes a validated database lookup table containing month lengths for years 1970 BS through 2100 BS.
+        </p>
+
+        <div style="margin: 1.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; flex-wrap: wrap;">
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 10px;">
+            <h4 style="margin-bottom: 0.5rem; color: var(--accent);">BS to AD Logic</h4>
+            <ol style="margin-left: 1.25rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
+              <li>Establish the Base Anchor: <strong>Baisakh 1, 1970 BS</strong> maps exactly to <strong>April 13, 1913 AD</strong>.</li>
+              <li>Calculate the absolute delta days (\(D_{\Delta}\)) from Baisakh 1, 1970 BS to your selected target BS date using the lookup table.</li>
+              <li>Add \(D_{\Delta}\) to April 13, 1913 AD using standard Gregorian date arithmetic to return the correct Gregorian date object.</li>
+            </ol>
+          </div>
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 10px;">
+            <h4 style="margin-bottom: 0.5rem; color: var(--accent);">AD to BS Logic</h4>
+            <ol style="margin-left: 1.25rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
+              <li>Calculate the total days difference (\(D_{\Delta}\)) between the target AD date and the base AD anchor (April 13, 1913).</li>
+              <li>Traverse forward from year 1970 BS, month by month, subtracting the number of days in each month from \(D_{\Delta}\).</li>
+              <li>When the remaining days are less than the days in the current target month, the traversal stops. The current year, month index, and remaining days represent your target BS date.</li>
+            </ol>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">4. Mathematical Representation</h3>
+        <p class="docs-p">
+          Let the BS epoch start at year \(Y_0 = 1970\) and day \(D_0 = 1\) (representing Baisakh 1, 1970 BS).
+          Let the AD epoch anchor date be \(A_0 = \text{April 13, 1913 AD}\).
+        </p>
+        <p class="docs-p">
+          To convert a target Bikram Sambat date \((Y_{\text{target}}, M_{\text{target}}, D_{\text{target}})\) to its Gregorian equivalent, the total elapsed days \(D_{\Delta}\) since the epoch is computed as:
+        </p>
+        <div style="background: #0b0f19; border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 10px; margin: 1.5rem 0; font-family: 'Fira Code', monospace; color: #e5e7eb; overflow-x: auto; font-size: 0.9rem; line-height: 1.8;">
+          \[ D_{\Delta} = \sum_{y=1970}^{Y_{\text{target}}-1} \text{DaysInYear}(y) \;+\; \sum_{m=1}^{M_{\text{target}}-1} \text{DaysInMonth}(Y_{\text{target}}, m) \;+\; (D_{\text{target}} - 1) \]
+        </div>
+        <p class="docs-p">
+          Once the total days difference \(D_{\Delta}\) is computed, the equivalent Gregorian Date is calculated using basic millisecond epoch addition:
+        </p>
+        <div style="background: #0b0f19; border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 10px; margin: 1.5rem 0; font-family: 'Fira Code', monospace; color: #e5e7eb; overflow-x: auto; font-size: 0.9rem; line-height: 1.8;">
+          \[ \text{Gregorian Date} = A_0 + (D_{\Delta} \times 24 \times 60 \times 60 \times 1000 \text{ ms}) \]
+        </div>
+        <p class="docs-p">
+          This mathematical arithmetic enables perfect, single-millisecond-precision conversions across the entire supported range of calendar dates.
+        </p>
+      </section>
+
+      <!-- Section: Step-by-Step Setup -->
+      <section id="step-by-step" class="docs-section">
+        <h2 class="section-anchor-title">Step-by-Step Setup <a href="#step-by-step">#</a></h2>
+        <p class="docs-p">
+          Integrating Nepali DatePicker Studio into a web application is simple. Follow this step-by-step guide to get a basic working calendar input in under 2 minutes.
+        </p>
+        <div style="margin: 1.5rem 0; padding: 1.25rem; background: var(--bg-tertiary); border: 1px dashed var(--border-color); border-radius: 8px;">
+          <h4 style="margin-bottom: 0.5rem; color: var(--accent);">Basic Checklist:</h4>
+          <ol style="margin-left: 1.5rem; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <li>Confirm you are loading the stylesheet in the <code>&lt;head&gt;</code> of your page.</li>
+            <li>Provide a standard text input field with a target selector (e.g., class or ID).</li>
+            <li>Load the JavaScript bundle at the bottom of the page.</li>
+            <li>Instantiate the class inside a standard DOM event listener to avoid loading sequence errors.</li>
+          </ol>
+        </div>
+        
+        <h3 style="margin-top: 2rem; margin-bottom: 0.5rem; color: var(--text-primary);">Minimal HTML Template Boilerplate</h3>
+        <p class="docs-p">Copy the entire document below and save it as an <code>index.html</code> file on your local machine. Double-click the file to open it in your browser and see the calendar in action.</p>
+
+        <div class="code-block-container">
+          <div class="code-header">
+            <span>index.html (Boilerplate)</span>
+            <button class="btn-copy" onclick="copyCodeText(this)">Copy</button>
+          </div>
+          <div class="hljs-code">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Nepali DatePicker Studio Demo&lt;/title&gt;
+  
+  &lt;!-- 1. Include the styles -->
+  &lt;link rel="stylesheet" href="dist/nepali-datepicker.css"&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+  &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"&gt;
+  
+  &lt;style&gt;
+    body {
+      font-family: 'Roboto Slab', serif;
+      padding: 50px;
+      background-color: #f8fafc;
+      color: #334155;
+    }
+    .form-group {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="nepali-date"&gt;Select Date (BS):&lt;/label&gt;
+    &lt;!-- 2. The target input element -->
+    &lt;input type="text" id="nepali-date" placeholder="Select Nepali Date" readonly&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 3. Include the library script -->
+  &lt;script src="dist/nepali-datepicker.js"&gt;&lt;/script&gt;
+  
+  &lt;!-- 4. Initialize the DatePicker -->
+  &lt;script&gt;
+    document.addEventListener('DOMContentLoaded', function() {
+      new NepaliDatePicker('#nepali-date', {
+        theme: 'classic-light',
+        lang: 'ne',
+        showAdDate: true,
+        closeOnSelect: true,
+        onChange: function(date) {
+          console.log('Selected Date:', date);
+        }
+      });
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Installation -->
+      <section id="installation" class="docs-section">
+        <h2 class="section-anchor-title">Installation <a href="#installation">#</a></h2>
+        <p class="docs-p">To use the datepicker on your site, upload the files located in the <code>dist/</code> folder to your web server. Then, link the CSS bundle in your page's <code>&lt;head&gt;</code> and reference the JavaScript bundle before the closing <code>&lt;/body&gt;</code> tag.</p>
+        
+        <div class="code-block-container">
+          <div class="code-header">
+            <span>HTML Integration</span>
+            <button class="btn-copy" onclick="copyCodeText(this)">Copy</button>
+          </div>
+          <div class="hljs-code">
+            <pre><code>&lt;!-- Include Library Stylesheet -->
+&lt;link rel="stylesheet" href="dist/nepali-datepicker.css">
+
+&lt;!-- Target Text Input Box -->
+&lt;input type="text" id="my-datepicker-input" placeholder="Select Nepali Date">
+
+&lt;!-- Include Library JavaScript Bundle -->
+&lt;script src="dist/nepali-datepicker.js">&lt;/script></code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Basic Usage -->
+      <section id="basic-usage" class="docs-section">
+        <h2 class="section-anchor-title">Basic Usage <a href="#basic-usage">#</a></h2>
+        <p class="docs-p">Once the library script has finished loading, select your input field element and initialize a new <code>NepaliDatePicker</code> class instance using standard CSS selectors or direct DOM nodes.</p>
+
+        <div class="code-block-container">
+          <div class="code-header">
+            <span>JavaScript Initialization</span>
+            <button class="btn-copy" onclick="copyCodeText(this)">Copy</button>
+          </div>
+          <div class="hljs-code">
+            <pre><code>document.addEventListener('DOMContentLoaded', function() {
+  const picker = new NepaliDatePicker('#my-datepicker-input', {
+    theme: 'glassmorphism',
+    lang: 'ne', // Set language (ne = Nepali, en = English)
+    showAdDate: true, // Display corresponding AD date below BS day
+    onChange: function(date) {
+      console.log('Selected date details:', date);
+      /*
+        Returns object structure:
+        {
+          year: 2083,
+          month: 3,
+          day: 15,
+          formatted: "२०८३-०३-१५",
+          adDate: Date object (mapping to 2026-06-29)
+        }
+      */
+    }
+  });
+});</code></pre>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px;">
+          <h3 style="color: var(--accent); margin-bottom: 0.75rem; font-size: 1.15rem; font-weight: 700;"> How the UI Looks & Behaves</h3>
+          <p class="docs-p" style="margin-bottom: 1rem;">
+            When initialized, the picker renders a floating, pixel-perfect modal panel. Here is a description of its structural components:
+          </p>
+          <ul style="margin-left: 1.5rem; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
+            <li><strong>Header Controls:</strong> Contains month/year quick jump select menus (e.g. <em>Asar 2083</em>) along with beautiful, responsive chevron navigation arrows.</li>
+            <li><strong>Weekday Grid:</strong> Shows week header labels matching the language option (e.g. <em>आईत, सोम, मंगल...</em> for Nepali, or <em>Su, Mo, Tu...</em> for English).</li>
+            <li><strong>Active Day Grid:</strong> Displays days in Devanagari or English digits. Current today dates feature a pulsing border, weekends are styled with distinct red colors, and hovered cells show a smooth glow transit backdrop.</li>
+            <li><strong>Mini AD Labels:</strong> Tiny, secondary English dates (e.g. <em>29</em>) render directly underneath each BS day number, offering immediate AD clarity.</li>
+            <li><strong>Control Footer:</strong> Features a quick-action <em>Today (आज)</em> link on the left, and a red-accented <em>Clear (हटाउनुहोस्)</em> action button on the right.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section: Best Practices & Tips -->
+      <section id="best-practices" class="docs-section">
+        <h2 class="section-anchor-title">Best Practices & Tips <a href="#best-practices">#</a></h2>
+        <p class="docs-p">
+          To ensure optimal user experience, database consistency, and front-end performance, follow these industry best practices when integrating Nepali DatePicker Studio:
+        </p>
+
+        <div style="margin: 1.5rem 0; display: flex; flex-direction: column; gap: 1.25rem;">
+          
+          <div style="padding: 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"> 1. Standardize Server-Side Submission Format</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              While users like seeing formatted Devanagari numbers (e.g., <code>२०८३-०३-१५</code>), relational databases require standard English alphanumeric dates (<code>YYYY-MM-DD</code>).
+              <br><strong style="color: var(--text-primary);">Solution:</strong> Use the <code>exportAdInput</code> configuration option to automatically synchronize and map selected BS dates to a hidden AD input field that submits directly to your backend.
+            </p>
+          </div>
+
+          <div style="padding: 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"> 2. Avoid Memory Leaks in SPAs (React, Vue, Angular)</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              In Single Page Applications where component layouts load and destroy dynamically, event listeners can remain orphaned in the global window object.
+              <br><strong style="color: var(--text-primary);">Solution:</strong> Capture the instance and call the <code>.destroy()</code> method when your component unmounts:
+              <pre style="background: #0b0f19; padding: 0.75rem; border-radius: 6px; color: #fff; font-size: 0.8rem; margin-top: 0.5rem; font-family: monospace;">// React Component Unmount Example
+useEffect(() => {
+  const picker = new NepaliDatePicker('#react-input');
+  return () => picker.destroy();
+}, []);</pre>
+            </p>
+          </div>
+
+          <div style="padding: 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"> 3. Leverage Date Boundaries (UX Constraints)</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              Prevent users from selecting illogical date values (like future dates for a birthdate, or past dates for booking an event).
+              <br><strong style="color: var(--text-primary);">Solution:</strong> Use constraints like <code>futureOnly: true</code>, <code>pastOnly: true</code>, or custom boundary properties:
+              <pre style="background: #0b0f19; padding: 0.75rem; border-radius: 6px; color: #fff; font-size: 0.8rem; margin-top: 0.5rem; font-family: monospace;">new NepaliDatePicker('#dob', {
+  pastOnly: true, // Block future dates
+  maxDate: { year: 2083, month: 3, day: 1 }
+});</pre>
+            </p>
+          </div>
+
+          <div style="padding: 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"> 4. Theme Overrides via CSS Variables</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              Avoid hacking the core minified stylesheet. It is much safer to override the root CSS custom properties in your own stylesheet or inside parent container elements.
+              <br><strong style="color: var(--text-primary);">Example:</strong>
+              <pre style="background: #0b0f19; padding: 0.75rem; border-radius: 6px; color: #fff; font-size: 0.8rem; margin-top: 0.5rem; font-family: monospace;">.my-form-container {
+  --ndp-primary: #ff007f; /* Custom color */
+  --ndp-border-radius: 8px; /* Custom shape */
+}</pre>
+            </p>
+          </div>
+
+          <div style="padding: 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"> 5. Mitigate Timezone Shifts in Backend Sync</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              Nepal Standard Time (NST) operates at <strong>GMT+5:45</strong>. If you convert BS dates to Gregorian on the client and submit them as ISO date-time strings, servers located in other timezones (e.g. UTC) may parse them incorrectly, shifting dates to the previous calendar day.
+              <br><strong style="color: var(--text-primary);">Solution:</strong> Send dates as pure calendar strings (<code>YYYY-MM-DD</code>) without time or timezone suffixes, or explicitly parse date strings in NST on the server.
+            </p>
+          </div>
+
+          <div style="padding: 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"> 6. Prioritize Keyboard Accessibility (a11y)</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              Ensure your date fields can be navigated by users relying solely on screen readers or keyboards.
+              <br><strong style="color: var(--text-primary);">Solution:</strong> Enable <code>keyboardHelp: true</code> and ensure target inputs are focusable. When the picker is open, users can navigate the monthly grid using the arrow keys, select a date by pressing <code>Enter</code>, and cancel/close the panel by pressing <code>Escape</code>.
+            </p>
+          </div>
+
+          <div style="padding: 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">7. Perform Server-Side Validation</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              Client-side validations, including input masking (<code>autoMask: true</code>) and boundaries (<code>minDate</code>, <code>maxDate</code>), are purely for user experience and can be bypassed.
+              <br><strong style="color: var(--text-primary);">Solution:</strong> Always parse, validate, and sanitize the submitted date value on your backend to ensure it falls within the absolute range bounds (1970–2100 BS) before saving.
+            </p>
+          </div>
+
+          <div style="padding: 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">8. Performance Tuning: Lazy Initialization</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              If your application renders hundreds of date-picker fields in a single scrollable grid or dashboard page, instantiating a class on every DOM node during initial page load can increase script execution time.
+              <br><strong style="color: var(--text-primary);">Solution:</strong> Dynamically initialize the datepicker instance only when the input field receives focus, and destroy it on blur, minimizing concurrent active DOM listeners.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section: Configuration Options -->
+      <section id="options" class="docs-section">
+        <h2 class="section-anchor-title">Configuration Options <a href="#options">#</a></h2>
+        <p class="docs-p">You can pass the following properties in the configuration options object to alter default picker behavior:</p>
+        
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>theme</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">'classic-light'</span></td>
+                <td>Theme key of one of the 22 pre-styled layouts (e.g. <code>'classic-dark'</code>, <code>'glassmorphism'</code>, <code>'festive-dashain'</code>).</td>
+              </tr>
+              <tr>
+                <td><code>lang</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">'ne'</span></td>
+                <td>Initial interface language. Choose between <code>'ne'</code> (Nepali) and <code>'en'</code> (English).</td>
+              </tr>
+              <tr>
+                <td><code>mode</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">'single'</span></td>
+                <td>Selection mode layout: <code>'single'</code> (picks one date), <code>'range'</code> (picks range boundary dates), or <code>'multiple'</code> (selects list of separate days).</td>
+              </tr>
+              <tr>
+                <td><code>format</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">'YYYY-MM-DD'</span></td>
+                <td>String formatting mask for input boxes: <code>'YYYY-MM-DD'</code>, <code>'DD/MM/YYYY'</code>, <code>'long'</code>, or <code>'short'</code>.</td>
+              </tr>
+              <tr>
+                <td><code>inline</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">false</span></td>
+                <td>If <code>true</code>, renders the calendar body static on the target DOM block container rather than as a click popup overlay.</td>
+              </tr>
+              <tr>
+                <td><code>showAdDate</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Displays the secondary AD date day string in small muted letters underneath the main BS gte numbers in the grid.</td>
+              </tr>
+              <tr>
+                <td><code>showHolidays</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Highlights public holidays with colored indicator dots underneath dates in the monthly grid.</td>
+              </tr>
+              <tr>
+                <td><code>showTodayBtn</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Shows or hides the "आज" / "Today" shortcut button in the footer.</td>
+              </tr>
+              <tr>
+                <td><code>showClearBtn</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Shows or hides the "हटाउनुहोस्" / "Clear" button in the footer.</td>
+              </tr>
+              <tr>
+                <td><code>minDate</code></td>
+                <td><span class="type-badge">object</span></td>
+                <td><span class="default-val">null</span></td>
+                <td>Minimum select limit bound: <code>{ year: 2080, month: 1, day: 1 }</code>. Days prior to this will be disabled.</td>
+              </tr>
+              <tr>
+                <td><code>maxDate</code></td>
+                <td><span class="type-badge">object</span></td>
+                <td><span class="default-val">null</span></td>
+                <td>Maximum select limit bound: <code>{ year: 2099, month: 12, day: 30 }</code>. Days after this will be disabled.</td>
+              </tr>
+              <tr>
+                <td><code>disabledDates</code></td>
+                <td><span class="type-badge">array</span></td>
+                <td><span class="default-val">[]</span></td>
+                <td>List of specific blocked dates: <code>[{ year: 2083, month: 1, day: 5 }]</code>.</td>
+              </tr>
+              <tr>
+                <td><code>weekStart</code></td>
+                <td><span class="type-badge">number</span></td>
+                <td><span class="default-val">0</span></td>
+                <td>Day index to start the week layout: <code>0</code> (Sunday) or <code>1</code> (Monday).</td>
+              </tr>
+              <tr>
+                <td><code>placeholder</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">''</span></td>
+                <td>Injects a placeholder attribute text into input nodes.</td>
+              </tr>
+              <tr>
+                <td><code>position</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">'auto'</span></td>
+                <td>Calculates relative positioning of the popup calendar overlay relative to the input box: <code>'auto'</code>, <code>'top'</code>, or <code>'bottom'</code>.</td>
+              </tr>
+              <tr>
+                <td><code>animate</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Enables transition animations (fade and sliding) when opening/closing the calendar overlay.</td>
+              </tr>
+              <tr>
+                <td><code>closeOnSelect</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>If in popup single picker mode, closes the calendar overlay immediately upon clicking a date day.</td>
+              </tr>
+              <tr>
+                <td><code>unicodeDates</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">null</span></td>
+                <td>Forces numbers to show in Devanagari digits (<code>true</code>) or Latin digits (<code>false</code>). Defaults to interface language if <code>null</code>.</td>
+              </tr>
+              <tr>
+                <td><code>showTithi</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">false</span></td>
+                <td>Displays the traditional Bikram Sambat Lunar Tithi cycle name (e.g. <i>Panchami, Aunshi, Purnima</i>) inside day cell hover tooltips.</td>
+              </tr>
+              <tr>
+                <td><code>showFiscalYear</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">false</span></td>
+                <td>Displays the Nepalese Fiscal Year (आ.व. २०८०/८१) indicator in the calendar footer based on month values.</td>
+              </tr>
+              <tr>
+                <td><code>enableTime</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">false</span></td>
+                <td>Enables hours and minutes selection selectors in the calendar footer to let the user select date and time simultaneously.</td>
+              </tr>
+              <tr>
+                <td><code>timeFormat</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">'HH:MM'</span></td>
+                <td>Format mask used for displaying and parsing chosen times (e.g. <code>'HH:MM'</code>).</td>
+              </tr>
+              <tr>
+                <td><code>presets</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">false</span></td>
+                <td>Displays a quick navigation sidebar in range selection mode with 9 specific presets (Today, Tomorrow, This Week, Previous Week, This Month, Last Month, Last 2 Months, Next Month, and Fiscal Year).</td>
+              </tr>
+              <tr>
+                <td><code>renderDay</code></td>
+                <td><span class="type-badge">function</span></td>
+                <td><span class="default-val">null</span></td>
+                <td>Custom day cell renderer callback: <code>renderDay(day, cellEl)</code>. Used to inject custom HTML, icons, or classes dynamically into day elements.</td>
+              </tr>
+              <tr>
+                <td><code>disabledDaysOfWeek</code></td>
+                <td><span class="type-badge">array</span></td>
+                <td><span class="default-val">[]</span></td>
+                <td>Array of weekdays to block from selection: <code>0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat</code>.</td>
+              </tr>
+              <tr>
+                <td><code>mobileFriendly</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>If enabled, automatically displays the calendar as a touch-friendly full-screen overlay modal on screens below 640px.</td>
+              </tr>
+              <tr>
+                <td><code>keyboardHelp</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Displays a shortcut help drawer in the header detailing key shortcuts (Escape, Left/Right arrows, Up/Down arrows).</td>
+              </tr>
+              <tr>
+                <td><code>quickNav</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Replaces static header titles with jump select dropdowns to select year and month instantly.</td>
+              </tr>
+              <tr>
+                <td><code>autoMask</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">false</span></td>
+                <td>Auto-formats numeric typing inputs dynamically (e.g. automatically inserts dashes as <code>YYYY-MM-DD</code>). Also enables validation states.</td>
+              </tr>
+              <tr>
+                <td><code>autoValidate</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Applies validation UI feedback classes automatically if an invalid date is typed into masked input fields.</td>
+              </tr>
+              <tr>
+                <td><code>highlightWeekends</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Renders distinct styling and color overrides for Saturdays and Sundays to identify weekends easily.</td>
+              </tr>
+              <tr>
+                <td><code>exportAdInput</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">null</span></td>
+                <td>CSS Selector string of target field to write converted AD Date string value (e.g. <code>'#hidden-ad-field'</code>).</td>
+              </tr>
+              <tr>
+                <td><code>futureOnly</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">false</span></td>
+                <td>Restricts selections to future dates only (today and all past dates are disabled).</td>
+              </tr>
+              <tr>
+                <td><code>pastOnly</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">false</span></td>
+                <td>Restricts selections to past dates only (today and all future dates are disabled).</td>
+              </tr>
+              <tr>
+                <td><code>disableHolidays</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">false</span></td>
+                <td>Disables selection of weekends (Saturdays, Sundays) and official public holidays. Disabled days are greyed out and cannot be clicked.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: Instance Methods -->
+      <section id="methods" class="docs-section">
+        <h2 class="section-anchor-title">Instance Methods <a href="#methods">#</a></h2>
+        <p class="docs-p">After initialization, you can save the returned instance variable and call API methods to programmatically manipulate the datepicker's state:</p>
+        
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Method Name</th>
+                <th>Arguments</th>
+                <th>Returns</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>setDate(dateObj)</code></td>
+                <td><code>{ year, month, day }</code></td>
+                <td><code>void</code></td>
+                <td>Sets and highlights the currently selected date. Triggers <code>onChange</code> callbacks.</td>
+              </tr>
+              <tr>
+                <td><code>getDate()</code></td>
+                <td>None</td>
+                <td><code>Object</code></td>
+                <td>Returns the current selected date details (returns single selected date, range boundaries, or multiple selections array).</td>
+              </tr>
+              <tr>
+                <td><code>clear()</code></td>
+                <td>None</td>
+                <td><code>void</code></td>
+                <td>Resets the picker state, clears selected fields, and refreshes calendar grids.</td>
+              </tr>
+              <tr>
+                <td><code>setTheme(themeName)</code></td>
+                <td><code>themeName</code> (string)</td>
+                <td><code>void</code></td>
+                <td>Switches the visual picker layout theme dynamically (e.g. <code>picker.setTheme('midnight')</code>).</td>
+              </tr>
+              <tr>
+                <td><code>setLang(langCode)</code></td>
+                <td><code>'ne' | 'en'</code></td>
+                <td><code>void</code></td>
+                <td>Switches languages dynamically (e.g. <code>picker.setLang('en')</code>).</td>
+              </tr>
+              <tr>
+                <td><code>open()</code></td>
+                <td>None</td>
+                <td><code>void</code></td>
+                <td>Opens the popup calendar overlay programmatically.</td>
+              </tr>
+              <tr>
+                <td><code>close()</code></td>
+                <td>None</td>
+                <td><code>void</code></td>
+                <td>Closes the popup calendar overlay programmatically.</td>
+              </tr>
+              <tr>
+                <td><code>destroy()</code></td>
+                <td>None</td>
+                <td><code>void</code></td>
+                <td>Removes calendar nodes, detaches form inputs event listeners, and purges references.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-block-container">
+          <div class="code-header">
+            <span>Method Invocation Example</span>
+            <button class="btn-copy" onclick="copyCodeText(this)">Copy</button>
+          </div>
+          <div class="hljs-code">
+            <pre><code>const picker = new NepaliDatePicker('#my-input');
+
+// Set value to Baisakh 1, 2083 BS
+picker.setDate({ year: 2083, month: 1, day: 1 });
+
+// Change theme and language on the fly
+picker.setTheme('neon-cyberpunk');
+picker.setLang('en');</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Event Callbacks -->
+      <section id="callbacks" class="docs-section">
+        <h2 class="section-anchor-title">Event Callbacks <a href="#callbacks">#</a></h2>
+        <p class="docs-p">The following event hooks can be configured to catch user selection events:</p>
+
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Callback Option</th>
+                <th>Arguments</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>onChange</code></td>
+                <td><code>date</code> (Object | Array)</td>
+                <td>Triggered when a date day is selected. In single mode, returns a formatted object. In multiple selection, returns an array of selected dates.</td>
+              </tr>
+              <tr>
+                <td><code>onRangeChange</code></td>
+                <td><code>start</code> (Obj), <code>end</code> (Obj)</td>
+                <td>Only triggered in <code>'range'</code> mode. Sends start boundary and end boundary date details respectively.</td>
+              </tr>
+              <tr>
+                <td><code>onMonthChange</code></td>
+                <td><code>{ year, month }</code></td>
+                <td>Fired when navigating to a new month or year view.</td>
+              </tr>
+              <tr>
+                <td><code>onOpen</code></td>
+                <td>None</td>
+                <td>Fired immediately when the calendar popup opens.</td>
+              </tr>
+              <tr>
+                <td><code>onClose</code></td>
+                <td>None</td>
+                <td>Fired immediately when the calendar popup closes.</td>
+              </tr>
+              <tr>
+                <td><code>onToday</code></td>
+                <td><code>date</code> (Object)</td>
+                <td>Fired when the shortcut "today" button is clicked in the calendar footer. Returns today's BS date object.</td>
+              </tr>
+              <tr>
+                <td><code>onClear</code></td>
+                <td>None</td>
+                <td>Fired when the "clear" button is clicked in the calendar footer.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: Static Helpers -->
+      <section id="static-helpers" class="docs-section">
+        <h2 class="section-anchor-title">Static Helpers <a href="#static-helpers">#</a></h2>
+        <p class="docs-p">The <code>NepaliDatePicker</code> class exposes static methods directly, allowing conversions or today checks without initializing DOM node instances:</p>
+        
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Static Method Signature</th>
+                <th>Returns</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>NepaliDatePicker.today()</code></td>
+                <td><code>{ year, month, day }</code></td>
+                <td>Returns the current date in Bikram Sambat (BS).</td>
+              </tr>
+              <tr>
+                <td><code>NepaliDatePicker.bsToAd(y, m, d)</code></td>
+                <td><code>{ year, month, day, date }</code></td>
+                <td>Converts a BS date numbers to AD. The <code>date</code> property is a standard JS Date object instance.</td>
+              </tr>
+              <tr>
+                <td><code>NepaliDatePicker.adToBs(jsDateObj)</code></td>
+                <td><code>{ year, month, day }</code></td>
+                <td>Converts a Gregorian Date object to Bikram Sambat (BS).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-block-container">
+          <div class="code-header">
+            <span>Static Utility Examples</span>
+            <button class="btn-copy" onclick="copyCodeText(this)">Copy</button>
+          </div>
+          <div class="hljs-code">
+            <pre><code>// Get current BS date details
+const today = NepaliDatePicker.today(); // e.g. { year: 2083, month: 3, day: 15 }
+
+// Convert BS to AD
+const adResult = NepaliDatePicker.bsToAd(2083, 3, 15);
+console.log(adResult.date); // JS Date: Sun Jun 29 2026
+
+// Convert AD to BS
+const bsResult = NepaliDatePicker.adToBs(new Date());
+console.log('BS Date details:', bsResult);</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Converter Widget -->
+      <section id="converter-widget" class="docs-section">
+        <h2 class="section-anchor-title">Standalone Converter Widget <a href="#converter-widget">#</a></h2>
+        <p class="docs-p">You can initialize a standalone bidirectional BS-AD date converter widget panel on a dashboard page. The converter behaves independently of the datepicker.</p>
+
+        <div class="code-block-container">
+          <div class="code-header">
+            <span>Converter Widget Setup</span>
+            <button class="btn-copy" onclick="copyCodeText(this)">Copy</button>
+          </div>
+          <div class="hljs-code">
+            <pre><code>&lt;!-- Target Container Div -->
+&lt;div id="my-converter-widget-container">&lt;/div>
+ 
+&lt;script>
+  document.addEventListener('DOMContentLoaded', function() {
+    new NepaliConverterWidget('#my-converter-widget-container', {
+      theme: 'festive-dashain',
+      lang: 'ne', // 'ne' (Nepali) or 'en' (English)
+      defaultMode: 'bs-to-ad', // 'bs-to-ad' or 'ad-to-bs'
+      showDaysDiff: true, // Display difference from today in result cards
+      onConvert: function(result) {
+        console.log('Widget converted date details:', result);
+      }
+    });
+  });
+&lt;/script></code></pre>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">Converter Widget Options</h3>
+        <p class="docs-p">Pass the following options object to customize the converter widget layout and behavior:</p>
+        
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>theme</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">'classic-light'</span></td>
+                <td>Theme key of one of the 22 pre-styled layouts.</td>
+              </tr>
+              <tr>
+                <td><code>lang</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">'ne'</span></td>
+                <td>Initial widget language (<code>'ne'</code> or <code>'en'</code>).</td>
+              </tr>
+              <tr>
+                <td><code>defaultMode</code></td>
+                <td><span class="type-badge">string</span></td>
+                <td><span class="default-val">'bs-to-ad'</span></td>
+                <td>Initial mode selection: <code>'bs-to-ad'</code> (Nepali to Gregorian) or <code>'ad-to-bs'</code> (Gregorian to Nepali).</td>
+              </tr>
+              <tr>
+                <td><code>showDaysDiff</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Shows elapsed or remaining days comparison label relative to today (e.g. <i>भोलि</i>, <i>१० दिन पछि</i>).</td>
+              </tr>
+              <tr>
+                <td><code>showWeekday</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><span class="default-val">true</span></td>
+                <td>Displays the full name of the translated weekday in conversion results.</td>
+              </tr>
+              <tr>
+                <td><code>onConvert</code></td>
+                <td><span class="type-badge">function</span></td>
+                <td><span class="default-val">null</span></td>
+                <td>Callback function fired when a date is converted. Receives converted result details object containing <code>bsDate</code> and <code>adDate</code> properties.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">Converter Instance Methods</h3>
+        <p class="docs-p">Use these methods to interact with the converter widget programmatically:</p>
+        
+        <div class="docs-table-wrapper">
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Method Name</th>
+                <th>Arguments</th>
+                <th>Returns</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>getResult()</code></td>
+                <td>None</td>
+                <td><code>Object</code></td>
+                <td>Returns the current converted date result object details (containing <code>bsDate</code> and <code>adDate</code> keys).</td>
+              </tr>
+              <tr>
+                <td><code>setTheme(themeName)</code></td>
+                <td><code>themeName</code> (string)</td>
+                <td><code>void</code></td>
+                <td>Sets a new visual theme class dynamically (e.g. <code>widget.setTheme('midnight')</code>).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: Themes Guide -->
+      <section id="themes-guide" class="docs-section">
+        <h2 class="section-anchor-title">Themes Guide <a href="#themes-guide">#</a></h2>
+        <p class="docs-p">Nepali DatePicker Studio includes 22 pre-designed CSS themes. All styles are declared via CSS Custom Properties on the theme wrapper class. To load a theme, pass its theme key name inside the <code>theme</code> configuration options property.</p>
+        
+        <div class="theme-list-grid">
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #c0392b;"></span>
+            <span class="theme-swatch-name">Classic Light</span>
+            <span class="theme-swatch-code">classic-light</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #e67e22;"></span>
+            <span class="theme-swatch-name">Classic Dark</span>
+            <span class="theme-swatch-code">classic-dark</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #8b0000;"></span>
+            <span class="theme-swatch-name">Nepali Red</span>
+            <span class="theme-swatch-code">nepali-red</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #1a6fb5;"></span>
+            <span class="theme-swatch-name">Ocean Blue</span>
+            <span class="theme-swatch-code">ocean-blue</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #2e7d32;"></span>
+            <span class="theme-swatch-name">Forest Green</span>
+            <span class="theme-swatch-code">forest-green</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #d84315;"></span>
+            <span class="theme-swatch-name">Sunset Orange</span>
+            <span class="theme-swatch-code">sunset-orange</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #6a1b9a;"></span>
+            <span class="theme-swatch-name">Royal Purple</span>
+            <span class="theme-swatch-code">royal-purple</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #008080;"></span>
+            <span class="theme-swatch-name">Midnight Teal</span>
+            <span class="theme-swatch-code">midnight</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #ffffff; opacity: 0.75;"></span>
+            <span class="theme-swatch-name">Glassmorphism</span>
+            <span class="theme-swatch-code">glassmorphism</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #e0e0e0;"></span>
+            <span class="theme-swatch-name">Neumorphism</span>
+            <span class="theme-swatch-code">neumorphism</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: linear-gradient(90deg, #ff007f, #7f00ff);"></span>
+            <span class="theme-swatch-name">Gradient Aurora</span>
+            <span class="theme-swatch-code">gradient-aurora</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #ffffff;"></span>
+            <span class="theme-swatch-name">Minimal Mono</span>
+            <span class="theme-swatch-code">minimal-mono</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #f8bbd0;"></span>
+            <span class="theme-swatch-name">Pastel Soft</span>
+            <span class="theme-swatch-code">pastel-soft</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #1565c0;"></span>
+            <span class="theme-swatch-name">Corporate Blue</span>
+            <span class="theme-swatch-code">corporate-blue</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #a0522d;"></span>
+            <span class="theme-swatch-name">Earthy Terracotta</span>
+            <span class="theme-swatch-code">earthy-terracotta</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #00ffcc;"></span>
+            <span class="theme-swatch-name">Neon Cyberpunk</span>
+            <span class="theme-swatch-code">neon-cyberpunk</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #2196f3;"></span>
+            <span class="theme-swatch-name">Material Design</span>
+            <span class="theme-swatch-code">material-design</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #8b5a2b;"></span>
+            <span class="theme-swatch-name">Retro Paper</span>
+            <span class="theme-swatch-code">retro-paper</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #ffff00;"></span>
+            <span class="theme-swatch-name">High Contrast</span>
+            <span class="theme-swatch-code">high-contrast</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #d4af37;"></span>
+            <span class="theme-swatch-name">Festive Dashain</span>
+            <span class="theme-swatch-code">festive-dashain</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #90a4ae;"></span>
+            <span class="theme-swatch-name">Mountain Mist</span>
+            <span class="theme-swatch-code">mountain-mist</span>
+          </div>
+          <!--  -->
+          <div class="theme-swatch-item">
+            <span class="theme-swatch-circle" style="background: #008080;"></span>
+            <span class="theme-swatch-name">Tropical Teal</span>
+            <span class="theme-swatch-code">tropical-teal</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Calendar Limits -->
+      <section id="calendar-data" class="docs-section">
+        <h2 class="section-anchor-title">Calendar Limits <a href="#calendar-data">#</a></h2>
+        <p class="docs-p">
+          Because Bikram Sambat is a hybrid solar-lunar calendar, the number of days in each month changes dynamically year-over-year. The library contains verified calendar metadata map configurations from the year <strong>१९७० वि.सं. to २१०० वि.सं.</strong> (1913 AD to 2043 AD).
+        </p>
+
+        <div class="alert-block">
+          <div class="alert-title">Important Constraint</div>
+          <div class="alert-content">
+            Any attempt to load or convert dates outside the 1970–2100 BS boundary will return conversion warnings and fallback to boundary values.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: FAQ -->
+      <section id="faq" class="docs-section">
+        <h2 class="section-anchor-title">Frequently Asked Questions <a href="#faq">#</a></h2>
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
+          
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-weight: 600;">Does this library require jQuery or external dependencies?</h4>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              No. <strong>Nepali DatePicker Studio</strong> is built using 100% pure vanilla JavaScript and CSS. It has zero external dependencies and runs completely independent of any framework.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-weight: 600;">Can I use this in modern frameworks like React, Vue, or Angular?</h4>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              Yes. You can import the CSS/JS assets and initialize the picker inside your component lifecycle hooks (e.g., <code>useEffect</code> in React or <code>onMounted</code> in Vue) by passing the DOM input selector or target element reference.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-weight: 600;">How does the library handle Bikram Sambat year variations?</h4>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              Since BS month lengths vary and are not mathematically constant like AD, the conversion relies on a built-in pre-mapped calendrical dataset. This ensures 100% conversion accuracy from 1970 BS up to 2100 BS.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-weight: 600;">How does the library handle timezone shifts during date conversion?</h4>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              Calendar mapping and conversions are calculated using local integer representation fields (Year, Month, Day) rather than local browser time shifts, preventing common discrepancies introduced by JavaScript's native timezone parsing.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-weight: 600;">Can I validate input values on my server backend?</h4>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              Yes. It is recommended to use the <code>exportAdInput</code> parameter. This automatically populates a hidden input with the corresponding Gregorian (AD) date format (<code>YYYY-MM-DD</code>) upon picker selections, which you can easily parse and validate on your backend.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-weight: 600;">How do I programmatically get or set a date?</h4>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              You can call the instance methods. Call <code>instance.setDate({ year: 2083, month: 2, day: 15 })</code> to update the value programmatically, or call <code>instance.getSelectedDate()</code> to extract the current selection object.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-weight: 600;">Why is my calendar tooltip or layout transparent or broken?</h4>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              This occurs if the stylesheet file is not loaded. Ensure that <code>dist/nepali-datepicker.css</code> is loaded in the <code>&lt;head&gt;</code> tag of your document before initializing the date picker script.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem; font-weight: 600;">Can I style my own theme?</h4>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              Absolutely. All widget layouts are styled via standard CSS Custom Properties. You can easily override variables (e.g., <code>--ndp-primary</code>, <code>--ndp-selected-bg</code>) to match your application's design system.
+            </p>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--border-color); padding: 3rem 0; background: #05080e; font-size: 0.9rem; color: var(--text-secondary); text-align: center;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>&copy; 2026 Nepali DatePicker Studio. Created by <a href="https://github.com/kushalkhadkaa" target="_blank" style="color: inherit; text-decoration: underline;">Kushal Khadka</a>.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="https://github.com/kushalkhadkaa" target="_blank" style="color: var(--text-secondary); text-decoration: none;">GitHub</a>
+        <a href="https://www.instagram.com/kushal_khadka/" target="_blank" style="color: var(--text-secondary); text-decoration: none;">Instagram</a>
+        <a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Showcase Home</a>
+        <a href="customizer.html" style="color: var(--text-secondary); text-decoration: none;">Live Customizer</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/docs.js"></script>
+</body>
+</html>

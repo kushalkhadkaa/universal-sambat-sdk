@@ -1,0 +1,34 @@
+/* Theme: high-contrast */
+.ndp-theme-high-contrast {
+  --ndp-primary:         #000000;
+  --ndp-primary-dark:    #222222;
+  --ndp-bg:              #ffffff;
+  --ndp-body-bg:         #ffffff;
+  --ndp-header-bg:       #000000;
+  --ndp-header-text:     #ffff00;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f8f8f8;
+  --ndp-border:          #000000;
+  --ndp-day-text:        #000000;
+  --ndp-weekday-text:    #000000;
+  --ndp-ad-text:         #444;
+  --ndp-hover-bg:        #ffff00;
+  --ndp-today-bg:        #ffff00;
+  --ndp-selected-bg:     #000000;
+  --ndp-selected-text:   #ffffff;
+  --ndp-range-bg:        #ffff80;
+  --ndp-range-hover-bg:  #ffff60;
+  --ndp-holiday-color:   #000;
+  --ndp-nav-bg:          rgba(255,255,0,0.15);
+  --ndp-nav-hover-bg:    #ffff00;
+  --ndp-title-bg:        rgba(255,255,0,0.15);
+  --ndp-title-hover-bg:  #ffff00;
+  --ndp-shadow:          0 0 0 3px #000;
+  --ndp-shadow-inline:   0 0 0 2px #000;
+  --ndp-radius:          0;
+  --ndp-btn-radius:      0;
+  --ndp-day-radius:      0;
+  --ndp-input-bg:        #fff;
+  --ndp-input-border:    #000;
+  --ndp-muted:           #444;
+}

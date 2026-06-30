@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="assets/js/ndp-theme-init.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Theme Customizer — Nepali DatePicker Studio</title>
+  <meta name="description" content="Design and customize your own Bikram Sambat datepicker. Tweak colors, toggle settings, and copy the generated configuration code instantly.">
+  <meta name="keywords" content="nepali datepicker customizer, bikram sambat datepicker theme builder, nepali calendar theme generator, bs date picker custom css">
+  <meta name="author" content="Kushal Khadka">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#090d16">
+  <link rel="canonical" href="https://kushalkhadkaa.github.io/nepali-datepicker-studio/customizer.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Live Theme Customizer — Nepali DatePicker Studio">
+  <meta property="og:description" content="Customize Nepali DatePicker Studio themes, behavior options, date formats, and copy ready-to-use JavaScript configuration code.">
+  <meta property="og:url" content="https://kushalkhadkaa.github.io/nepali-datepicker-studio/customizer.html">
+  <meta property="og:site_name" content="Nepali DatePicker Studio">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Live Theme Customizer — Nepali DatePicker Studio">
+  <meta name="twitter:description" content="Build custom Bikram Sambat datepicker themes and generate ready-to-use configuration code.">
+  
+  <!-- Fonts -->  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  
+  <!-- Library CSS (Bundled) -->
+  <link rel="stylesheet" href="dist/nepali-datepicker.css">
+  
+  <!-- Showcase Page Styles -->
+  <link rel="stylesheet" href="assets/css/customizer.css">
+  
+  <!-- Dynamic Color Stylesheet Injection Anchor -->
+  <style id="dynamic-theme-overrides"></style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-area">
+        <span class="logo-text">Nepali DatePicker <span style="color: var(--accent);">Studio</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Playground</a></li>
+        <li><a href="customizer.html" class="active">Customizer</a></li>
+        <li><a href="docs.html">API Docs</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="about.html">About Developer</a></li>
+        <li>
+          <button id="theme-switcher-btn" class="theme-switcher-btn" aria-label="Toggle Theme" type="button">
+            <span class="theme-icon-light">&#9728; Light</span>
+            <span class="theme-icon-dark">&#9790; Dark</span>
+          </button>
+        </li>
+        <li><a href="index.html" class="btn-nav-back">← Back to Home</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Customizer Workspace -->
+  <div class="customizer-layout">
+    
+    <!-- Sidebar Controls -->
+    <aside class="customizer-sidebar">
+      <!-- Section 0: Developer Generator -->
+      <div>
+        <h3 class="sidebar-section-title">Widget Code Generator</h3>
+        <div class="control-group" style="margin-bottom: 1rem;">
+          <label class="control-label" for="opt-dev-mode">Developer Level</label>
+          <select id="opt-dev-mode" class="control-select">
+            <option value="beginner" selected>Beginner - full copy/paste widget</option>
+            <option value="advanced">Advanced - callbacks and framework snippets</option>
+          </select>
+          <p class="dev-mode-note">Beginner mode produces a complete working file. Advanced mode adds lifecycle logs, framework snippets, and backend examples.</p>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="opt-preset">Use-case Preset</label>
+          <select id="opt-preset" class="control-select">
+            <option value="basic" selected>Basic Nepali date input</option>
+            <option value="range">Date range picker</option>
+            <option value="hotel">Hotel check-in / checkout</option>
+            <option value="restaurant">Restaurant reservation</option>
+            <option value="flight">Flight departure / return</option>
+            <option value="hospital">Hospital admission / discharge</option>
+            <option value="event">Event start / end</option>
+            <option value="dob">Date of birth / past only</option>
+            <option value="future-booking">Future-only booking date</option>
+            <option value="inline-dashboard">Inline dashboard calendar</option>
+            <option value="converter">BS / AD converter widget</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Section 1: Themes -->
+      <div>
+        <h3 class="sidebar-section-title">Theme Settings</h3>
+        <div class="control-group" style="margin-bottom: 1.25rem;">
+          <label class="control-label" for="opt-theme">Select Theme</label>
+          <select id="opt-theme" class="control-select">
+            <option value="classic-light" selected>Classic Light (Default)</option>
+            <option value="classic-dark">Classic Dark</option>
+            <option value="nepali-red">Nepali Red</option>
+            <option value="ocean-blue">Ocean Blue</option>
+            <option value="forest-green">Forest Green</option>
+            <option value="sunset-orange">Sunset Orange</option>
+            <option value="royal-purple">Royal Purple</option>
+            <option value="midnight">Midnight Teal</option>
+            <option value="glassmorphism">Glassmorphism</option>
+            <option value="neumorphism">Neumorphism</option>
+            <option value="gradient-aurora">Gradient Aurora</option>
+            <option value="minimal-mono">Minimal Mono</option>
+            <option value="pastel-soft">Pastel Soft</option>
+            <option value="corporate-blue">Corporate Blue</option>
+            <option value="earthy-terracotta">Earthy Terracotta</option>
+            <option value="neon-cyberpunk">Neon Cyberpunk</option>
+            <option value="material-design">Material Design</option>
+            <option value="retro-paper">Retro Paper</option>
+            <option value="high-contrast">High Contrast</option>
+            <option value="festive-dashain">Festive Dashain</option>
+            <option value="mountain-mist">Mountain Mist</option>
+            <option value="tropical-teal">Tropical Teal</option>
+          </select>
+        </div>
+        
+        <div class="control-group">
+          <label class="control-label" for="opt-color">Custom Primary Color Override</label>
+          <div class="color-picker-wrapper">
+            <input type="color" id="opt-color" class="control-color" value="#6366f1">
+            <input type="text" id="opt-color-hex" class="control-input" value="#6366f1" style="flex: 1; padding: 0.45rem 0.75rem;">
+          </div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Overrides the default background/border accent color dynamically.</p>
+        </div>
+      </div>
+
+      <!-- Section 2: Functionality -->
+      <div>
+        <h3 class="sidebar-section-title">Behavior Options</h3>
+        <div class="control-group" style="margin-bottom: 1rem;">
+          <label class="control-label" for="opt-lang">Language</label>
+          <select id="opt-lang" class="control-select">
+            <option value="ne" selected>Nepali (नेपाली)</option>
+            <option value="en">English (English)</option>
+          </select>
+        </div>
+        
+        <div class="control-group" style="margin-bottom: 1rem;">
+          <label class="control-label" for="opt-format">Date Format Pattern</label>
+          <select id="opt-format" class="control-select">
+            <option value="YYYY-MM-DD" selected>YYYY-MM-DD (e.g. २०८३-०३-१५)</option>
+            <option value="DD/MM/YYYY">DD/MM/YYYY (e.g. १५/०३/२०८३)</option>
+            <option value="long">long (e.g. १५ असार २०८३)</option>
+            <option value="short">short (e.g. १५ असार)</option>
+          </select>
+        </div>
+        
+        <div class="control-group" style="margin-bottom: 1rem;">
+          <label class="control-label" for="opt-mode">Selection Mode</label>
+          <select id="opt-mode" class="control-select">
+            <option value="single" selected>Single Date</option>
+            <option value="range">Date Range</option>
+            <option value="multiple">Multiple Selection</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="opt-unicode">Forced Digits</label>
+          <select id="opt-unicode" class="control-select">
+            <option value="null" selected>Default (Follow Language)</option>
+            <option value="true">Force Nepali (२०८३)</option>
+            <option value="false">Force English (2083)</option>
+          </select>
+        </div>
+
+        <div class="control-group" style="margin-top: 1rem;">
+          <label class="control-label" for="opt-disabled-days">Disable Weekdays</label>
+          <select id="opt-disabled-days" class="control-select">
+            <option value="none" selected>None</option>
+            <option value="saturday">Saturdays Only (6)</option>
+            <option value="sunday">Sundays Only (0)</option>
+            <option value="both">Saturdays & Sundays (0, 6)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section 3: Interface Toggles -->
+      <div>
+        <h3 class="sidebar-section-title">Display Toggles</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <div class="toggle-row">
+            <span class="control-label">Inline Mode (Embed)</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-inline">
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="toggle-row">
+            <span class="control-label">Show AD Dates in Grid</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-ad-date" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+
+
+          <div class="toggle-row">
+            <span class="control-label">Enable Time Picker</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-time">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span class="control-label">Enable Range Presets</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-presets">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span class="control-label">Show Lunar Tithi</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-tithi">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span class="control-label">Show Fiscal Year</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-fy">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span class="control-label">Show Today Button</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-today-btn" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span class="control-label">Show Clear Button</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-clear-btn" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span class="control-label">Future Only Selection</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-future-only">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span class="control-label">Past Only Selection</span>
+            <label class="switch">
+              <input type="checkbox" id="opt-past-only">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+
+        </div>
+      </div>
+      
+    </aside>
+
+    <!-- Preview Content Area -->
+    <main class="preview-workspace">
+      <div class="workspace-header">
+        <h1 class="workspace-title">Live Theme Customizer</h1>
+        <p class="workspace-desc">Interact with the calendar and color variables to see updates immediately.</p>
+      </div>
+
+      <!-- Live Preview Area -->
+      <div class="preview-container">
+        <div class="preview-glow-blob"></div>
+        <div class="preview-inner" id="preview-anchor">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Generated Code Snippet -->
+      <div class="code-generator">
+        <div class="dev-helper-grid">
+          <section class="helper-card">
+            <div class="helper-card-header">
+              <span>Selected Date Output</span>
+              <div class="copy-actions">
+                <button class="btn-copy" data-copy-target="selected-json-output" type="button">Copy JSON</button>
+                <button class="btn-copy" data-copy-target="selected-bs-output" type="button">Copy BS</button>
+                <button class="btn-copy" data-copy-target="selected-ad-output" type="button">Copy AD</button>
+              </div>
+            </div>
+            <div class="helper-card-body">
+              <div class="output-grid">
+                <div class="output-tile">
+                  <span class="output-label">BS Value</span>
+                  <span class="output-value" id="selected-bs-output">Select a date</span>
+                </div>
+                <div class="output-tile">
+                  <span class="output-label">AD Value</span>
+                  <span class="output-value" id="selected-ad-output">-</span>
+                </div>
+                <div class="output-tile">
+                  <span class="output-label">Formatted</span>
+                  <span class="output-value" id="selected-formatted-output">-</span>
+                </div>
+                <div class="output-tile">
+                  <span class="output-label">Mode</span>
+                  <span class="output-value" id="selected-mode-output">single</span>
+                </div>
+              </div>
+              <pre><code class="hljs-code" id="selected-json-output">{
+  "message": "Select a date in the preview to inspect output."
+}</code></pre>
+            </div>
+          </section>
+
+          <section class="helper-card">
+            <div class="helper-card-header">
+              <span>Copy Ready Integration</span>
+              <div class="copy-actions">
+                <button class="btn-copy" data-copy-snippet="full" type="button">Copy Full HTML</button>
+                <button class="btn-copy" data-copy-snippet="js" type="button">Copy JS</button>
+                <button class="btn-copy" data-download-snippet="full" type="button">Download HTML</button>
+              </div>
+            </div>
+            <div class="snippet-tabs" aria-label="Generated code snippet tabs">
+              <button class="snippet-tab active" data-snippet-tab="full" type="button">Full HTML</button>
+              <button class="snippet-tab" data-snippet-tab="html" type="button">HTML</button>
+              <button class="snippet-tab" data-snippet-tab="js" type="button">JavaScript</button>
+              <button class="snippet-tab" data-snippet-tab="react" type="button">React</button>
+              <button class="snippet-tab" data-snippet-tab="laravel" type="button">Laravel</button>
+              <button class="snippet-tab" data-snippet-tab="django" type="button">Django</button>
+              <button class="snippet-tab" data-snippet-tab="php" type="button">PHP</button>
+              <button class="snippet-tab" data-snippet-tab="wordpress" type="button">WordPress</button>
+              <button class="snippet-tab" data-snippet-tab="backend" type="button">Backend</button>
+            </div>
+            <pre><code class="hljs-code" id="snippet-output"></code></pre>
+          </section>
+        </div>
+
+        <div class="code-block-container">
+          <div class="code-header">
+            <span>Generated Initialization JavaScript</span>
+            <button class="btn-copy" id="btn-copy-code">Copy Code</button>
+          </div>
+          <pre><code class="hljs-code" id="code-snippet-output"></code></pre>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Library Scripts (Bundled) -->
+  <script src="dist/nepali-datepicker.js"></script>
+
+  <!-- Live Customization script -->
+  <script src="assets/js/customizer.js"></script>
+</body>
+</html>

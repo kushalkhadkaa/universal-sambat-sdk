@@ -1,0 +1,34 @@
+/* Theme: neon-cyberpunk */
+.ndp-theme-neon-cyberpunk {
+  --ndp-primary:         #00ffe0;
+  --ndp-primary-dark:    #00ccb4;
+  --ndp-bg:              #030318;
+  --ndp-body-bg:         #030318;
+  --ndp-header-bg:       #06061e;
+  --ndp-header-text:     #00ffe0;
+  --ndp-header-border:   rgba(0,255,224,0.15);
+  --ndp-footer-bg:       #06061e;
+  --ndp-border:          rgba(0,255,224,0.1);
+  --ndp-day-text:        #c8f8ff;
+  --ndp-weekday-text:    rgba(0,255,224,0.4);
+  --ndp-ad-text:         rgba(200,248,255,0.25);
+  --ndp-hover-bg:        rgba(0,255,224,0.08);
+  --ndp-today-bg:        rgba(0,255,224,0.08);
+  --ndp-selected-bg:     #00ffe0;
+  --ndp-selected-text:   #000;
+  --ndp-range-bg:        rgba(0,255,224,0.07);
+  --ndp-range-hover-bg:  rgba(0,255,224,0.13);
+  --ndp-holiday-color:   #ff0080;
+  --ndp-nav-bg:          rgba(0,255,224,0.06);
+  --ndp-nav-hover-bg:    rgba(0,255,224,0.14);
+  --ndp-title-bg:        rgba(0,255,224,0.06);
+  --ndp-title-hover-bg:  rgba(0,255,224,0.14);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.8), 0 0 30px rgba(0,255,224,0.15);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.7);
+  --ndp-radius:          8px;
+  --ndp-btn-radius:      4px;
+  --ndp-day-radius:      4px;
+  --ndp-input-bg:        rgba(0,255,224,0.04);
+  --ndp-input-border:    rgba(0,255,224,0.12);
+  --ndp-muted:           rgba(0,255,224,0.35);
+}

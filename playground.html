@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="assets/js/ndp-theme-init.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nepali DatePicker Studio — Most Advanced Nepali BS Calendar Library</title>
+  <meta name="description" content="Nepali DatePicker Studio — the most advanced Bikram Sambat (BS) date picker for modern web. Pure vanilla JS, zero dependencies, 22 themes, BS to AD conversion, bilingual Nepali/English, offline ready.">
+  <meta name="keywords" content="nepali datepicker, nepali date picker, bikram sambat calendar javascript, bs date picker, nepali calendar javascript library, bs to ad converter, nepali calendar widget, vanilla js nepali calendar">
+  <meta name="author" content="Kushal Khadka">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#090d16">
+  <link rel="canonical" href="https://kushalkhadkaa.github.io/nepali-datepicker-studio/">
+  <link rel="alternate" type="text/plain" href="https://kushalkhadkaa.github.io/nepali-datepicker-studio/llms.txt" title="LLM reference for Nepali DatePicker Studio">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nepali DatePicker Studio — Most Advanced BS Calendar Library">
+  <meta property="og:description" content="Pure vanilla JavaScript Nepali (Bikram Sambat) date picker. 22 themes, range selection, BS/AD conversion, bilingual output. Zero dependencies.">
+  <meta property="og:url" content="https://kushalkhadkaa.github.io/nepali-datepicker-studio/">
+  <meta property="og:site_name" content="Nepali DatePicker Studio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nepali DatePicker Studio">
+  <meta name="twitter:description" content="The most advanced Bikram Sambat date picker library. Pure JS, zero dependencies, 22 themes, BS/AD conversion.">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Nepali DatePicker Studio",
+    "description": "A premium, lightweight, pure vanilla JavaScript date picker for the Nepali Bikram Sambat (BS) calendar. Supports BS to AD bidirectional conversion for years 1970–2100, 22 visual themes, single/range/multiple selection, bilingual Nepali and English output, inline time picker, and range presets. Zero dependencies.",
+    "url": "https://kushalkhadkaa.github.io/nepali-datepicker-studio/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any (browser-based)",
+    "programmingLanguage": "JavaScript",
+    "author": {
+      "@type": "Person",
+      "name": "Kushal Khadka",
+      "url": "https://www.linkedin.com/in/kushal-khadka-78a79996/"
+    },
+    "version": "1.2.0",
+    "license": "MIT",
+    "keywords": "nepali datepicker, bikram sambat, BS date picker, nepali calendar, javascript datepicker, BS AD converter"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  
+  <!-- Library CSS (Bundled) -->
+  <link rel="stylesheet" href="dist/nepali-datepicker.css">
+  
+  <!-- Showcase Page Styles -->
+  <link rel="stylesheet" href="assets/css/playground.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo-area">
+        <span class="logo-text">Nepali DatePicker <span style="font-weight: 400; color: var(--accent);">Studio</span></span>
+        <span class="logo-badge">v1.2.0</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Playground</a></li>
+          <li><a href="customizer.html">Customizer</a></li>
+          <li><a href="docs.html">API Docs</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="about.html">About Developer</a></li>
+          <li>
+            <button id="theme-switcher-btn" class="theme-switcher-btn" aria-label="Toggle Theme" type="button">
+              <span class="theme-icon-light">&#9728; Light</span>
+              <span class="theme-icon-dark">&#9790; Dark</span>
+            </button>
+          </li>
+          <li><a href="customizer.html" class="btn-nav-customizer">Live Customizer</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">
+          Advanced Bikram Sambat (BS) Calendar Widget
+        </div>
+        <h1 class="hero-title">
+          The Ultimate <span>Nepali DatePicker</span> for Modern Web Apps
+        </h1>
+        <p class="hero-desc">
+          A premium, lightweight, highly accurate, and customizable Bikram Sambat datepicker and converter. Built with 100% pure vanilla JavaScript and CSS. Zero dependencies, zero PHP, drop-in ready.
+        </p>
+        <div class="hero-ctas">
+          <a href="#demos" class="btn-primary">Explore Demos</a>
+          <a href="customizer.html" class="btn-secondary">Theme Playground</a>
+        </div>
+        <div class="today-banner">
+          <span class="today-banner-label">Today (आज)</span>
+          <span class="today-banner-date" id="hero-today-date">Loading...</span>
+        </div>
+      </div>
+      <div class="hero-preview-container">
+        <div class="hero-glow-blob"></div>
+        <div class="hero-picker-wrapper">
+          <!-- Live Inline Picker in Hero -->
+          <div id="hero-inline-picker"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Start Section -->
+  <section id="quick-start">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Get Started</span>
+        <h2 class="section-title">2-Minute Quick Setup</h2>
+        <p class="section-desc">Add the library directly to your static HTML or web application using simple, clean tags.</p>
+      </div>
+      
+      <div class="quickstart-grid">
+        <div class="quickstart-info">
+          <h3>Integration Steps</h3>
+          <div class="quickstart-steps">
+            <div class="step-card">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Include Stylesheet & Script</h4>
+                <p>Add the single css bundle to your page's <code>&lt;head&gt;</code> and the single js bundle right before closing <code>&lt;/body&gt;</code>.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Create Target Input Box</h4>
+                <p>Add a standard text input element to your HTML form with a selector target (e.g. <code>id="nepali-date"</code>).</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Initialize via JavaScript</h4>
+                <p>Instantiate a new class instance with custom configuration options such as theme, language, and selection mode.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quickstart-code">
+          <div class="code-block-container">
+            <div class="code-header">
+              <span>HTML / JavaScript</span>
+              <button class="btn-copy" onclick="copyCode(this)">Copy</button>
+            </div>
+            <div class="hljs-code">
+              <pre><code id="code-snippet-setup">&lt;!-- 1. Include library assets --&gt;
+&lt;link rel="stylesheet" href="dist/nepali-datepicker.css"&gt;
+
+&lt;!-- 2. Add input element --&gt;
+&lt;input type="text" id="nepali-date" placeholder="Select Nepali Date"&gt;
+
+&lt;!-- 3. Include JS and initialize --&gt;
+&lt;script src="dist/nepali-datepicker.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function() {
+    new NepaliDatePicker('#nepali-date', {
+      theme: 'glassmorphism',
+      lang: 'ne', // 'ne' (Nepali) or 'en' (English)
+      showAdDate: true,
+      onChange: function(date) {
+        console.log('Selected date details:', date);
+      }
+    });
+  });
+&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Demos Section -->
+  <section id="demos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Features & Modes</span>
+        <h2 class="section-title">Visual Selection Modes</h2>
+        <p class="section-desc">Nepali DatePicker Studio supports various selection modes tailored to different form inputs and developer needs.</p>
+      </div>
+
+      <div class="demos-grid">
+        <!-- 1. Single Date -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Single Date Picker</h3>
+            <span class="demo-badge">Popup Mode</span>
+          </div>
+          <p class="demo-desc">
+            The traditional, clean dropdown calendar window. Opens automatically on click, focuses on input, and supports keyboard arrows navigation.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Choose Date</label>
+            <div class="input-wrapper">
+              <input type="text" id="single-picker-input" class="demo-input" placeholder="मिति छान्नुहोस्">
+            </div>
+          </div>
+          <div class="demo-output" id="single-picker-output">
+            Selected: null
+          </div>
+        </div>
+
+        <!-- 2. Date Range Picker -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Date Range Picker</h3>
+            <span class="demo-badge">Single Input</span>
+          </div>
+          <p class="demo-desc">
+            Select a start date and an end date within the same calendar view. Range boundaries are highlighted dynamically on hover. <em>(Bug fixed: Input updates on first selection click)</em>
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Select Date Range</label>
+            <div class="input-wrapper">
+              <input type="text" id="range-picker-input" class="demo-input" placeholder="सुरु र समाप्ति मिति">
+            </div>
+          </div>
+          <div class="demo-output" id="range-picker-output">
+            Range: null
+          </div>
+        </div>
+
+        <!-- 3. Multiple Dates -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Multiple Selection</h3>
+            <span class="demo-badge">Multi Select</span>
+          </div>
+          <p class="demo-desc">
+            Allows the user to select multiple, non-contiguous dates. Selected dates are displayed as a list of clearable date strings in the field.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Select Multiple Dates</label>
+            <div class="input-wrapper">
+              <input type="text" id="multi-picker-input" class="demo-input" placeholder="धेरै मितिहरू छान्नुहोस्">
+            </div>
+          </div>
+          <div class="demo-output" id="multi-picker-output">
+            Dates: []
+          </div>
+        </div>
+
+        <!-- 4. Inline Mode -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Inline Calendar</h3>
+            <span class="demo-badge">Static Embed</span>
+          </div>
+          <p class="demo-desc">
+            Embeds the calendar panel directly into your dashboard page layout without popup overlays. Excellent for sidebar widgets.
+          </p>
+          <div class="inline-demo-wrapper">
+            <div id="inline-picker-container"></div>
+            <div class="inline-demo-output" id="inline-picker-output">
+              Selected: None
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced Developer Features -->
+  <section id="advanced">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">20+ Advanced Integrations</span>
+        <h2 class="section-title">Developer Feature Playground</h2>
+        <p class="section-desc">Test the new advanced options added to version 1.1.0 to solve complex localization and user experience requirements.</p>
+      </div>
+
+      <div class="demos-grid">
+        <!-- 1. Presets Range Picker -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Range presets & Duration</h3>
+            <span class="demo-badge">Preset Sidebar</span>
+          </div>
+          <p class="demo-desc">
+            Adds a quick navigation sidebar with 9 specific presets (Today, Tomorrow, This Week, Previous Week, This Month, Last Month, Last 2 Months, Next Month, and Fiscal Year). Automatically calculates range duration days and Nepalese fiscal year (आ.व.).
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Range with Presets</label>
+            <div class="input-wrapper">
+              <input type="text" id="range-presets-input" class="demo-input" placeholder="Presets range...">
+            </div>
+          </div>
+          <div class="demo-output" id="range-presets-output">
+            Select presets inside the calendar popup.
+          </div>
+        </div>
+
+        <!-- 2. Time-Picker Integration -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">BS Date & Time Picker</h3>
+            <span class="demo-badge">Date-Time</span>
+          </div>
+          <p class="demo-desc">
+            Provides hour and minute selectors in the calendar footer to let the user select date and time simultaneously. Highly customizable.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Choose Date & Time</label>
+            <div class="input-wrapper">
+              <input type="text" id="time-picker-input" class="demo-input" placeholder="Select Date and Time">
+            </div>
+          </div>
+          <div class="demo-output" id="time-picker-output">
+            Selected Date-Time details: null
+          </div>
+        </div>
+
+        <!-- 3. Unicode Dates Forced Mode -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Forced Unicode Digits</h3>
+            <span class="demo-badge">Digits Override</span>
+          </div>
+          <p class="demo-desc">
+            Force Bikram Sambat numbers to show in traditional Devanagari digits (<code>२०८३-०३-१५</code>) or standard digits (<code>2083-03-15</code>) regardless of the display interface language.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Force Nepali Digits</label>
+            <div class="input-wrapper">
+              <input type="text" id="unicode-picker-input" class="demo-input" placeholder="Unicode numbers forced picker">
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center; margin-top: 0.5rem;">
+            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+              <input type="radio" name="unicode-toggle" value="true" checked> Force Devanagari (२०८३)
+            </label>
+            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+              <input type="radio" name="unicode-toggle" value="false"> Force English (2083)
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. Masking & Out-Of-Bounds Validation -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Masking & limits Validation</h3>
+            <span class="demo-badge">Interactive validation</span>
+          </div>
+          <p class="demo-desc">
+            Type characters manually inside the field: it auto-inserts dashes as you type. Shows an error border and warning icon if the entered date is invalid or out of limits (Min: 2080-01-01, Max: 2085-12-30).
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Type Date (YYYY-MM-DD)</label>
+            <div class="input-wrapper">
+              <input type="text" id="mask-picker-input" class="demo-input" placeholder="Type date (e.g. 20830315)">
+            </div>
+          </div>
+          <div class="demo-output" id="mask-picker-output" style="color: #ef4444;">
+            Min: २०८०-०१-०१ | Max: २०८५-१२-३०
+          </div>
+        </div>
+
+        <!-- 5. Standalone Hidden Input Export -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Hidden AD Exporter</h3>
+            <span class="demo-badge">Form Integration</span>
+          </div>
+          <p class="demo-desc">
+            Select a BS date on the input field: it automatically converts, maps, and writes the standardized AD string value to a secondary hidden/visible input field.
+          </p>
+          <div class="demo-field" style="gap: 1rem;">
+            <div>
+              <label class="demo-label">Select BS Date (Visible)</label>
+              <div class="input-wrapper">
+                <input type="text" id="export-picker-input" class="demo-input" placeholder="Click to select BS date">
+              </div>
+            </div>
+            <div>
+              <label class="demo-label">Target AD Exporter (Hidden Field made visible)</label>
+              <div class="input-wrapper">
+                <input type="text" id="export-target-ad" class="demo-input" style="background: rgba(255,255,255,0.05); cursor: not-allowed;" readonly placeholder="Exported AD date values will sync here">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Custom Day Renderer -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Custom Cell Renderer</h3>
+            <span class="demo-badge">Cell override</span>
+          </div>
+          <p class="demo-desc">
+            Injects custom background highlight and border styles into specific days. In this demo, days ending in 5 are styled with a soft highlight.
+          </p>
+          <div id="custom-renderer-calendar-container" style="display: flex; justify-content: center;"></div>
+        </div>
+
+        <!-- 7. Range Date & Time Picker -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Range Date & Time Picker</h3>
+            <span class="demo-badge">Dual Time</span>
+          </div>
+          <p class="demo-desc">
+            Select start and end dates along with their respective times in a single picker. Perfect for booking reservation/rental systems.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Choose Date-Time Range</label>
+            <div class="input-wrapper">
+              <input type="text" id="range-datetime-input" class="demo-input" placeholder="Select Start & End Date-Time">
+            </div>
+          </div>
+          <div class="demo-output" id="range-datetime-output">
+            Range: null
+          </div>
+        </div>
+
+        <!-- 8. Future Only / Past Only Selection -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Future Only / Past Only Selection</h3>
+            <span class="demo-badge">Constraints</span>
+          </div>
+          <p class="demo-desc">
+            Restricts selection to only future dates (today & past disabled) or past dates (today & future disabled). Toggle limits below.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Select Date (Future Only Default)</label>
+            <div class="input-wrapper">
+              <input type="text" id="future-past-input" class="demo-input" placeholder="Select restricted date">
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center; margin-top: 0.5rem;">
+            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; color: var(--ndp-muted, #777);">
+              <input type="radio" name="future-past-toggle" value="future" checked> Future Only
+            </label>
+            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; color: var(--ndp-muted, #777);">
+              <input type="radio" name="future-past-toggle" value="past"> Past Only
+            </label>
+          </div>
+        </div>
+
+        <!-- 9. Weekday Selection Disablers -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Weekend / Weekday Disabler</h3>
+            <span class="demo-badge">Blocked Days</span>
+          </div>
+          <p class="demo-desc">
+            Disable specific days of the week. E.g. block Saturdays, Sundays, or both. Try changing the settings using the inputs below.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label">Select Active Days</label>
+            <div class="input-wrapper">
+              <input type="text" id="weekday-disabler-input" class="demo-input" placeholder="Saturdays / Sundays blocked">
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center; margin-top: 0.5rem;">
+            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; color: var(--ndp-muted, #777);">
+              <input type="checkbox" id="disable-saturday" checked> Block Saturday (6)
+            </label>
+            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; color: var(--ndp-muted, #777);">
+              <input type="checkbox" id="disable-sunday"> Block Sunday (0)
+            </label>
+          </div>
+        </div>
+
+        <!-- 10. Large Inline Multiple Date Selector -->
+        <div class="demo-card">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Large Inline Multiple Date Selection</h3>
+            <span class="demo-badge">Large Inline</span>
+          </div>
+          <p class="demo-desc">
+            An extra-large, fully embedded calendar selector configured for selecting multiple dates. Perfect for batch event registrations or planning views.
+          </p>
+          <div class="demo-field">
+            <div id="large-inline-container" class="ndp-large-inline"></div>
+          </div>
+          <div class="demo-output" id="large-inline-output">
+            Selected Dates: None
+          </div>
+        </div>
+
+        <!-- 11. Booking & Availability Picker -->
+        <div class="demo-card" style="grid-column: span 2; max-width: 100%;">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Premium Booking & Availability Calendar</h3>
+            <span class="demo-badge">Availability Checker</span>
+          </div>
+          <p class="demo-desc">
+            This advanced booking demo queries a mock JavaScript database for daily slot counts and uses the <code>renderDay</code> API to dynamically inject availability markers (green = available, orange = limited, red/disabled = booked). Shows slots and lets you export booked dates to Google Calendar or ICS.
+          </p>
+          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem;">
+            <div style="flex: 1; min-width: 280px;">
+              <label class="demo-label">Select Appointment Date</label>
+              <div class="input-wrapper">
+                <input type="text" id="booking-picker-input" class="demo-input" placeholder="Click to choose a date...">
+              </div>
+              <div style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 0.8rem;">
+                <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></span> Available</span>
+                <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 8px; height: 8px; background: #f59e0b; border-radius: 50%;"></span> Limited Slots</span>
+                <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%;"></span> Booked Out</span>
+              </div>
+            </div>
+            <div style="flex: 1; min-width: 280px; background: var(--bg-tertiary, #fafafa); border: 1px solid var(--border-color, #e8e8e8); padding: 1rem; border-radius: 12px;" id="booking-details-card">
+              <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: var(--text-primary, #333);">Select a date to view available booking slots.</h4>
+              <div id="booking-slots-container" class="ndp-hidden">
+                <p style="font-size: 0.85rem; color: var(--text-secondary, #666); margin: 0 0 0.75rem 0;">Choose an available slot for <strong id="booked-date-lbl"></strong>:</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;" id="booking-slots-grid"></div>
+                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <button class="btn-copy" id="btn-gcal-export" style="background: #4285f4; font-size: 0.75rem; padding: 6px 12px; border: none; cursor: pointer; color: white; border-radius: 4px;">Add to Google Calendar</button>
+                  <button class="btn-copy" id="btn-ics-export" style="background: #34a853; font-size: 0.75rem; padding: 6px 12px; border: none; cursor: pointer; color: white; border-radius: 4px;">Download ICS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strict API Configurations Section -->
+      <div class="section-header" style="margin-top: 5rem;">
+        <span class="section-subtitle">API Configuration Presets</span>
+        <h2 class="section-title">Strict API Configurations</h2>
+        <p class="section-desc">Interactive demonstration of official parameters, disablers, selection modes, and utility helper functions.</p>
+      </div>
+
+      <div class="demos-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+        <!-- 1. YYYY-MM-DD Date Format -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Dashed Year-Month-Day</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'YYYY-MM-DD'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Standard ISO-like date mapping where components are separated by dashes. Perfect for standard database synchronization fields. Outputs values like <strong>2083-03-11</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="fmt-ymd-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select BS Date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. YYYY/MM/DD Date Format -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Slashed Year-Month-Day</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'YYYY/MM/DD'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Traditional directory-style presentation separating the year, month, and day components with slashes. Outputs values like <strong>2083/03/10</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="fmt-ysmsd-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select BS Date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. YYYY.MM.DD Date Format -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Dotted Year-Month-Day</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'YYYY.MM.DD'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Sleek dot-separated layout frequently favored in modern web applications. Outputs values like <strong>2083.03.02</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="fmt-ydmd-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select BS Date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. DD-MM-YYYY Date Format -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Dashed Day-Month-Year</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'DD-MM-YYYY'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            European/Commonwealth dashed representation format starting with the day value first. Outputs values like <strong>12-03-2083</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="fmt-dmy-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select BS Date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. DD/MM/YYYY Date Format -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Slashed Day-Month-Year</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'DD/MM/YYYY'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Highly recognizable format style across Commonwealth contexts, utilizing slash characters. Outputs values like <strong>15/03/2083</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="fmt-dsmsy-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select BS Date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. DD.MM.YYYY Date Format -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title">Dotted Day-Month-Year</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'DD.MM.YYYY'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Elegant European-style formatting utilizing dotted separators starting with the day first. Outputs values like <strong>15.03.2083</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="fmt-ddmdy-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select BS Date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. MM-DD-YYYY Date Format -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title">Dashed Month-Day-Year</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'MM-DD-YYYY'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Dashed presentation style starting with the month value, followed by days and year. Outputs values like <strong>03-15-2083</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="fmt-mdy-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select BS Date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. MM/DD/YYYY Date Format -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title">Slashed Month-Day-Year</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'MM/DD/YYYY'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Standardized formatting layout matching American date preferences, using slashes. Outputs values like <strong>03/15/2083</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="fmt-msdsy-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select BS Date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 8b. DD MMMM YYYY Date Format -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title">Gregorian AD Long format</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'DD MMMM YYYY'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Converts selected BS date to Gregorian calendar (AD) and outputs long-form values like <strong>01 February 2035</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="fmt-ad-long-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select BS Date (Outputs AD Format)">
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Minimum Date Limit -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(245, 158, 11, 0.04) 100%); border-left: 4px solid #f59e0b; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Minimum Date Limit</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(245,158,11,0.1); color: #f59e0b; font-size: 0.75rem;">minDate: { year: 2083, month: 3, day: 3 }</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Prevents scheduling in the past. All calendar cells prior to the configured min date are blocked out and disabled.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="min-date-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="From 2083-03-03 onwards">
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Maximum Date Limit -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(245, 158, 11, 0.04) 100%); border-left: 4px solid #f59e0b; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Maximum Date Limit</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(245,158,11,0.1); color: #f59e0b; font-size: 0.75rem;">maxDate: { year: 2083, month: 3, day: 13 }</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Prevents excessive scheduling into the future. All calendar cells after the configured maximum limit are locked.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="max-date-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Until 2083-03-13 only">
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Min and Max Combined -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(245, 158, 11, 0.04) 100%); border-left: 4px solid #f59e0b; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Bounded Range Window</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(245,158,11,0.1); color: #f59e0b; font-size: 0.75rem;">minDate & maxDate</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Sets strict boundaries on both sides, creating a valid selection window of exactly 11 days (March 3 to March 13, 2083).
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="min-max-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Choose date within bounds">
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. onSelect Callback -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(16, 185, 129, 0.04) 100%); border-left: 4px solid #10b981; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Selection Callback Event</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(16,185,129,0.1); color: #10b981; font-size: 0.75rem;">onSelect: function(date)</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Triggers custom application workflows when a date is selected. This demo logs parameters to the console and alerts the user.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="callback-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Click to choose a date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Disable Today -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(239, 68, 68, 0.04) 100%); border-left: 4px solid #ef4444; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Disable Today's Date</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(239,68,68,0.1); color: #ef4444; font-size: 0.75rem;">disableToday: true</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Blocks users from scheduling actions on the current day. The today cell remains greyed out and unselectable.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="disable-today-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Today is unselectable">
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Disable Date -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(239, 68, 68, 0.04) 100%); border-left: 4px solid #ef4444; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Disable Specific Date</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(239,68,68,0.1); color: #ef4444; font-size: 0.75rem;">disableDates: ['2083-3-9']</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Block out specific dates like holidays or fully-booked slots. Specifically blocks selection of the date <strong>2083-03-09</strong>.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="disable-date-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="2083-03-09 is disabled">
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Disable Dates (Multiple) -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(239, 68, 68, 0.04) 100%); border-left: 4px solid #ef4444; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Disable Multiple Dates</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(239,68,68,0.1); color: #ef4444; font-size: 0.75rem;">disableDates: [...]</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Passes an array of custom dates to disable multiple selections at once (disables the 1st, 15th, and 28th of the month).
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="disable-array-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Several dates are disabled">
+            </div>
+          </div>
+        </div>
+
+        <!-- 16. Disable Days Before -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(239, 68, 68, 0.04) 100%); border-left: 4px solid #ef4444; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Disable Relative Past</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(239,68,68,0.1); color: #ef4444; font-size: 0.75rem;">disableDaysBefore: 5</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Prevents selecting dates older than a rolling relative buffer. Disables all days falling more than 5 days before today.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="disable-before-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Past dates > 5 days disabled">
+            </div>
+          </div>
+        </div>
+
+        <!-- 17. Disable Days After -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(239, 68, 68, 0.04) 100%); border-left: 4px solid #ef4444; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Disable Relative Future</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(239,68,68,0.1); color: #ef4444; font-size: 0.75rem;">disableDaysAfter: 5</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Restricts booking too far ahead. Disables selection of all dates falling more than 5 days in the future.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="disable-after-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Future dates > 5 days disabled">
+            </div>
+          </div>
+        </div>
+
+        <!-- 18. Disable Days Before & After -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(239, 68, 68, 0.04) 100%); border-left: 4px solid #ef4444; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Relative Selection Range</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(239,68,68,0.1); color: #ef4444; font-size: 0.75rem;">disableDaysBefore & After</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Combines rolling limits relative to today, locking the selectable range to a rolling ±5 day window.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="disable-both-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Only ±5 days from today allowed">
+            </div>
+          </div>
+        </div>
+
+        <!-- 19. Slide Animation -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(139, 92, 246, 0.04) 100%); border-left: 4px solid #8b5cf6; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Slide Transition</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(139,92,246,0.1); color: #8b5cf6; font-size: 0.75rem;">animation: 'slide'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Configures the dropdown animation to slide up from the bottom with a smooth spring bounce.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="anim-slide-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Click to slide open">
+            </div>
+          </div>
+        </div>
+
+        <!-- 20. Fade Animation -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(139, 92, 246, 0.04) 100%); border-left: 4px solid #8b5cf6; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Fade Transition</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(139,92,246,0.1); color: #8b5cf6; font-size: 0.75rem;">animation: 'fade'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Smooth fade-in opacity animation overlay for modern, minimalistic design tastes.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="anim-fade-strict-picker" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Click to fade open">
+            </div>
+          </div>
+        </div>
+
+        <!-- 21. Range Selection -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Range Select Mode</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">range: true</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Select consecutive calendar date boundaries directly in a single picker element with a hover preview.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="range-strict-picker-new" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Choose start & end date">
+            </div>
+          </div>
+        </div>
+
+        <!-- 22. Multiple Selection -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Multiple Dates Select</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">multiple: true</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Click to add or remove multiple non-adjacent dates. Selected dates are displayed as a comma-separated list.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="multiple-strict-picker-new" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="Select multiple dates">
+            </div>
+          </div>
+        </div>
+
+        <!-- 23. Unicode Date -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(16, 185, 129, 0.04) 100%); border-left: 4px solid #10b981; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">Unicode Devanagari</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(16,185,129,0.1); color: #10b981; font-size: 0.75rem;">unicodeDate: true</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Translates all digits in the date picker interface and form output to Nepali Unicode (e.g. <strong>२०८३-०३-१५</strong>).
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="unicode-strict-picker-new" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="नेपाली देवनागरी मिति">
+            </div>
+          </div>
+        </div>
+
+        <!-- 24. Language English -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.05) 100%); border-left: 4px solid var(--accent); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+          <div class="demo-title-bar" style="margin-bottom: 1rem;">
+            <h3 class="demo-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">English Interface</h3>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">language: 'english'</span>
+          </div>
+          <p class="demo-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+            Switches the months, weekdays, and headers of the Bikram Sambat picker to English translation text.
+          </p>
+          <div class="demo-field">
+            <label class="demo-label" style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">Active Input Field</label>
+            <div class="input-wrapper" style="position: relative;">
+              <input type="text" id="english-strict-picker-new" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s;" placeholder="English month names">
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- Static Conversion & Helper Functions -->
+        <div class="demo-card" style="grid-column: span 2; max-width: 100%;">
+          <div class="demo-title-bar">
+            <h3 class="demo-title">Static Conversion & Utility Helper Functions</h3>
+            <span class="demo-badge">Utility Helpers</span>
+          </div>
+          <p class="demo-desc">Test static helper methods exposed globally on the window. Type values below to view the processed output in real-time.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+            <!-- Number conversions -->
+            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Number Conversions</h4>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div>
+                  <label class="demo-label">Get2DigitNo(input)</label>
+                  <input type="number" id="helper-digit-in" class="demo-input" value="9" style="padding: 0.4rem; font-size: 0.85rem;">
+                  <div style="font-size: 0.8rem; margin-top: 0.25rem;">Result: <code id="helper-digit-out" style="color: var(--success);"></code></div>
+                </div>
+                <div>
+                  <label class="demo-label">ConvertToUnicode(input) / ConvertToNumber(unicode)</label>
+                  <input type="text" id="helper-unicode-in" class="demo-input" value="2083" style="padding: 0.4rem; font-size: 0.85rem;">
+                  <div style="font-size: 0.8rem; margin-top: 0.25rem;">Unicode: <code id="helper-unicode-out" style="color: var(--success);"></code> | Back to Number: <code id="helper-number-out" style="color: var(--success);"></code></div>
+                </div>
+                <div>
+                  <label class="demo-label">NumberToWords(num) / NumberToWordsUnicode(num)</label>
+                  <input type="number" id="helper-words-in" class="demo-input" value="125" style="padding: 0.4rem; font-size: 0.85rem;">
+                  <div style="font-size: 0.8rem; margin-top: 0.25rem; display: flex; flex-direction: column; gap: 2px;">
+                    <div>En: <code id="helper-words-en-out" style="color: var(--success);"></code></div>
+                    <div>Np: <code id="helper-words-np-out" style="color: var(--success);"></code></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Date conversions -->
+            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Date Conversions</h4>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div>
+                  <label class="demo-label">AD2BS(YYYY-MM-DD) / BS2AD(YYYY-MM-DD)</label>
+                  <input type="text" id="helper-date-in" class="demo-input" value="2026-06-22" style="padding: 0.4rem; font-size: 0.85rem;">
+                  <div style="font-size: 0.8rem; margin-top: 0.25rem; display: flex; flex-direction: column; gap: 2px;">
+                    <div>AD  BS: <code id="helper-ad2bs-out" style="color: var(--success);"></code></div>
+                    <div>BS  AD: <code id="helper-bs2ad-out" style="color: var(--success);"></code></div>
+                  </div>
+                </div>
+                <div>
+                  <label class="demo-label">ParseDate(dateStr) / ConvertToDateObject(dateStr)</label>
+                  <input type="text" id="helper-parse-in" class="demo-input" value="2083-03-11" style="padding: 0.4rem; font-size: 0.85rem;">
+                  <div style="font-size: 0.8rem; margin-top: 0.25rem; display: flex; flex-direction: column; gap: 2px;">
+                    <div>Parsed Object: <code id="helper-parse-out" style="color: var(--success); font-size: 0.75rem;"></code></div>
+                    <div>Date Object: <code id="helper-dateobj-out" style="color: var(--success); font-size: 0.75rem;"></code></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AD / BS namespace metrics -->
+            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent); margin-bottom: 0.5rem;">AD / BS Namespace Metrics</h4>
+              <div style="font-size: 0.8rem; display: flex; flex-direction: column; gap: 8px; line-height: 1.4;">
+                <div><strong>AD.GetCurrentDate():</strong> <span id="ad-curr-date" style="color: var(--success);"></span></div>
+                <div><strong>AD.GetMonths():</strong> <span id="ad-months" style="color: var(--success);"></span></div>
+                <div><strong>BS.GetCurrentDate():</strong> <span id="bs-curr-date" style="color: var(--success);"></span></div>
+                <div><strong>BS.GetMonthsInUnicode():</strong> <span id="bs-months-uni" style="color: var(--success);"></span></div>
+                <div><strong>BS.DatesDiff(2083-03-01, 2083-03-11):</strong> <span id="bs-diff" style="color: var(--success);"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- Playground Code Generator Drawer -->
+      <div id="playground-code-drawer" class="theme-code-drawer hidden" style="margin-top: 3rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; flex-wrap: wrap; gap: 1rem;">
+          <span style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">
+            Integration Code: <span id="playground-feature-name" style="color: var(--accent); font-weight: 800;">Feature Name</span>
+          </span>
+          <button class="btn-copy" id="btn-copy-playground-code" style="background: var(--accent); color: white; border: none; padding: 0.4rem 1.25rem; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+            Copy Configuration
+          </button>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.5rem;">
+          <strong>Suggested Stylesheet:</strong> <code style="color: var(--accent); background: rgba(99, 102, 241, 0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace;">dist/nepali-datepicker.css</code>
+          <br>
+          <strong>Suggested Script Bundle:</strong> <code style="color: var(--accent); background: rgba(99, 102, 241, 0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace;">dist/nepali-datepicker.js</code>
+          <br>
+          <strong>Documentation Reference:</strong> Refer to the <a href="docs.html#options" style="color: var(--accent); text-decoration: underline;" target="_blank">Configuration Options</a> section in <code>docs.html</code>.
+        </div>
+        <pre><code id="playground-code-snippet" style="font-family: 'Fira Code', monospace; font-size: 0.85rem; text-align: left; display: block; overflow-x: auto; background: #0b0f19; padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); color: #e5e7eb; max-height: 400px; white-space: pre-wrap;"></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hotel & Restaurant Bookings Section -->
+  <section id="booking-use-cases" style="background: var(--bg-tertiary); padding: 5rem 0; border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Real-world Booking Templates</span>
+        <h2 class="section-title">Dynamic Booking & Reservation Use-Cases</h2>
+        <p class="section-desc">Interactive form templates matching common travel, medical appointments, and dining system specifications. Featuring integrated date-time picking with 12-hour and 24-hour presentation styles and dynamic date logic validation.</p>
+      </div>
+
+      <div class="demos-grid" style="grid-template-columns: 1fr; gap: 3rem;">
+        <!-- Card 1: Style-1 -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.03) 100%); border-left: 4px solid var(--accent); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0;">Style-1</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Format: Day Month Year Time 12 hour (e.g. 24 June 2026 - 10:30 AM)</span>
+            </div>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'Day Month Year Time 12 hour'</span>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; max-width: 320px;">
+            <label class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Select Booking Service</label>
+            <select id="booking-cat-style1" class="demo-input" style="padding: 0.5rem; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%;">
+              <option value="hotel"> Hotel Room Booking (Check-in  Checkout)</option>
+              <option value="hospital"> Hospital Admission & Discharge (Admission  Discharge)</option>
+              <option value="flight"> Flight Booking (Departure  Return)</option>
+              <option value="event"> Event Pass Booking (Start  End)</option>
+              <option value="restaurant"> Restaurant Table Reservation (Single Date-Time)</option>
+            </select>
+          </div>
+
+          <div id="booking-alert-style1" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; color: #f87171; font-size: 0.85rem; display: none; align-items: center; gap: 8px;">
+            <span></span>
+            <span id="booking-alert-text-style1">Checkout date cannot be prior to Check-in date.</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-start-title-style1" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Check-in Details</h4>
+              <div>
+                <label id="booking-start-lbl-style1" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Check in date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-start-style1" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+            <div id="booking-end-container-style1" style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-end-title-style1" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Checkout Details</h4>
+              <div>
+                <label id="booking-end-lbl-style1" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Checkout date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-end-style1" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Style-2 -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.03) 100%); border-left: 4px solid var(--accent); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0;">Style-2</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Format: Month Day Year Time 12 hour (e.g. June 24 2026 - 10:30 AM)</span>
+            </div>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'Month Day Year Time 12 hour'</span>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; max-width: 320px;">
+            <label class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Select Booking Service</label>
+            <select id="booking-cat-style2" class="demo-input" style="padding: 0.5rem; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%;">
+              <option value="hotel"> Hotel Room Booking (Check-in  Checkout)</option>
+              <option value="hospital"> Hospital Admission & Discharge (Admission  Discharge)</option>
+              <option value="flight"> Flight Booking (Departure  Return)</option>
+              <option value="event"> Event Pass Booking (Start  End)</option>
+              <option value="restaurant"> Restaurant Table Reservation (Single Date-Time)</option>
+            </select>
+          </div>
+
+          <div id="booking-alert-style2" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; color: #f87171; font-size: 0.85rem; display: none; align-items: center; gap: 8px;">
+            <span></span>
+            <span id="booking-alert-text-style2">Checkout date cannot be prior to Check-in date.</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-start-title-style2" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Check-in Details</h4>
+              <div>
+                <label id="booking-start-lbl-style2" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Check in date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-start-style2" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+            <div id="booking-end-container-style2" style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-end-title-style2" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Checkout Details</h4>
+              <div>
+                <label id="booking-end-lbl-style2" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Checkout date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-end-style2" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Style-3 -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.03) 100%); border-left: 4px solid var(--accent); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0;">Style-3</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Format: mm-dd-yyyy Time 12 hour (e.g. 06-24-2026 10:30 AM)</span>
+            </div>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'mm-dd-yyyy Time 12 hour'</span>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; max-width: 320px;">
+            <label class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Select Booking Service</label>
+            <select id="booking-cat-style3" class="demo-input" style="padding: 0.5rem; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%;">
+              <option value="hotel"> Hotel Room Booking (Check-in  Checkout)</option>
+              <option value="hospital"> Hospital Admission & Discharge (Admission  Discharge)</option>
+              <option value="flight"> Flight Booking (Departure  Return)</option>
+              <option value="event"> Event Pass Booking (Start  End)</option>
+              <option value="restaurant"> Restaurant Table Reservation (Single Date-Time)</option>
+            </select>
+          </div>
+
+          <div id="booking-alert-style3" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; color: #f87171; font-size: 0.85rem; display: none; align-items: center; gap: 8px;">
+            <span></span>
+            <span id="booking-alert-text-style3">Checkout date cannot be prior to Check-in date.</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-start-title-style3" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Check-in Details</h4>
+              <div>
+                <label id="booking-start-lbl-style3" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Check in date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-start-style3" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+            <div id="booking-end-container-style3" style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-end-title-style3" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Checkout Details</h4>
+              <div>
+                <label id="booking-end-lbl-style3" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Checkout date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-end-style3" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Style-4 -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.03) 100%); border-left: 4px solid var(--accent); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0;">Style-4</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Format: dd-mm-yyyy Time 12 hour (e.g. 24-06-2026 10:30 AM)</span>
+            </div>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'dd-mm-yyyy Time 12 hour'</span>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; max-width: 320px;">
+            <label class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Select Booking Service</label>
+            <select id="booking-cat-style4" class="demo-input" style="padding: 0.5rem; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%;">
+              <option value="hotel"> Hotel Room Booking (Check-in  Checkout)</option>
+              <option value="hospital"> Hospital Admission & Discharge (Admission  Discharge)</option>
+              <option value="flight"> Flight Booking (Departure  Return)</option>
+              <option value="event"> Event Pass Booking (Start  End)</option>
+              <option value="restaurant"> Restaurant Table Reservation (Single Date-Time)</option>
+            </select>
+          </div>
+
+          <div id="booking-alert-style4" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; color: #f87171; font-size: 0.85rem; display: none; align-items: center; gap: 8px;">
+            <span></span>
+            <span id="booking-alert-text-style4">Checkout date cannot be prior to Check-in date.</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-start-title-style4" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Check-in Details</h4>
+              <div>
+                <label id="booking-start-lbl-style4" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Check in date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-start-style4" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+            <div id="booking-end-container-style4" style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-end-title-style4" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Checkout Details</h4>
+              <div>
+                <label id="booking-end-lbl-style4" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Checkout date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-end-style4" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Style-5 -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.03) 100%); border-left: 4px solid var(--accent); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0;">Style-5</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Format: yyyy-dd-mm Time 12 hour (e.g. 2026-24-06 10:30 AM)</span>
+            </div>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'yyyy-dd-mm Time 12 hour'</span>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; max-width: 320px;">
+            <label class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Select Booking Service</label>
+            <select id="booking-cat-style5" class="demo-input" style="padding: 0.5rem; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%;">
+              <option value="hotel"> Hotel Room Booking (Check-in  Checkout)</option>
+              <option value="hospital"> Hospital Admission & Discharge (Admission  Discharge)</option>
+              <option value="flight"> Flight Booking (Departure  Return)</option>
+              <option value="event"> Event Pass Booking (Start  End)</option>
+              <option value="restaurant"> Restaurant Table Reservation (Single Date-Time)</option>
+            </select>
+          </div>
+
+          <div id="booking-alert-style5" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; color: #f87171; font-size: 0.85rem; display: none; align-items: center; gap: 8px;">
+            <span></span>
+            <span id="booking-alert-text-style5">Checkout date cannot be prior to Check-in date.</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-start-title-style5" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Check-in Details</h4>
+              <div>
+                <label id="booking-start-lbl-style5" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Check in date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-start-style5" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+            <div id="booking-end-container-style5" style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-end-title-style5" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Checkout Details</h4>
+              <div>
+                <label id="booking-end-lbl-style5" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Checkout date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-end-style5" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Style-6 -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.03) 100%); border-left: 4px solid var(--accent); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0;">Style-6</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Format: yyyy-mm-dd Time 12 hour (e.g. 2026-06-24 10:30 AM)</span>
+            </div>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'yyyy-mm-dd Time 12 hour'</span>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; max-width: 320px;">
+            <label class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Select Booking Service</label>
+            <select id="booking-cat-style6" class="demo-input" style="padding: 0.5rem; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%;">
+              <option value="hotel"> Hotel Room Booking (Check-in  Checkout)</option>
+              <option value="hospital"> Hospital Admission & Discharge (Admission  Discharge)</option>
+              <option value="flight"> Flight Booking (Departure  Return)</option>
+              <option value="event"> Event Pass Booking (Start  End)</option>
+              <option value="restaurant"> Restaurant Table Reservation (Single Date-Time)</option>
+            </select>
+          </div>
+
+          <div id="booking-alert-style6" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; color: #f87171; font-size: 0.85rem; display: none; align-items: center; gap: 8px;">
+            <span></span>
+            <span id="booking-alert-text-style6">Checkout date cannot be prior to Check-in date.</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-start-title-style6" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Check-in Details</h4>
+              <div>
+                <label id="booking-start-lbl-style6" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Check in date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-start-style6" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+            <div id="booking-end-container-style6" style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-end-title-style6" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Checkout Details</h4>
+              <div>
+                <label id="booking-end-lbl-style6" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Checkout date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-end-style6" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7: Style-7 -->
+        <div class="demo-card" style="background: linear-gradient(145deg, var(--bg-secondary) 0%, rgba(99, 102, 241, 0.03) 100%); border-left: 4px solid var(--accent); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0;">Style-7</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Format: yyyy-mm-dd Time 24 hour (e.g. 2026-06-24 22:30)</span>
+            </div>
+            <span class="demo-badge" style="font-family: monospace; background: rgba(99,102,241,0.1); color: var(--accent); font-size: 0.75rem;">dateFormat: 'yyyy-mm-dd Time 24 hour'</span>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; max-width: 320px;">
+            <label class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Select Booking Service</label>
+            <select id="booking-cat-style7" class="demo-input" style="padding: 0.5rem; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%;">
+              <option value="hotel"> Hotel Room Booking (Check-in  Checkout)</option>
+              <option value="hospital"> Hospital Admission & Discharge (Admission  Discharge)</option>
+              <option value="flight"> Flight Booking (Departure  Return)</option>
+              <option value="event"> Event Pass Booking (Start  End)</option>
+              <option value="restaurant"> Restaurant Table Reservation (Single Date-Time)</option>
+            </select>
+          </div>
+
+          <div id="booking-alert-style7" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; color: #f87171; font-size: 0.85rem; display: none; align-items: center; gap: 8px;">
+            <span></span>
+            <span id="booking-alert-text-style7">Checkout date cannot be prior to Check-in date.</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-start-title-style7" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Check-in Details</h4>
+              <div>
+                <label id="booking-start-lbl-style7" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Check in date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-start-style7" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+            <div id="booking-end-container-style7" style="background: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+              <h4 id="booking-end-title-style7" style="color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;"> Checkout Details</h4>
+              <div>
+                <label id="booking-end-lbl-style7" class="demo-label" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Checkout date & time*</label>
+                <div class="input-wrapper" style="position: relative;">
+                  <input type="text" id="booking-end-style7" class="demo-input" style="padding-left: 2.5rem; width: 100%; border-radius: 8px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); color: var(--text-primary);" placeholder="Choose date & time">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Converter Section -->
+  <section id="converter">
+    <div class="container converter-section-grid">
+      <div class="converter-info">
+        <div class="section-subtitle" style="text-align: left;">Accuracy Redefined</div>
+        <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">BS ↔ AD Calendar Date Converter</h2>
+        <p class="hero-desc" style="margin-bottom: 2rem;">
+          Our open-source conversion engine is powered by validated static calendar metadata spanning the years <strong>1970 BS to 2100 BS</strong> (1913 AD to 2043 AD). Includes public holidays and festival indicators.
+        </p>
+        <ul class="converter-features-list">
+          <li class="converter-feature">
+            <span class="converter-feature-icon"></span>
+            <div>
+              <h4>Bidirectional Conversion</h4>
+              <p>Instantly map Bikram Sambat (BS) to Gregorian Calendar (AD) and vice-versa with 100% accuracy.</p>
+            </div>
+          </li>
+          <li class="converter-feature">
+            <span class="converter-feature-icon"></span>
+            <div>
+              <h4>Standalone Widget Component</h4>
+              <p>Drop the widget anywhere on a dashboard or landing page as an independent conversion widget.</p>
+            </div>
+          </li>
+          <li class="converter-feature">
+            <span class="converter-feature-icon"></span>
+            <div>
+              <h4>Dynamic Meta Insights</h4>
+              <p>Returns day of the week, total days in the month, leap year status, and days difference calculation.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <!-- Standalone Converter Widget Container -->
+        <div id="converter-widget-container" style="box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); border-radius: 16px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Theme Gallery Section -->
+  <section id="themes">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Visual Customization</span>
+        <h2 class="section-title">22 Premium Built-in Themes</h2>
+        <p class="section-desc">Select any theme card below to see its color accents and generate ready-to-use drop-in initialization code.</p>
+      </div>
+
+      <div class="theme-gallery-grid">
+        <!-- 1. Classic Light -->
+        <div class="theme-card" data-theme="classic-light">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Classic Light</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-light"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Clean professional light, crimson accent</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 2. Classic Dark -->
+        <div class="theme-card" data-theme="classic-dark">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Classic Dark</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-dark"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Deep charcoal with warm saffron</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 3. Nepali Red -->
+        <div class="theme-card" data-theme="nepali-red">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Nepali Red</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-nepali-red"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Scarlet crimson of the Nepal Flag</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 4. Ocean Blue -->
+        <div class="theme-card" data-theme="ocean-blue">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Ocean Blue</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-ocean-blue"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Calming marine blues and sky gradients</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 5. Forest Green -->
+        <div class="theme-card" data-theme="forest-green">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Forest Green</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-forest-green"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Sage and deep forest nature shades</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 6. Sunset Orange -->
+        <div class="theme-card" data-theme="sunset-orange">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Sunset Orange</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-sunset-orange"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Vibrant amber and twilight orange</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 7. Royal Purple -->
+        <div class="theme-card" data-theme="royal-purple">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Royal Purple</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-royal-purple"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Regal amethyst with gold accents</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 8. Midnight -->
+        <div class="theme-card" data-theme="midnight">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Midnight Teal</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-midnight"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">OLED absolute dark + glowing teal</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 9. Glassmorphism -->
+        <div class="theme-card" data-theme="glassmorphism">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Glassmorphism</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-glassmorphism"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Translucent frosted glass with blur</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 10. Neumorphism -->
+        <div class="theme-card" data-theme="neumorphism">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Neumorphism</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-neumorphism"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Soft extruded plastic light shadow style</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 11. Gradient Aurora -->
+        <div class="theme-card" data-theme="gradient-aurora">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Gradient Aurora</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-gradient-aurora"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Breathtaking color shifting gradient headers</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 12. Minimal Mono -->
+        <div class="theme-card" data-theme="minimal-mono">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Minimal Mono</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-minimal-mono"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Sleek typographic black and white</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 13. Pastel Soft -->
+        <div class="theme-card" data-theme="pastel-soft">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Pastel Soft</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-pastel-soft"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Dreamy pastel lilac and warm blush pink</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 14. Corporate Blue -->
+        <div class="theme-card" data-theme="corporate-blue">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Corporate Blue</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-corporate-blue"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Enterprise steel blue and clean outlines</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 15. Earthy Terracotta -->
+        <div class="theme-card" data-theme="earthy-terracotta">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Earthy Terracotta</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-earthy-terracotta"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Rustic red clay, wood, and burnt sienna</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 16. Neon Cyberpunk -->
+        <div class="theme-card" data-theme="neon-cyberpunk">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Neon Cyberpunk</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-neon-cyberpunk"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">High energy electric neon cyan on dark</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 17. Material Design -->
+        <div class="theme-card" data-theme="material-design">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Material Design</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-material-design"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Modern Android-inspired UI feel</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 18. Retro Paper -->
+        <div class="theme-card" data-theme="retro-paper">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Retro Paper</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-retro-paper"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Warm vintage parchment and ink theme</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 19. High Contrast -->
+        <div class="theme-card" data-theme="high-contrast">
+          <div class="theme-card-header">
+            <span class="theme-card-name">High Contrast</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-high-contrast"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">WCAG AAA compliant high visibility yellow/black</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 20. Festive Dashain -->
+        <div class="theme-card" data-theme="festive-dashain">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Festive Dashain</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-festive-dashain"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Warm golden yellow, saffron, and crimson</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 21. Mountain Mist -->
+        <div class="theme-card" data-theme="mountain-mist">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Mountain Mist</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-mountain-mist"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Himalayan stone gray and alpine snow</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+
+        <!-- 22. Tropical Teal -->
+        <div class="theme-card" data-theme="tropical-teal">
+          <div class="theme-card-header">
+            <span class="theme-card-name">Tropical Teal</span>
+            <div class="theme-swatch-list">
+              <span class="theme-swatch swatch-tropical-teal"></span>
+            </div>
+          </div>
+          <span class="theme-card-meta">Vibrant refreshing teal and lime-green</span>
+          <input type="text" class="demo-input theme-demo-input" placeholder="Select date...">
+        </div>
+      </div>
+
+      <!-- Theme Code copy Drawer -->
+      <div id="theme-code-drawer" class="theme-code-drawer hidden">
+        <div class="theme-code-header">
+          <span class="theme-code-title">Integration Code: Theme <span id="theme-code-name" style="color: var(--accent); font-weight: 700;">classic-light</span></span>
+          <button class="btn-copy" id="btn-copy-theme-code">Copy Configuration</button>
+        </div>
+        <div class="hljs-code">
+          <pre><code id="theme-code-snippet"></code></pre>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Live Customizer CTA -->
+  <section style="border-top: none; padding-top: 0;">
+    <div class="container">
+      <div class="customizer-cta-banner">
+        <h2 class="customizer-cta-title">Want to build your own custom style?</h2>
+        <p class="customizer-cta-desc">
+          Launch our live interactive Theme Customizer panel to tweak spacing, switch languages, modify date formats, override primary theme colors, and automatically copy the generated JavaScript configuration code.
+        </p>
+        <a href="customizer.html" class="btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Launch Live Customizer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            Nepali DatePicker Studio
+          </div>
+          <p class="footer-desc">
+            The ultimate Bikram Sambat datepicker and calendar conversion library for web developers. Engineered for speed, customizability, and absolute accuracy.
+          </p>
+          <div class="footer-credits">
+            Created by <a href="#">Kushal Khadka</a>.<br>
+            Released under MIT License.
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#demos">Core Demos</a></li>
+            <li><a href="#themes">Theme Gallery</a></li>
+            <li><a href="#converter">BS-AD Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Developer Resources</h4>
+          <ul>
+            <li><a href="docs.html">API Reference Docs</a></li>
+            <li><a href="customizer.html">Live Theme Customizer</a></li>
+            <li><a href="dist/nepali-datepicker.js" target="_blank">JavaScript Bundle</a></li>
+            <li><a href="dist/nepali-datepicker.css" target="_blank">CSS Bundle</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Nepali DatePicker Studio. Created by Kushal Khadka.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" style="color: var(--text-muted); text-decoration: none;">GitHub</a>
+          <a href="#" style="color: var(--text-muted); text-decoration: none;">Documentation</a>
+          <a href="#" style="color: var(--text-muted); text-decoration: none;">Changelog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Library Scripts (Bundled) -->
+  <script src="dist/nepali-datepicker.js"></script>
+
+  <!-- Initialization JavaScript for Demos -->
+  <script src="assets/js/playground.js"></script>
+</body>
+</html>

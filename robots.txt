@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kushalkhadkaa.github.io/nepali-datepicker-studio/sitemap.xml

@@ -1,0 +1,12 @@
+{
+  "name": "@nepali-datepicker-studio/web-components",
+  "version": "1.2.0",
+  "description": "Framework-agnostic <nepali-datepicker> Web Component — works in React, Vue, Angular, Svelte, or plain HTML.",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "files": ["src/", "README.md"],
+  "license": "MIT",
+  "author": "Kushal Khadka",
+  "peerDependencies": { "nepali-datepicker-studio": ">=1.2.0" },
+  "keywords": ["nepali-datepicker", "web-components", "custom-elements", "bikram-sambat", "nepal"]
+}

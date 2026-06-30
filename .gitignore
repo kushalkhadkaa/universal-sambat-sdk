@@ -1,0 +1,25 @@
+# OS
+.DS_Store
+**/.DS_Store
+
+# Editor / AI tools
+.agents/
+.gemini/
+scratch/
+.claude/
+.vscode/
+.idea/
+
+# Dependencies
+node_modules/
+
+# Logs and local env
+*.log
+.env
+.env.*
+!.env.example
+
+# Build artifacts & binaries that should not be committed
+nepali-datepicker-pro.zip
+coverage/
+.nyc_output/

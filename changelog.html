@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="assets/js/ndp-theme-init.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog — Nepali DatePicker Studio</title>
+  <meta name="description" content="Changelog and release notes history for Nepali DatePicker Studio. Tracks features, fixes, and visual theme releases.">
+  <meta name="keywords" content="nepali datepicker changelog, bikram sambat library updates, nepali calendar releases, nepali datepicker version history">
+  <meta name="author" content="Kushal Khadka">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#090d16">
+  <link rel="canonical" href="https://kushalkhadkaa.github.io/nepali-datepicker-studio/changelog.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Changelog — Nepali DatePicker Studio">
+  <meta property="og:description" content="Version history and release notes for Nepali DatePicker Studio.">
+  <meta property="og:url" content="https://kushalkhadkaa.github.io/nepali-datepicker-studio/changelog.html">
+  <meta property="og:site_name" content="Nepali DatePicker Studio">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Changelog — Nepali DatePicker Studio">
+  <meta name="twitter:description" content="Version history, feature releases, and improvements for Nepali DatePicker Studio.">
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  
+  <!-- Library CSS (Bundled) -->
+  <link rel="stylesheet" href="dist/nepali-datepicker.css">
+  
+  <!-- Style System -->
+  <link rel="stylesheet" href="assets/css/changelog.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-area">
+        <span class="logo-text">Nepali DatePicker <span style="color: var(--accent);">Studio</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Playground</a></li>
+        <li><a href="customizer.html">Customizer</a></li>
+        <li><a href="docs.html">API Docs</a></li>
+        <li><a href="changelog.html" class="active">Changelog</a></li>
+        <li><a href="about.html">About Developer</a></li>
+        <li>
+          <button id="theme-switcher-btn" class="theme-switcher-btn" aria-label="Toggle Theme" type="button">
+            <span class="theme-icon-light">&#9728; Light</span>
+            <span class="theme-icon-dark">&#9790; Dark</span>
+          </button>
+        </li>
+        <li><a href="customizer.html" class="btn-nav-customizer">Live Customizer</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <h1 class="page-title">Release Notes & Changelog</h1>
+    <p class="page-desc">Stay up to date with the latest releases, performance improvements, and fixes for Nepali DatePicker Studio.</p>
+
+    <div class="timeline">
+      
+      <!-- Version 1.2.0 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <span class="timeline-version-badge" style="background: #10b981;">v1.2.0</span>
+          <span class="timeline-date">June 27, 2026 (Latest Release)</span>
+        </div>
+        <div class="timeline-card">
+          <h3 class="timeline-card-title">Assets Separation, Theme Performance & Dynamic Booking Initialization</h3>
+          <ul class="change-list">
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Clean Separation of CSS & JS Assets</strong>: Extracted all page-specific inline stylesheets and script logics from all HTML files into modular external assets (e.g. <code>assets/css/playground.css</code>, <code>assets/js/playground.js</code>, etc.) for streamlined maintenance and browser caching.</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Early Theme Initializer Script</strong>: Unified the head theme-detection code into <code>assets/js/ndp-theme-init.js</code> inside all HTML headers to immediately apply the light/dark themes and avoid layout shifts.</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Standalone Age & Date Difference Calculator</strong>: Added an interactive conversion tab allowing users to calculate precise age, total elapsed days, and relative time offsets dynamically between two Bikram Sambat dates.</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Long AD Gregorian Format (DD MMMM YYYY)</strong>: Shipped built-in format conversion allowing high-accuracy mapping of Nepali BS dates to standard long-form English AD dates (e.g., <code>01 February 2035</code>).</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Bilingual Devanagari Translation Cleanups</strong>: Replaced literal Devanagari translation terms like <code>सफा</code> (clean) with the action-oriented term <code>हटाउनुहोस्</code> (clear/remove) in calendar panel layouts.</li>
+            <li><span class="tag-badge tag-fix">Fix</span><strong>Booking & Reservation Pickers Fix</strong>: Resolved a syntax brackets error within the playground scripts and successfully initialized all 7 dynamic booking form styles, matching travel, medical, and dining formats.</li>
+            <li><span class="tag-badge tag-fix">Fix</span><strong>UTF-8 Encoding Normalization</strong>: Swapped custom unicode box-drawing character strings (e.g., <code>──</code>) causing decoding warnings in specific server setups with standard CSS formatting rules.</li>
+            <li><span class="tag-badge tag-fix">Fix</span><strong>Self-Defense Security Seals</strong>: Added prototype freeze validations and DOM tree MutationObservers to secure calendar widgets from script-injection or hot-patching.</li>
+            <li><span class="tag-badge tag-fix">Fix</span><strong>Refreshed ZIP Archive Distribution</strong>: Re-compiled the main download package (<code>nepali-datepicker-pro.zip</code>) to distribute clean, modular, and lightweight code files alongside the new asset structures.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Version 1.1.0 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <span class="timeline-version-badge">v1.1.0</span>
+          <span class="timeline-date">June 2026 (Current Release)</span>
+        </div>
+        <div class="timeline-card">
+          <h3 class="timeline-card-title">Performance Tuning, Time Picker Integration & Layout Fixes</h3>
+          <ul class="change-list">
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Light / Dark Theme Switcher</strong>: Built a client-side theme switcher utilizing CSS custom property variables and localStorage to persist preference states across page reloads.</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Range Presets Sidebar</strong>: Integrated quick date range presets for single-click selection of common intervals, including Nepalese Fiscal Year (आ.व.) ranges.</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Dual Time Picker</strong>: Embedded hour and minute selector dropdown inputs in the calendar panel footer to allow simultaneous date and time capture.</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Weekday & Boundary Constraints</strong>: Enabled disabling specific days of the week (e.g. Saturdays) and setting hard `minDate` and `maxDate` boundaries.</li>
+            <li><span class="tag-badge tag-fix">Fix</span><strong>Memory Leak Cleanup</strong>: Refactored month navigation rendering to reuse a single document fragment instead of continuously recreating calendar container nodes.</li>
+            <li><span class="tag-badge tag-fix">Fix</span><strong>Stray Character Input Masking</strong>: Handled manual keypress typing events to automatically block invalid alphabetic characters and enforce formatting rules.</li>
+            <li><span class="tag-badge tag-fix">Fix</span><strong>Z-Index Modals Stacking</strong>: Resolved overlay conflict bugs in relative layouts by absolute-positioning the picker panel dynamically on viewport focus.</li>
+            <li><span class="tag-badge tag-fix">Fix</span><strong>Auto-Reset Range Selection Bounds</strong>: Fixed range selection limits so that selecting a start date chronologically after an end date auto-resets the endpoint instead of breaking calculations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Version 1.0.0 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <span class="timeline-version-badge">v1.0.0</span>
+          <span class="timeline-date">May 2026</span>
+        </div>
+        <div class="timeline-card">
+          <h3 class="timeline-card-title">Initial Release</h3>
+          <ul class="change-list">
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Core BS-AD Converter Engine</strong>: Mapped high-precision mathematical calendar mapping lookup matrices for Bikram Sambat years 1970 to 2100.</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>22 Pre-Designed CSS Themes</strong>: Shipped built-in styling sheets (including midnight, glassmorphism, corporate) configured fully via custom CSS properties.</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Vanilla JS Footprint</strong>: Designed the widget as a lightweight, zero-dependency drop-in library to ensure framework compatibility.</li>
+            <li><span class="tag-badge tag-feature">Feature</span><strong>Focus & Keyboard Controls</strong>: Enabled complete navigation of month/year panels and day cells using arrow keys, Esc, and Enter.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>&copy; 2026 Nepali DatePicker Studio. Created by Kushal Khadka.</div>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Playground</a>
+        <a href="customizer.html">Live Customizer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/changelog.js"></script>
+</body>
+</html>

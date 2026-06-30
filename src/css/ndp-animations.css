@@ -1,0 +1,233 @@
+/**
+ * NepaliDatePickerPro — ndp-animations.css
+ * All animations, transitions, and micro-interactions.
+ */
+
+/* -- Open / Close ------------------------------------------─ */
+.ndp-picker {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  transition:
+    opacity 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.ndp-picker.ndp-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.ndp-picker.ndp-closing {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.97);
+  pointer-events: none;
+}
+
+/* Custom Animation Types */
+.ndp-picker.ndp-anim-slide {
+  transform: translateY(20px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.ndp-picker.ndp-anim-slide.ndp-open {
+  transform: translateY(0);
+}
+.ndp-picker.ndp-anim-slide.ndp-closing {
+  transform: translateY(20px);
+}
+
+.ndp-picker.ndp-anim-fade {
+  transform: none;
+  transition: opacity 0.25s ease;
+}
+.ndp-picker.ndp-anim-fade.ndp-open {
+  transform: none;
+}
+.ndp-picker.ndp-anim-fade.ndp-closing {
+  transform: none;
+}
+
+.ndp-picker.ndp-inline {
+  opacity: 1;
+  transform: none;
+  pointer-events: all;
+}
+
+/* -- Day Cell Hover ----------------------------------------─ */
+@keyframes ndp-ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.35;
+  }
+  to {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.ndp-day:not(.ndp-disabled)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--ndp-primary, #c0392b);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+/* -- Selected Date Pulse ------------------------------------ */
+@keyframes ndp-select-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(192,57,43,0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(192,57,43,0); }
+  100% { box-shadow: 0 0 0 0 rgba(192,57,43,0); }
+}
+
+.ndp-selected {
+  animation: ndp-select-pulse 0.5s ease-out;
+}
+
+/* -- Nav Button --------------------------------------------─ */
+@keyframes ndp-nav-press {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.88); }
+  100% { transform: scale(1); }
+}
+
+.ndp-nav-btn:active {
+  animation: ndp-nav-press 0.15s ease;
+}
+
+/* -- View Transition ---------------------------------------- */
+@keyframes ndp-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ndp-days-grid,
+.ndp-months-grid,
+.ndp-years-grid {
+  animation: ndp-fade-in 0.18s ease both;
+}
+
+/* -- Today Dot Pulse ---------------------------------------- */
+@keyframes ndp-today-ping {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; transform: translateX(-50%) scale(1.5); }
+}
+
+.ndp-today::after {
+  animation: ndp-today-ping 2.4s ease-in-out infinite;
+}
+
+/* -- Converter Convert Button ------------------------------─ */
+@keyframes ndp-spin {
+  to { transform: rotate(360deg); }
+}
+
+.ndp-conv-btn:active span:first-child {
+  display: inline-block;
+  animation: ndp-spin 0.4s ease;
+}
+
+/* -- Converter Result Slide In ------------------------------ */
+@keyframes ndp-slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ndp-conv-result-card:not(.ndp-hidden) {
+  animation: ndp-slide-up 0.24s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* -- Holiday Dot Pop ---------------------------------------- */
+@keyframes ndp-dot-pop {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+.ndp-dot {
+  animation: ndp-dot-pop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* -- Range Highlight Fade ----------------------------------─ */
+.ndp-in-range {
+  transition: background 0.12s ease;
+}
+
+/* -- Tooltip Fade ------------------------------------------─ */
+@keyframes ndp-tooltip-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(2px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.ndp-day:hover .ndp-tooltip {
+  animation: ndp-tooltip-in 0.18s ease both;
+}
+
+/* -- Theme Switcher Fade ------------------------------------ */
+@keyframes ndp-theme-fade {
+  from { opacity: 0.7; }
+  to   { opacity: 1; }
+}
+
+.ndp-picker,
+.ndp-converter {
+  animation: ndp-theme-fade 0.3s ease;
+}
+
+/* -- Month Cell Hover --------------------------------------─ */
+.ndp-month-cell,
+.ndp-year-cell {
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.ndp-month-cell:hover:not(.ndp-selected),
+.ndp-year-cell:hover:not(.ndp-selected) {
+  transform: scale(1.06);
+}
+
+/* -- Glassmorphism shimmer ---------------------------------- */
+@keyframes ndp-shimmer {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
+}
+
+.ndp-theme-glassmorphism .ndp-header {
+  background-size: 200% auto;
+  animation: ndp-shimmer 3s linear infinite;
+}
+
+/* -- Aurora gradient animation ------------------------------ */
+@keyframes ndp-aurora-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.ndp-theme-gradient-aurora .ndp-header {
+  background-size: 200% 200%;
+  animation: ndp-aurora-shift 4s ease infinite;
+}
+
+/* -- Neon glow pulse ---------------------------------------- */
+@keyframes ndp-neon-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0,255,200,0.4), 0 0 20px rgba(0,255,200,0.1); }
+  50%       { box-shadow: 0 0 16px rgba(0,255,200,0.7), 0 0 30px rgba(0,255,200,0.2); }
+}
+
+.ndp-theme-neon-cyberpunk .ndp-selected {
+  animation: ndp-neon-glow 1.5s ease infinite;
+}
+
+/* -- Festive sparkle ---------------------------------------- */
+@keyframes ndp-sparkle {
+  0%   { opacity: 0; transform: scale(0) rotate(0deg); }
+  50%  { opacity: 1; transform: scale(1.2) rotate(180deg); }
+  100% { opacity: 0; transform: scale(0) rotate(360deg); }
+}
+
+.ndp-theme-festive-dashain .ndp-today::after {
+  animation: ndp-sparkle 2s ease infinite;
+}

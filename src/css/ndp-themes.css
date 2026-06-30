@@ -1,0 +1,889 @@
+/**
+ * NepaliDatePickerPro — ndp-themes.css
+ * 22 professional themes — each overrides CSS custom properties.
+ * Usage: add class "ndp-theme-{name}" to .ndp-picker or .ndp-converter
+ */
+
+/* ══════════════════════════════════════════════════════════════
+   1. CLASSIC LIGHT (default)
+   Clean, traditional, professional white
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-classic-light {
+  --ndp-primary:         #c0392b;
+  --ndp-primary-dark:    #a93226;
+  --ndp-bg:              #ffffff;
+  --ndp-body-bg:         #ffffff;
+  --ndp-header-bg:       #c0392b;
+  --ndp-header-text:     #ffffff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #fafafa;
+  --ndp-border:          #e8e8e8;
+  --ndp-day-text:        #2c2c2c;
+  --ndp-weekday-text:    #aaa;
+  --ndp-ad-text:         #bbb;
+  --ndp-hover-bg:        rgba(192,57,43,0.09);
+  --ndp-today-bg:        rgba(192,57,43,0.08);
+  --ndp-selected-bg:     #c0392b;
+  --ndp-selected-text:   #ffffff;
+  --ndp-range-bg:        rgba(192,57,43,0.12);
+  --ndp-range-hover-bg:  rgba(192,57,43,0.18);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.15);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.28);
+  --ndp-title-bg:        rgba(255,255,255,0.15);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.28);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.14);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.09);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #f7f7f7;
+  --ndp-input-border:    #e0e0e0;
+  --ndp-muted:           #999;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. CLASSIC DARK
+   Deep charcoal with saffron accents
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-classic-dark {
+  --ndp-primary:         #e67e22;
+  --ndp-primary-dark:    #ca6f1e;
+  --ndp-bg:              #1e1e2e;
+  --ndp-body-bg:         #1e1e2e;
+  --ndp-header-bg:       #16162a;
+  --ndp-header-text:     #f0c060;
+  --ndp-header-border:   rgba(255,255,255,0.05);
+  --ndp-footer-bg:       #16162a;
+  --ndp-border:          rgba(255,255,255,0.08);
+  --ndp-day-text:        #e8e8e8;
+  --ndp-weekday-text:    #666;
+  --ndp-ad-text:         #555;
+  --ndp-hover-bg:        rgba(230,126,34,0.15);
+  --ndp-today-bg:        rgba(230,126,34,0.12);
+  --ndp-selected-bg:     #e67e22;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(230,126,34,0.15);
+  --ndp-range-hover-bg:  rgba(230,126,34,0.22);
+  --ndp-holiday-color:   #f39c12;
+  --ndp-nav-bg:          rgba(255,255,255,0.06);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.12);
+  --ndp-title-bg:        rgba(255,255,255,0.06);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.12);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.45);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.4);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #12121e;
+  --ndp-input-border:    rgba(255,255,255,0.1);
+  --ndp-muted:           #666;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. NEPALI RED
+   Crimson / scarlet — inspired by Nepal flag
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-nepali-red {
+  --ndp-primary:         #8B0000;
+  --ndp-primary-dark:    #6b0000;
+  --ndp-bg:              #fff5f5;
+  --ndp-body-bg:         #fff5f5;
+  --ndp-header-bg:       linear-gradient(135deg, #8B0000 0%, #c0392b 100%);
+  --ndp-header-text:     #ffe8e8;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #fff0f0;
+  --ndp-border:          #ffd0d0;
+  --ndp-day-text:        #2d0000;
+  --ndp-weekday-text:    #c0392b;
+  --ndp-ad-text:         #e0aaaa;
+  --ndp-hover-bg:        rgba(139,0,0,0.08);
+  --ndp-today-bg:        rgba(139,0,0,0.1);
+  --ndp-selected-bg:     #8B0000;
+  --ndp-selected-text:   #ffe8e8;
+  --ndp-range-bg:        rgba(139,0,0,0.1);
+  --ndp-range-hover-bg:  rgba(139,0,0,0.16);
+  --ndp-holiday-color:   #c0392b;
+  --ndp-nav-bg:          rgba(255,232,232,0.15);
+  --ndp-nav-hover-bg:    rgba(255,232,232,0.28);
+  --ndp-title-bg:        rgba(255,232,232,0.15);
+  --ndp-title-hover-bg:  rgba(255,232,232,0.28);
+  --ndp-shadow:          0 12px 40px rgba(139,0,0,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(139,0,0,0.12);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #fff0f0;
+  --ndp-input-border:    #ffd0d0;
+  --ndp-muted:           #c0a0a0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. OCEAN BLUE
+   Deep ocean blues, surf whites
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-ocean-blue {
+  --ndp-primary:         #1a6fb5;
+  --ndp-primary-dark:    #155a94;
+  --ndp-bg:              #f0f7ff;
+  --ndp-body-bg:         #f0f7ff;
+  --ndp-header-bg:       linear-gradient(135deg, #0c3d6e 0%, #1a6fb5 100%);
+  --ndp-header-text:     #e0f2ff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #e8f4ff;
+  --ndp-border:          #c5ddf5;
+  --ndp-day-text:        #0d2d4e;
+  --ndp-weekday-text:    #1a6fb5;
+  --ndp-ad-text:         #7baed6;
+  --ndp-hover-bg:        rgba(26,111,181,0.1);
+  --ndp-today-bg:        rgba(26,111,181,0.1);
+  --ndp-selected-bg:     #1a6fb5;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(26,111,181,0.12);
+  --ndp-range-hover-bg:  rgba(26,111,181,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.25);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.25);
+  --ndp-shadow:          0 12px 40px rgba(26,111,181,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(26,111,181,0.12);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #e8f4ff;
+  --ndp-input-border:    #c5ddf5;
+  --ndp-muted:           #7baed6;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. FOREST GREEN
+   Earthy sage and deep forest
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-forest-green {
+  --ndp-primary:         #1e7e34;
+  --ndp-primary-dark:    #196429;
+  --ndp-bg:              #f0faf2;
+  --ndp-body-bg:         #f0faf2;
+  --ndp-header-bg:       linear-gradient(135deg, #0f4020 0%, #1e7e34 100%);
+  --ndp-header-text:     #d4f5da;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #e8f7eb;
+  --ndp-border:          #b8e5c0;
+  --ndp-day-text:        #0d2e15;
+  --ndp-weekday-text:    #1e7e34;
+  --ndp-ad-text:         #7bc08a;
+  --ndp-hover-bg:        rgba(30,126,52,0.1);
+  --ndp-today-bg:        rgba(30,126,52,0.1);
+  --ndp-selected-bg:     #1e7e34;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(30,126,52,0.12);
+  --ndp-range-hover-bg:  rgba(30,126,52,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 12px 40px rgba(30,126,52,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(30,126,52,0.12);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #e8f7eb;
+  --ndp-input-border:    #b8e5c0;
+  --ndp-muted:           #7bc08a;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. SUNSET ORANGE
+   Warm amber, coral, golden gradients
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-sunset-orange {
+  --ndp-primary:         #e05b1a;
+  --ndp-primary-dark:    #c04e15;
+  --ndp-bg:              #fff8f0;
+  --ndp-body-bg:         #fff8f0;
+  --ndp-header-bg:       linear-gradient(135deg, #b34000 0%, #e07b1a 60%, #f5a623 100%);
+  --ndp-header-text:     #fff5e0;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #fff2e0;
+  --ndp-border:          #fdd8b5;
+  --ndp-day-text:        #2e1800;
+  --ndp-weekday-text:    #e05b1a;
+  --ndp-ad-text:         #d4a070;
+  --ndp-hover-bg:        rgba(224,91,26,0.1);
+  --ndp-today-bg:        rgba(224,91,26,0.1);
+  --ndp-selected-bg:     #e05b1a;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(224,91,26,0.12);
+  --ndp-range-hover-bg:  rgba(224,91,26,0.2);
+  --ndp-holiday-color:   #c0392b;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.25);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.25);
+  --ndp-shadow:          0 12px 40px rgba(224,91,26,0.22);
+  --ndp-shadow-inline:   0 4px 20px rgba(224,91,26,0.12);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #fff2e0;
+  --ndp-input-border:    #fdd8b5;
+  --ndp-muted:           #c49060;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. ROYAL PURPLE
+   Deep purples with gold accents
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-royal-purple {
+  --ndp-primary:         #7c3aed;
+  --ndp-primary-dark:    #6d28d9;
+  --ndp-bg:              #faf5ff;
+  --ndp-body-bg:         #faf5ff;
+  --ndp-header-bg:       linear-gradient(135deg, #3b0764 0%, #7c3aed 100%);
+  --ndp-header-text:     #f3e8ff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f5f0ff;
+  --ndp-border:          #ddd0f8;
+  --ndp-day-text:        #1e0040;
+  --ndp-weekday-text:    #7c3aed;
+  --ndp-ad-text:         #b89dd8;
+  --ndp-hover-bg:        rgba(124,58,237,0.1);
+  --ndp-today-bg:        rgba(124,58,237,0.1);
+  --ndp-selected-bg:     #7c3aed;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(124,58,237,0.12);
+  --ndp-range-hover-bg:  rgba(124,58,237,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 12px 40px rgba(124,58,237,0.25);
+  --ndp-shadow-inline:   0 4px 20px rgba(124,58,237,0.14);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #f5f0ff;
+  --ndp-input-border:    #ddd0f8;
+  --ndp-muted:           #b89dd8;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. MIDNIGHT
+   Ultra-dark OLED-optimized dark mode
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-midnight {
+  --ndp-primary:         #00d4aa;
+  --ndp-primary-dark:    #00b894;
+  --ndp-bg:              #000000;
+  --ndp-body-bg:         #000000;
+  --ndp-header-bg:       #0a0a0a;
+  --ndp-header-text:     #00d4aa;
+  --ndp-header-border:   rgba(0,212,170,0.1);
+  --ndp-footer-bg:       #0a0a0a;
+  --ndp-border:          rgba(255,255,255,0.06);
+  --ndp-day-text:        #e0e0e0;
+  --ndp-weekday-text:    #444;
+  --ndp-ad-text:         #333;
+  --ndp-hover-bg:        rgba(0,212,170,0.1);
+  --ndp-today-bg:        rgba(0,212,170,0.1);
+  --ndp-selected-bg:     #00d4aa;
+  --ndp-selected-text:   #000;
+  --ndp-range-bg:        rgba(0,212,170,0.1);
+  --ndp-range-hover-bg:  rgba(0,212,170,0.16);
+  --ndp-holiday-color:   #ff6b6b;
+  --ndp-nav-bg:          rgba(255,255,255,0.04);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.1);
+  --ndp-title-bg:        rgba(255,255,255,0.04);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.1);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.8);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.7);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #0a0a0a;
+  --ndp-input-border:    rgba(255,255,255,0.08);
+  --ndp-muted:           #444;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   9. GLASSMORPHISM
+   Frosted glass with blur — light version
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-glassmorphism {
+  --ndp-primary:         #6c63ff;
+  --ndp-primary-dark:    #5a52e0;
+  --ndp-bg:              rgba(255,255,255,0.22);
+  --ndp-body-bg:         rgba(255,255,255,0.22);
+  --ndp-header-bg:       linear-gradient(135deg, rgba(108,99,255,0.8) 0%, rgba(155,89,182,0.7) 100%);
+  --ndp-header-text:     #fff;
+  --ndp-header-border:   rgba(255,255,255,0.2);
+  --ndp-footer-bg:       rgba(255,255,255,0.15);
+  --ndp-border:          rgba(255,255,255,0.35);
+  --ndp-day-text:        #222;
+  --ndp-weekday-text:    rgba(108,99,255,0.8);
+  --ndp-ad-text:         rgba(0,0,0,0.4);
+  --ndp-hover-bg:        rgba(108,99,255,0.12);
+  --ndp-today-bg:        rgba(108,99,255,0.1);
+  --ndp-selected-bg:     #6c63ff;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(108,99,255,0.12);
+  --ndp-range-hover-bg:  rgba(108,99,255,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.15);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.3);
+  --ndp-title-bg:        rgba(255,255,255,0.15);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.3);
+  --ndp-shadow:          0 16px 50px rgba(108,99,255,0.3), 0 0 0 1px rgba(255,255,255,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(108,99,255,0.15);
+  --ndp-radius:          18px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      10px;
+  --ndp-input-bg:        rgba(255,255,255,0.15);
+  --ndp-input-border:    rgba(255,255,255,0.3);
+  --ndp-muted:           rgba(0,0,0,0.45);
+}
+
+.ndp-theme-glassmorphism {
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   10. NEUMORPHISM
+   Soft shadows, embossed buttons
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-neumorphism {
+  --ndp-primary:         #0075d1;
+  --ndp-primary-dark:    #005faa;
+  --ndp-bg:              #e4ebf5;
+  --ndp-body-bg:         #e4ebf5;
+  --ndp-header-bg:       #d8e2f0;
+  --ndp-header-text:     #0075d1;
+  --ndp-header-border:   rgba(255,255,255,0.7);
+  --ndp-footer-bg:       #d8e2f0;
+  --ndp-border:          rgba(255,255,255,0.6);
+  --ndp-day-text:        #334155;
+  --ndp-weekday-text:    #94a3b8;
+  --ndp-ad-text:         #94a3b8;
+  --ndp-hover-bg:        rgba(0,117,209,0.07);
+  --ndp-today-bg:        rgba(0,117,209,0.07);
+  --ndp-selected-bg:     #0075d1;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(0,117,209,0.08);
+  --ndp-range-hover-bg:  rgba(0,117,209,0.14);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          transparent;
+  --ndp-nav-hover-bg:    rgba(0,0,0,0.04);
+  --ndp-title-bg:        transparent;
+  --ndp-title-hover-bg:  rgba(0,0,0,0.04);
+  --ndp-shadow:          6px 6px 16px #b8c8dc, -6px -6px 16px #ffffff;
+  --ndp-shadow-inline:   4px 4px 10px #b8c8dc, -4px -4px 10px #ffffff;
+  --ndp-radius:          18px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      10px;
+  --ndp-input-bg:        #e4ebf5;
+  --ndp-input-border:    rgba(255,255,255,0.5);
+  --ndp-muted:           #94a3b8;
+}
+
+.ndp-theme-neumorphism .ndp-nav-btn {
+  box-shadow: 3px 3px 8px #b8c8dc, -3px -3px 8px #ffffff;
+}
+
+.ndp-theme-neumorphism .ndp-day:hover:not(.ndp-disabled) {
+  box-shadow: inset 2px 2px 6px #b8c8dc, inset -2px -2px 6px #ffffff;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   11. GRADIENT AURORA
+   Multi-color aurora borealis gradients
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-gradient-aurora {
+  --ndp-primary:         #00c9a7;
+  --ndp-primary-dark:    #00a88a;
+  --ndp-bg:              #0d1b2a;
+  --ndp-body-bg:         #0d1b2a;
+  --ndp-header-bg:       linear-gradient(135deg, #0a1628 0%, #1a0633 35%, #002c20 70%, #0a1628 100%);
+  --ndp-header-text:     #a8f5de;
+  --ndp-header-border:   rgba(0,201,167,0.1);
+  --ndp-footer-bg:       #0a1525;
+  --ndp-border:          rgba(0,201,167,0.12);
+  --ndp-day-text:        #c8e6f0;
+  --ndp-weekday-text:    rgba(0,201,167,0.6);
+  --ndp-ad-text:         rgba(200,230,240,0.3);
+  --ndp-hover-bg:        rgba(0,201,167,0.12);
+  --ndp-today-bg:        rgba(0,201,167,0.1);
+  --ndp-selected-bg:     linear-gradient(135deg, #00c9a7 0%, #0075ff 100%);
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(0,201,167,0.1);
+  --ndp-range-hover-bg:  rgba(0,201,167,0.18);
+  --ndp-holiday-color:   #ff6b9d;
+  --ndp-nav-bg:          rgba(0,201,167,0.1);
+  --ndp-nav-hover-bg:    rgba(0,201,167,0.2);
+  --ndp-title-bg:        rgba(0,201,167,0.1);
+  --ndp-title-hover-bg:  rgba(0,201,167,0.2);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.6), 0 0 30px rgba(0,201,167,0.15);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.5);
+  --ndp-radius:          16px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      10px;
+  --ndp-input-bg:        rgba(0,201,167,0.06);
+  --ndp-input-border:    rgba(0,201,167,0.15);
+  --ndp-muted:           rgba(0,201,167,0.45);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   12. MINIMAL MONO
+   Black, white, gray — typographic minimal
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-minimal-mono {
+  --ndp-primary:         #111111;
+  --ndp-primary-dark:    #000000;
+  --ndp-bg:              #ffffff;
+  --ndp-body-bg:         #ffffff;
+  --ndp-header-bg:       #111111;
+  --ndp-header-text:     #ffffff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f5f5f5;
+  --ndp-border:          #e0e0e0;
+  --ndp-day-text:        #111;
+  --ndp-weekday-text:    #bbb;
+  --ndp-ad-text:         #ccc;
+  --ndp-hover-bg:        #f0f0f0;
+  --ndp-today-bg:        #f0f0f0;
+  --ndp-selected-bg:     #111111;
+  --ndp-selected-text:   #ffffff;
+  --ndp-range-bg:        #e8e8e8;
+  --ndp-range-hover-bg:  #ddd;
+  --ndp-holiday-color:   #111;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 8px 30px rgba(0,0,0,0.12);
+  --ndp-shadow-inline:   0 2px 10px rgba(0,0,0,0.08);
+  --ndp-radius:          4px;
+  --ndp-btn-radius:      2px;
+  --ndp-day-radius:      2px;
+  --ndp-input-bg:        #f5f5f5;
+  --ndp-input-border:    #ddd;
+  --ndp-muted:           #999;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   13. PASTEL SOFT
+   Blush pink, lavender, mint pastels
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-pastel-soft {
+  --ndp-primary:         #d481a8;
+  --ndp-primary-dark:    #c06090;
+  --ndp-bg:              #fdf5f9;
+  --ndp-body-bg:         #fdf5f9;
+  --ndp-header-bg:       linear-gradient(135deg, #d481a8 0%, #b891d4 100%);
+  --ndp-header-text:     #fff5fa;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f8edf5;
+  --ndp-border:          #f0c8df;
+  --ndp-day-text:        #4a2040;
+  --ndp-weekday-text:    #d481a8;
+  --ndp-ad-text:         #e0a8c8;
+  --ndp-hover-bg:        rgba(212,129,168,0.1);
+  --ndp-today-bg:        rgba(212,129,168,0.1);
+  --ndp-selected-bg:     #d481a8;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(212,129,168,0.12);
+  --ndp-range-hover-bg:  rgba(212,129,168,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.2);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.35);
+  --ndp-title-bg:        rgba(255,255,255,0.2);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.35);
+  --ndp-shadow:          0 12px 40px rgba(212,129,168,0.25);
+  --ndp-shadow-inline:   0 4px 20px rgba(212,129,168,0.15);
+  --ndp-radius:          20px;
+  --ndp-btn-radius:      12px;
+  --ndp-day-radius:      50%;
+  --ndp-input-bg:        #f8edf5;
+  --ndp-input-border:    #f0c8df;
+  --ndp-muted:           #d0a0c0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   14. CORPORATE BLUE
+   Professional navy/steel for enterprise
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-corporate-blue {
+  --ndp-primary:         #1e3a5f;
+  --ndp-primary-dark:    #162d4a;
+  --ndp-bg:              #f4f7fb;
+  --ndp-body-bg:         #f4f7fb;
+  --ndp-header-bg:       #1e3a5f;
+  --ndp-header-text:     #e8f0fc;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #edf2f9;
+  --ndp-border:          #cdd8e8;
+  --ndp-day-text:        #1e3a5f;
+  --ndp-weekday-text:    #4e6d92;
+  --ndp-ad-text:         #8ea8c8;
+  --ndp-hover-bg:        rgba(30,58,95,0.07);
+  --ndp-today-bg:        rgba(30,58,95,0.08);
+  --ndp-selected-bg:     #1e3a5f;
+  --ndp-selected-text:   #e8f0fc;
+  --ndp-range-bg:        rgba(30,58,95,0.08);
+  --ndp-range-hover-bg:  rgba(30,58,95,0.14);
+  --ndp-holiday-color:   #c0392b;
+  --ndp-nav-bg:          rgba(255,255,255,0.08);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.18);
+  --ndp-title-bg:        rgba(255,255,255,0.08);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.18);
+  --ndp-shadow:          0 8px 30px rgba(30,58,95,0.18);
+  --ndp-shadow-inline:   0 4px 14px rgba(30,58,95,0.1);
+  --ndp-radius:          10px;
+  --ndp-btn-radius:      6px;
+  --ndp-day-radius:      6px;
+  --ndp-input-bg:        #edf2f9;
+  --ndp-input-border:    #cdd8e8;
+  --ndp-muted:           #8ea8c8;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   15. EARTHY TERRACOTTA
+   Clay, burnt sienna, warm beige
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-earthy-terracotta {
+  --ndp-primary:         #c15a3a;
+  --ndp-primary-dark:    #a34830;
+  --ndp-bg:              #fdf5ef;
+  --ndp-body-bg:         #fdf5ef;
+  --ndp-header-bg:       linear-gradient(135deg, #6b2d1c 0%, #c15a3a 100%);
+  --ndp-header-text:     #ffe8d8;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f5ede3;
+  --ndp-border:          #e8cfc0;
+  --ndp-day-text:        #3a1a0a;
+  --ndp-weekday-text:    #c15a3a;
+  --ndp-ad-text:         #c4a090;
+  --ndp-hover-bg:        rgba(193,90,58,0.1);
+  --ndp-today-bg:        rgba(193,90,58,0.1);
+  --ndp-selected-bg:     #c15a3a;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(193,90,58,0.12);
+  --ndp-range-hover-bg:  rgba(193,90,58,0.2);
+  --ndp-holiday-color:   #a93226;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.25);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.25);
+  --ndp-shadow:          0 12px 40px rgba(193,90,58,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(193,90,58,0.12);
+  --ndp-radius:          12px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #f5ede3;
+  --ndp-input-border:    #e8cfc0;
+  --ndp-muted:           #c0a090;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   16. NEON CYBERPUNK
+   Electric neon on ultra-dark background
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-neon-cyberpunk {
+  --ndp-primary:         #00ffe0;
+  --ndp-primary-dark:    #00ccb4;
+  --ndp-bg:              #030318;
+  --ndp-body-bg:         #030318;
+  --ndp-header-bg:       #06061e;
+  --ndp-header-text:     #00ffe0;
+  --ndp-header-border:   rgba(0,255,224,0.15);
+  --ndp-footer-bg:       #06061e;
+  --ndp-border:          rgba(0,255,224,0.1);
+  --ndp-day-text:        #c8f8ff;
+  --ndp-weekday-text:    rgba(0,255,224,0.4);
+  --ndp-ad-text:         rgba(200,248,255,0.25);
+  --ndp-hover-bg:        rgba(0,255,224,0.08);
+  --ndp-today-bg:        rgba(0,255,224,0.08);
+  --ndp-selected-bg:     #00ffe0;
+  --ndp-selected-text:   #000;
+  --ndp-range-bg:        rgba(0,255,224,0.07);
+  --ndp-range-hover-bg:  rgba(0,255,224,0.13);
+  --ndp-holiday-color:   #ff0080;
+  --ndp-nav-bg:          rgba(0,255,224,0.06);
+  --ndp-nav-hover-bg:    rgba(0,255,224,0.14);
+  --ndp-title-bg:        rgba(0,255,224,0.06);
+  --ndp-title-hover-bg:  rgba(0,255,224,0.14);
+  --ndp-shadow:          0 12px 40px rgba(0,0,0,0.8), 0 0 30px rgba(0,255,224,0.15);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,0,0,0.7);
+  --ndp-radius:          8px;
+  --ndp-btn-radius:      4px;
+  --ndp-day-radius:      4px;
+  --ndp-input-bg:        rgba(0,255,224,0.04);
+  --ndp-input-border:    rgba(0,255,224,0.12);
+  --ndp-muted:           rgba(0,255,224,0.35);
+}
+
+.ndp-theme-neon-cyberpunk .ndp-picker {
+  box-shadow: 0 0 0 1px rgba(0,255,224,0.15), 0 12px 40px rgba(0,0,0,0.8);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   17. MATERIAL DESIGN
+   Google Material inspired, elevation shadows
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-material-design {
+  --ndp-primary:         #6200ea;
+  --ndp-primary-dark:    #4b00b5;
+  --ndp-bg:              #ffffff;
+  --ndp-body-bg:         #ffffff;
+  --ndp-header-bg:       #6200ea;
+  --ndp-header-text:     #ffffff;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f8f6ff;
+  --ndp-border:          rgba(0,0,0,0.08);
+  --ndp-day-text:        rgba(0,0,0,0.87);
+  --ndp-weekday-text:    rgba(0,0,0,0.38);
+  --ndp-ad-text:         rgba(0,0,0,0.28);
+  --ndp-hover-bg:        rgba(98,0,234,0.08);
+  --ndp-today-bg:        rgba(98,0,234,0.08);
+  --ndp-selected-bg:     #6200ea;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(98,0,234,0.1);
+  --ndp-range-hover-bg:  rgba(98,0,234,0.16);
+  --ndp-holiday-color:   #b00020;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.25);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.25);
+  --ndp-shadow:          0 8px 10px -5px rgba(0,0,0,0.2), 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12);
+  --ndp-shadow-inline:   0 2px 4px -1px rgba(0,0,0,0.2), 0 4px 5px 0 rgba(0,0,0,0.14);
+  --ndp-radius:          4px;
+  --ndp-btn-radius:      4px;
+  --ndp-day-radius:      50%;
+  --ndp-input-bg:        #f5f5f5;
+  --ndp-input-border:    rgba(0,0,0,0.12);
+  --ndp-muted:           rgba(0,0,0,0.38);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   18. RETRO PAPER
+   Parchment paper, vintage ink aesthetic
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-retro-paper {
+  --ndp-primary:         #5c3d11;
+  --ndp-primary-dark:    #4a2e0a;
+  --ndp-bg:              #f5ead0;
+  --ndp-body-bg:         #f5ead0;
+  --ndp-header-bg:       #3d2508;
+  --ndp-header-text:     #e8d5a3;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #eedad5;
+  --ndp-border:          #c8b080;
+  --ndp-day-text:        #3d2508;
+  --ndp-weekday-text:    #8b6520;
+  --ndp-ad-text:         #c8a870;
+  --ndp-hover-bg:        rgba(92,61,17,0.1);
+  --ndp-today-bg:        rgba(92,61,17,0.1);
+  --ndp-selected-bg:     #5c3d11;
+  --ndp-selected-text:   #e8d5a3;
+  --ndp-range-bg:        rgba(92,61,17,0.12);
+  --ndp-range-hover-bg:  rgba(92,61,17,0.2);
+  --ndp-holiday-color:   #8b0000;
+  --ndp-nav-bg:          rgba(232,213,163,0.12);
+  --ndp-nav-hover-bg:    rgba(232,213,163,0.25);
+  --ndp-title-bg:        rgba(232,213,163,0.12);
+  --ndp-title-hover-bg:  rgba(232,213,163,0.25);
+  --ndp-shadow:          0 8px 30px rgba(92,61,17,0.2), 4px 4px 0 rgba(92,61,17,0.08);
+  --ndp-shadow-inline:   0 4px 16px rgba(92,61,17,0.12);
+  --ndp-radius:          6px;
+  --ndp-btn-radius:      4px;
+  --ndp-day-radius:      4px;
+  --ndp-input-bg:        #eedad5;
+  --ndp-input-border:    #c8b080;
+  --ndp-muted:           #a08040;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   19. HIGH CONTRAST (WCAG AAA)
+   Accessibility optimized — black/white/yellow
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-high-contrast {
+  --ndp-primary:         #000000;
+  --ndp-primary-dark:    #222222;
+  --ndp-bg:              #ffffff;
+  --ndp-body-bg:         #ffffff;
+  --ndp-header-bg:       #000000;
+  --ndp-header-text:     #ffff00;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f8f8f8;
+  --ndp-border:          #000000;
+  --ndp-day-text:        #000000;
+  --ndp-weekday-text:    #000000;
+  --ndp-ad-text:         #444;
+  --ndp-hover-bg:        #ffff00;
+  --ndp-today-bg:        #ffff00;
+  --ndp-selected-bg:     #000000;
+  --ndp-selected-text:   #ffffff;
+  --ndp-range-bg:        #ffff80;
+  --ndp-range-hover-bg:  #ffff60;
+  --ndp-holiday-color:   #000;
+  --ndp-nav-bg:          rgba(255,255,0,0.15);
+  --ndp-nav-hover-bg:    #ffff00;
+  --ndp-title-bg:        rgba(255,255,0,0.15);
+  --ndp-title-hover-bg:  #ffff00;
+  --ndp-shadow:          0 0 0 3px #000;
+  --ndp-shadow-inline:   0 0 0 2px #000;
+  --ndp-radius:          0;
+  --ndp-btn-radius:      0;
+  --ndp-day-radius:      0;
+  --ndp-input-bg:        #fff;
+  --ndp-input-border:    #000;
+  --ndp-muted:           #444;
+}
+
+.ndp-theme-high-contrast .ndp-nav-btn:hover {
+  color: #000;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   20. FESTIVE DASHAIN
+   Gold, saffron, crimson — festival season
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-festive-dashain {
+  --ndp-primary:         #c8960c;
+  --ndp-primary-dark:    #a87a08;
+  --ndp-bg:              #fffbef;
+  --ndp-body-bg:         #fffbef;
+  --ndp-header-bg:       linear-gradient(135deg, #7b1b02 0%, #c0390b 40%, #c8960c 100%);
+  --ndp-header-text:     #fff8d0;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #fff5e0;
+  --ndp-border:          #f5d890;
+  --ndp-day-text:        #2d1800;
+  --ndp-weekday-text:    #c8960c;
+  --ndp-ad-text:         #d4a060;
+  --ndp-hover-bg:        rgba(200,150,12,0.12);
+  --ndp-today-bg:        rgba(200,150,12,0.12);
+  --ndp-selected-bg:     #c8960c;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(200,150,12,0.14);
+  --ndp-range-hover-bg:  rgba(200,150,12,0.22);
+  --ndp-holiday-color:   #c0390b;
+  --ndp-nav-bg:          rgba(255,248,208,0.15);
+  --ndp-nav-hover-bg:    rgba(255,248,208,0.3);
+  --ndp-title-bg:        rgba(255,248,208,0.15);
+  --ndp-title-hover-bg:  rgba(255,248,208,0.3);
+  --ndp-shadow:          0 12px 40px rgba(200,150,12,0.25), 0 0 0 2px rgba(200,150,12,0.1);
+  --ndp-shadow-inline:   0 4px 20px rgba(200,150,12,0.15);
+  --ndp-radius:          14px;
+  --ndp-btn-radius:      8px;
+  --ndp-day-radius:      8px;
+  --ndp-input-bg:        #fff5e0;
+  --ndp-input-border:    #f5d890;
+  --ndp-muted:           #c0a060;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   21. MOUNTAIN MIST
+   Himalayan misty grays and snow whites
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-mountain-mist {
+  --ndp-primary:         #607d8b;
+  --ndp-primary-dark:    #4a6470;
+  --ndp-bg:              #f8fafc;
+  --ndp-body-bg:         #f8fafc;
+  --ndp-header-bg:       linear-gradient(135deg, #455a64 0%, #78909c 100%);
+  --ndp-header-text:     #ecf4f8;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #f0f5f8;
+  --ndp-border:          #cfd8dc;
+  --ndp-day-text:        #263238;
+  --ndp-weekday-text:    #90a4ae;
+  --ndp-ad-text:         #b0bec5;
+  --ndp-hover-bg:        rgba(96,125,139,0.1);
+  --ndp-today-bg:        rgba(96,125,139,0.1);
+  --ndp-selected-bg:     #607d8b;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(96,125,139,0.1);
+  --ndp-range-hover-bg:  rgba(96,125,139,0.18);
+  --ndp-holiday-color:   #c0392b;
+  --ndp-nav-bg:          rgba(255,255,255,0.1);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.22);
+  --ndp-title-bg:        rgba(255,255,255,0.1);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.22);
+  --ndp-shadow:          0 12px 40px rgba(96,125,139,0.2);
+  --ndp-shadow-inline:   0 4px 20px rgba(96,125,139,0.12);
+  --ndp-radius:          16px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      10px;
+  --ndp-input-bg:        #f0f5f8;
+  --ndp-input-border:    #cfd8dc;
+  --ndp-muted:           #90a4ae;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   22. TROPICAL TEAL
+   Fresh teal and bright lime
+══════════════════════════════════════════════════════════════ */
+.ndp-theme-tropical-teal {
+  --ndp-primary:         #00897b;
+  --ndp-primary-dark:    #00695c;
+  --ndp-bg:              #f0fdf9;
+  --ndp-body-bg:         #f0fdf9;
+  --ndp-header-bg:       linear-gradient(135deg, #00524a 0%, #00897b 60%, #26c6a1 100%);
+  --ndp-header-text:     #e0fff8;
+  --ndp-header-border:   transparent;
+  --ndp-footer-bg:       #e8faf5;
+  --ndp-border:          #a7e8d8;
+  --ndp-day-text:        #00332d;
+  --ndp-weekday-text:    #00897b;
+  --ndp-ad-text:         #7ac8b8;
+  --ndp-hover-bg:        rgba(0,137,123,0.1);
+  --ndp-today-bg:        rgba(0,137,123,0.1);
+  --ndp-selected-bg:     #00897b;
+  --ndp-selected-text:   #fff;
+  --ndp-range-bg:        rgba(0,137,123,0.12);
+  --ndp-range-hover-bg:  rgba(0,137,123,0.2);
+  --ndp-holiday-color:   #e74c3c;
+  --ndp-nav-bg:          rgba(255,255,255,0.12);
+  --ndp-nav-hover-bg:    rgba(255,255,255,0.26);
+  --ndp-title-bg:        rgba(255,255,255,0.12);
+  --ndp-title-hover-bg:  rgba(255,255,255,0.26);
+  --ndp-shadow:          0 12px 40px rgba(0,137,123,0.22);
+  --ndp-shadow-inline:   0 4px 20px rgba(0,137,123,0.12);
+  --ndp-radius:          16px;
+  --ndp-btn-radius:      10px;
+  --ndp-day-radius:      50%;
+  --ndp-input-bg:        #e8faf5;
+  --ndp-input-border:    #a7e8d8;
+  --ndp-muted:           #7ac8b8;
+}
+
+/* -- Header gradient support ------------------------------─ */
+/* When --ndp-header-bg is a gradient, we need to handle it specially */
+.ndp-theme-nepali-red .ndp-header,
+.ndp-theme-ocean-blue .ndp-header,
+.ndp-theme-forest-green .ndp-header,
+.ndp-theme-sunset-orange .ndp-header,
+.ndp-theme-royal-purple .ndp-header,
+.ndp-theme-gradient-aurora .ndp-header,
+.ndp-theme-pastel-soft .ndp-header,
+.ndp-theme-earthy-terracotta .ndp-header,
+.ndp-theme-festive-dashain .ndp-header,
+.ndp-theme-mountain-mist .ndp-header,
+.ndp-theme-tropical-teal .ndp-header {
+  background: var(--ndp-header-bg);
+}
+
+.ndp-theme-glassmorphism .ndp-picker {
+  background: var(--ndp-bg);
+}
+
+/* Selected when bg is gradient */
+.ndp-theme-gradient-aurora .ndp-selected,
+.ndp-theme-gradient-aurora .ndp-range-start,
+.ndp-theme-gradient-aurora .ndp-range-end {
+  background: linear-gradient(135deg, #00c9a7 0%, #0075ff 100%);
+}

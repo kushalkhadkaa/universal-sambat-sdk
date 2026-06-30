@@ -1,0 +1,12 @@
+{
+  "name": "@nepali-datepicker-studio/vue",
+  "version": "1.2.0",
+  "description": "Vue 3 component with v-model support for Nepali DatePicker Studio.",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "files": ["src/", "README.md"],
+  "license": "MIT",
+  "author": "Kushal Khadka",
+  "peerDependencies": { "vue": ">=3.0.0", "nepali-datepicker-studio": ">=1.2.0" },
+  "keywords": ["nepali-datepicker", "vue", "vue3", "bikram-sambat", "nepal"]
+}
