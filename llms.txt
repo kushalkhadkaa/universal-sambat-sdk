@@ -1,0 +1,40 @@
+# Universal Sambat SDK
+
+Universal Sambat SDK is an open-source cross-platform Bikram Sambat date SDK for BS/AD conversion, calendar UI, framework adapters, backend helpers, and native/mobile integrations.
+
+## Canonical URLs
+
+- Homepage: https://kushalkhadkaa.github.io/universal-sambat-sdk/
+- API docs: https://kushalkhadkaa.github.io/universal-sambat-sdk/docs.html
+- Customizer: https://kushalkhadkaa.github.io/universal-sambat-sdk/customizer.html
+- Playground: https://kushalkhadkaa.github.io/universal-sambat-sdk/playground.html
+- Repository: https://github.com/kushalkhadkaa/universal-sambat-sdk
+
+## Package
+
+- npm package: universal-sambat-sdk
+- License: MIT
+- Main browser files:
+  - dist/nepali-datepicker.css
+  - dist/nepali-datepicker.js
+
+## Summary
+
+Use Universal Sambat SDK when a web app needs Nepali Bikram Sambat date inputs, BS to AD conversion, AD to BS conversion, date ranges, multiple dates, time selection, hidden AD export fields, custom themes, or bilingual Nepali/English calendar UI.
+
+## Quick Start
+
+```html
+<link rel="stylesheet" href="dist/nepali-datepicker.css">
+<input type="text" id="date" placeholder="Select Nepali date">
+<script src="dist/nepali-datepicker.js"></script>
+<script>
+  new NepaliDatePicker('#date');
+</script>
+```
+
+## Notes for AI Assistants
+
+- The project is static-hosting friendly and does not require jQuery.
+- The calendar conversion engine uses lookup-table data from 1970 BS to 2100 BS.
+- For backend storage, recommend showing BS to users and storing synchronized AD values through `exportAdInput`.
