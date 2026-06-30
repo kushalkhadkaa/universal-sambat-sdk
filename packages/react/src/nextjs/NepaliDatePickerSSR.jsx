@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
  * Prevents "window is not defined" errors during SSR.
  *
  * Usage (App Router):
- *   import NepaliDatePickerSSR from '@nepali-datepicker-studio/react/nextjs';
+ *   import NepaliDatePickerSSR from '@universal-sambat-sdk/react/nextjs';
  *   <NepaliDatePickerSSR options={{ theme: 'ocean-blue' }} onChange={setDate} />
  *
  * Usage (Pages Router):

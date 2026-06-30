@@ -61,7 +61,7 @@ app.use(express.static(path.join(__dirname, '../../')));
 // Run Express instance if not loaded under unit test contexts
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(`Nepali DatePicker Studio Server running on http://localhost:${PORT}`);
+    console.log(`Universal Sambat SDK Server running on http://localhost:${PORT}`);
   });
 }
 

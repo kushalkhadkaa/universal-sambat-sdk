@@ -1,5 +1,5 @@
 /**
- * NepaliDatePickerPro — ndp-core.js
+ * Universal Sambat SDK — ndp-core.js
  * Main datepicker engine: popup, inline, single/range/multiple modes,
  * 20+ themes, keyboard navigation, events, full API.
  * Expanded with 20 developer-focused features including presets, time picker, 

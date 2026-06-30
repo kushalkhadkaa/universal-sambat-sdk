@@ -1,5 +1,5 @@
 /**
- * NepaliDatePickerPro — ndp-base.css
+ * UniversalSambatSDK — ndp-base.css
  * Core layout, structure, typography — theme-agnostic.
  */
 
@@ -1051,7 +1051,7 @@
   border-radius: 50%;
 }
 /**
- * NepaliDatePickerPro — ndp-themes.css
+ * UniversalSambatSDK — ndp-themes.css
  * 22 professional themes — each overrides CSS custom properties.
  * Usage: add class "ndp-theme-{name}" to .ndp-picker or .ndp-converter
  */
@@ -1940,7 +1940,7 @@
   background: linear-gradient(135deg, #00c9a7 0%, #0075ff 100%);
 }
 /**
- * NepaliDatePickerPro — ndp-animations.css
+ * UniversalSambatSDK — ndp-animations.css
  * All animations, transitions, and micro-interactions.
  */
 

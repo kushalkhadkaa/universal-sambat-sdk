@@ -1,7 +1,7 @@
 <script setup>
 /**
  * NepaliDatePicker.vue — Vue 3 Composition API
- * @nepali-datepicker-studio/vue
+ * @universal-sambat-sdk/vue
  *
  * Usage:
  *   <NepaliDatePicker v-model="date" :options="{ theme: 'ocean-blue', lang: 'ne' }" />

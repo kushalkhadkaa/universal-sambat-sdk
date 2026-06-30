@@ -1,5 +1,5 @@
 /**
- * @nepali-datepicker-studio/web-components
+ * @universal-sambat-sdk/web-components
  *
  * Defines:
  *   <nepali-datepicker>   — single / range / multiple date picker
@@ -9,7 +9,7 @@
  * No framework dependencies — pure Web Components API.
  *
  * Usage:
- *   <script src="@nepali-datepicker-studio/web-components/src/index.js" type="module"></script>
+ *   <script src="@universal-sambat-sdk/web-components/src/index.js" type="module"></script>
  *   <nepali-datepicker theme="ocean-blue" lang="ne"></nepali-datepicker>
  */
 

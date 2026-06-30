@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 /**
- * React Native Bridge Component for Nepali DatePicker Studio
+ * React Native Bridge Component for Universal Sambat SDK
  * Embeds mobile-webview.html inside a native WebView container
  * to allow direct date picking on Android and iOS devices.
  */
@@ -16,7 +16,7 @@ export const NepaliDatePicker = ({
   onRangeChange = () => {},
   style = {},
   // Optional custom webview source URL override
-  webviewSource = 'https://cdn.jsdelivr.net/npm/nepali-datepicker-studio/dist/mobile-webview.html'
+  webviewSource = 'https://cdn.jsdelivr.net/npm/universal-sambat-sdk/dist/mobile-webview.html'
 }) => {
   
   // Format query params dynamically

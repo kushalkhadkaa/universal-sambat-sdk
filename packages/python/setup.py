@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="nepali-datepicker-studio",
+    name="universal-sambat-sdk",
     version="1.2.0",
-    description="Python/Django server-side BS↔AD conversion utilities for Nepali DatePicker Studio.",
+    description="Python/Django server-side BS↔AD conversion utilities for Universal Sambat SDK.",
     author="Kushal Khadka",
     author_email="kushalkhadkaa@gmail.com",
-    url="https://kushalkhadkaa.github.io/nepali-datepicker-studio/",
+    url="https://kushalkhadkaa.github.io/universal-sambat-sdk/",
     license="MIT",
     packages=find_packages(),
     python_requires=">=3.8",

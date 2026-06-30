@@ -1,5 +1,5 @@
 /**
- * Nepali DatePicker Studio — Build Script
+ * Universal Sambat SDK — Build Script
  * Produces: UMD (browser), ESM, CJS
  * Run: node scripts/build.js
  */
@@ -40,8 +40,8 @@ SOURCE_FILES.forEach(f => {
 
 // ── License / version banner ──────────────────────────────────────────────────
 const BANNER = `/*!
- * Nepali DatePicker Studio v${VERSION}
- * https://kushalkhadkaa.github.io/nepali-datepicker-studio/
+ * Universal Sambat SDK v${VERSION}
+ * https://kushalkhadkaa.github.io/universal-sambat-sdk/
  * (c) ${YEAR} Kushal Khadka
  * Released under the MIT License
  */`;
@@ -147,4 +147,4 @@ outputs.forEach(({ file, content, label }) => {
 });
 
 // ── Inject version constant into UMD dist ─────────────────────────────────────
-console.log(`\nNepali DatePicker Studio v${VERSION} built successfully.\n`);
+console.log(`\nUniversal Sambat SDK v${VERSION} built successfully.\n`);

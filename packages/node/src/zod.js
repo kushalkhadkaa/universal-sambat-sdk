@@ -2,11 +2,11 @@
 const { isValidBs, BS2AD } = require('./engine');
 
 /**
- * Zod schema helpers for Nepali DatePicker Studio
+ * Zod schema helpers for Universal Sambat SDK
  * Requires zod >= 3.0.0 as a peer dependency.
  *
  * Usage:
- *   const { bsDateString, bsDateRange, adFromBs } = require('@nepali-datepicker-studio/node/zod');
+ *   const { bsDateString, bsDateRange, adFromBs } = require('@universal-sambat-sdk/node/zod');
  *   const schema = z.object({ checkIn: bsDateString(), nights: z.number() });
  */
 
@@ -14,7 +14,7 @@ function requireZod() {
   try { return require('zod'); }
   catch {
     throw new Error(
-      '[@nepali-datepicker-studio/node] zod is required for schema helpers.\n' +
+      '[@universal-sambat-sdk/node] zod is required for schema helpers.\n' +
       'Install it: npm install zod'
     );
   }

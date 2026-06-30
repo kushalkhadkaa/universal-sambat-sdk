@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @nepali-datepicker-studio/node — BS/AD Conversion Engine
+ * @universal-sambat-sdk/node — BS/AD Conversion Engine
  * Pure Node.js — no DOM, no window. Works in Express, Fastify, Next.js API routes, etc.
  */
 

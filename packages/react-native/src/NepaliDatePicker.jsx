@@ -6,7 +6,7 @@ const BRIDGE_HTML = require('./bridge.html');
 
 /**
  * NepaliDatePicker — React Native component
- * @nepali-datepicker-studio/react-native
+ * @universal-sambat-sdk/react-native
  *
  * Usage:
  *   <NepaliDatePicker

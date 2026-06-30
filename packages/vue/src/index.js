@@ -1,6 +1,6 @@
 /**
- * @nepali-datepicker-studio/vue
- * Vue 3 components + Nuxt/Vue plugin for Nepali DatePicker Studio
+ * @universal-sambat-sdk/vue
+ * Vue 3 components + Nuxt/Vue plugin for Universal Sambat SDK
  */
 
 export { default as NepaliDatePicker }      from './NepaliDatePicker.vue';

@@ -1,23 +1,40 @@
 {
-  "name": "nepali-datepicker-studio",
+  "name": "universal-sambat-sdk",
   "version": "1.2.0",
-  "description": "The most advanced Bikram Sambat (BS) date picker library for the modern web. Pure vanilla JS, zero dependencies, 22 themes, bilingual Nepali/English UI, and BS-AD conversion.",
+  "description": "Cross-platform Bikram Sambat (BS) date SDK for web, backend, mobile, and native apps. Includes BS/AD conversion engines, UI widgets, framework adapters, validation helpers, themes, and CLI tooling.",
   "license": "MIT",
   "author": "Kushal Khadka <kushalkhadkaa@gmail.com> (https://github.com/kushalkhadkaa)",
-  "homepage": "https://kushalkhadkaa.github.io/nepali-datepicker-studio/",
+  "homepage": "https://kushalkhadkaa.github.io/universal-sambat-sdk/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kushalkhadkaa/nepali-datepicker-studio.git"
+    "url": "git+https://github.com/kushalkhadkaa/universal-sambat-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/kushalkhadkaa/nepali-datepicker-studio/issues"
+    "url": "https://github.com/kushalkhadkaa/universal-sambat-sdk/issues"
   },
   "keywords": [
-    "nepali-datepicker", "nepali-calendar", "bikram-sambat", "bs-calendar",
-    "bs-ad-converter", "datepicker", "calendar", "nepal", "nepali-date",
-    "vanilla-js", "zero-dependency", "react-nepali", "vue-nepali", "angular-nepali"
+    "universal-sambat-sdk",
+    "sambat-sdk",
+    "bikram-sambat",
+    "bs-calendar",
+    "bs-ad-converter",
+    "nepali-calendar",
+    "nepali-date",
+    "calendar-sdk",
+    "date-conversion",
+    "datepicker",
+    "react-nepali",
+    "vue-nepali",
+    "angular-nepali",
+    "nodejs",
+    "flutter",
+    "ios",
+    "android"
   ],
-  "sideEffects": ["dist/nepali-datepicker.css", "dist/themes/*.css"],
+  "sideEffects": [
+    "dist/nepali-datepicker.css",
+    "dist/themes/*.css"
+  ],
   "main": "dist/nepali-datepicker.cjs.js",
   "module": "dist/nepali-datepicker.esm.js",
   "browser": "dist/nepali-datepicker.js",
@@ -25,19 +42,19 @@
   "types": "dist/nepali-datepicker.d.ts",
   "exports": {
     ".": {
-      "import":  "./dist/nepali-datepicker.esm.js",
+      "import": "./dist/nepali-datepicker.esm.js",
       "require": "./dist/nepali-datepicker.cjs.js",
       "browser": "./dist/nepali-datepicker.js",
-      "types":   "./dist/nepali-datepicker.d.ts"
+      "types": "./dist/nepali-datepicker.d.ts"
     },
-    "./css":        "./dist/nepali-datepicker.css",
-    "./themes/*":   "./dist/themes/*.css",
-    "./react":      "./packages/react/src/index.jsx",
-    "./vue":        "./packages/vue/src/index.js",
-    "./angular":    "./packages/angular/src/index.ts",
-    "./svelte":     "./packages/svelte/src/NepaliDatePicker.svelte",
+    "./css": "./dist/nepali-datepicker.css",
+    "./themes/*": "./dist/themes/*.css",
+    "./react": "./packages/react/src/index.jsx",
+    "./vue": "./packages/vue/src/index.js",
+    "./angular": "./packages/angular/src/index.ts",
+    "./svelte": "./packages/svelte/src/NepaliDatePicker.svelte",
     "./web-components": "./packages/web-components/src/index.js",
-    "./node":       "./packages/node/src/index.js"
+    "./node": "./packages/node/src/index.js"
   },
   "files": [
     "dist/",
@@ -52,27 +69,31 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "dev":         "vite",
-    "build":       "vite build",
-    "compile":     "node scripts/build.js && node scripts/build-css.js",
-    "compile:js":  "node scripts/build.js",
+    "dev": "vite",
+    "build": "vite build",
+    "compile": "node scripts/build.js && node scripts/build-css.js",
+    "compile:js": "node scripts/build.js",
     "compile:css": "node scripts/build-css.js",
     "compile:types": "node scripts/build-types.js",
     "compile:all": "npm run compile && npm run compile:types",
-    "server":      "node src/node/server.js",
-    "test":        "node tests/calendar-utils.test.js",
-    "test:all":    "node tests/calendar-utils.test.js && node tests/conversion.test.js",
-    "lint":        "node scripts/lint.js",
+    "server": "node src/node/server.js",
+    "test": "node tests/calendar-utils.test.js",
+    "test:all": "node tests/calendar-utils.test.js && node tests/conversion.test.js",
+    "lint": "node scripts/lint.js",
     "prepublishOnly": "npm run compile:all"
   },
   "dependencies": {},
   "peerDependencies": {
-    "react":     ">=16.8.0",
+    "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "peerDependenciesMeta": {
-    "react":     { "optional": true },
-    "react-dom": { "optional": true }
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "vite": "^4.4.5",

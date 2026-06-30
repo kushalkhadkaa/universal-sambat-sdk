@@ -1,5 +1,5 @@
 /**
- * NepaliDatePickerPro — ndp-utils.js
+ * Universal Sambat SDK — ndp-utils.js
  * Utility functions: number formatting, date formatting, validation.
  * Adapted from /calendar/assets/js/nepali-utils.js + nepali-converter.js
  */

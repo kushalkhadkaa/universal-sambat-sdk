@@ -15,7 +15,7 @@ const BS_EPOCH_AD = new Date(1913, 3, 13); // month is 0-indexed
 // Minimal BS calendar data (1970–2090) — month lengths per year
 // Full data embedded from ndp-data.js at build time in production.
 // For the API route, import from the CJS build:
-const { BS2AD, AD2BS } = require('nepali-datepicker-studio');
+const { BS2AD, AD2BS } = require('universal-sambat-sdk');
 
 // ── Pages Router handler ───────────────────────────────────────────────────
 export default function handler(req, res) {
@@ -40,7 +40,7 @@ export default function handler(req, res) {
  * App Router — export this instead:
  *
  * import { NextResponse } from 'next/server';
- * const { BS2AD } = require('nepali-datepicker-studio');
+ * const { BS2AD } = require('universal-sambat-sdk');
  *
  * export async function POST(request) {
  *   const { date } = await request.json();

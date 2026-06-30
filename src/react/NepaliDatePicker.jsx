@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * React Wrapper Component for Nepali DatePicker Studio
+ * React Wrapper Component for Universal Sambat SDK
  * Allows seamless integration into React/Vite/Next.js frameworks.
  */
 export const NepaliDatePicker = ({

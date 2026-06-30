@@ -1,5 +1,5 @@
 /**
- * NepaliDatePickerPro — ndp-data.js
+ * Universal Sambat SDK — ndp-data.js
  * Nepali calendar data: BS year→month-days mapping, names, meta.
  * Verified source from /calendar/assets/js/nepali-data.js
  * Base date: AD 1913-04-13 = BS 1970-01-01

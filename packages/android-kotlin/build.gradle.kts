@@ -29,7 +29,7 @@ publishing {
     publications {
         create<MavenPublication>("release") {
             groupId    = "dev.kushalkhadka"
-            artifactId = "nepali-datepicker-studio"
+            artifactId = "universal-sambat-sdk"
             version    = "1.2.0"
         }
     }

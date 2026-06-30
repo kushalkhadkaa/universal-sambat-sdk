@@ -1,5 +1,5 @@
 """
-Django integration for Nepali DatePicker Studio.
+Django integration for Universal Sambat SDK.
 
 Features:
   - NepaliDateField  — form field with BS validation

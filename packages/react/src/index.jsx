@@ -1,6 +1,6 @@
 /**
- * @nepali-datepicker-studio/react
- * React components and hooks for Nepali DatePicker Studio
+ * @universal-sambat-sdk/react
+ * React components and hooks for Universal Sambat SDK
  */
 
 export { NepaliDatePicker, NepaliDatePicker as default } from './NepaliDatePicker.jsx';

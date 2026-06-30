@@ -1,5 +1,5 @@
 """
-Flask/Jinja2 helpers for Nepali DatePicker Studio.
+Flask/Jinja2 helpers for Universal Sambat SDK.
 
 Usage in Flask app:
     from nepali_datepicker.flask_macro import init_app

@@ -1,12 +1,26 @@
 {
-  "name": "@nepali-datepicker-studio/node",
+  "name": "@universal-sambat-sdk/node",
   "version": "1.2.0",
-  "description": "Node.js server-side BS↔AD conversion utilities, Express middleware, Fastify plugin, Zod schema.",
+  "description": "Node.js BS/AD conversion engine, Express middleware, Fastify plugin, and Zod schema helpers for Universal Sambat SDK.",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "engines": { "node": ">=16.0.0" },
-  "files": ["src/", "README.md"],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "src/",
+    "README.md"
+  ],
   "license": "MIT",
   "author": "Kushal Khadka",
-  "keywords": ["nepali-datepicker", "nodejs", "express", "bikram-sambat", "bs-ad-converter", "nepal"]
+  "keywords": [
+    "universal-sambat-sdk",
+    "nodejs",
+    "express",
+    "fastify",
+    "zod",
+    "bikram-sambat",
+    "bs-ad-converter",
+    "nepal"
+  ]
 }

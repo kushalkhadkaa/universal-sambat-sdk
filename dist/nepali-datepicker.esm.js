@@ -1,6 +1,6 @@
 /*!
- * Nepali DatePicker Studio v1.2.0
- * https://kushalkhadkaa.github.io/nepali-datepicker-studio/
+ * Universal Sambat SDK v1.2.0
+ * https://kushalkhadkaa.github.io/universal-sambat-sdk/
  * (c) 2026 Kushal Khadka
  * Released under the MIT License
  */
@@ -19,7 +19,7 @@ var document = _ndp_document;
 
 /* ─── ndp-data.js ─── */
 /**
- * NepaliDatePickerPro — ndp-data.js
+ * Universal Sambat SDK — ndp-data.js
  * Nepali calendar data: BS year→month-days mapping, names, meta.
  * Verified source from /calendar/assets/js/nepali-data.js
  * Base date: AD 1913-04-13 = BS 1970-01-01
@@ -305,7 +305,7 @@ var document = _ndp_document;
 
 /* ─── ndp-utils.js ─── */
 /**
- * NepaliDatePickerPro — ndp-utils.js
+ * Universal Sambat SDK — ndp-utils.js
  * Utility functions: number formatting, date formatting, validation.
  * Adapted from /calendar/assets/js/nepali-utils.js + nepali-converter.js
  */
@@ -676,7 +676,7 @@ var document = _ndp_document;
 
 /* ─── ndp-core.js ─── */
 /**
- * NepaliDatePickerPro — ndp-core.js
+ * Universal Sambat SDK — ndp-core.js
  * Main datepicker engine: popup, inline, single/range/multiple modes,
  * 20+ themes, keyboard navigation, events, full API.
  * Expanded with 20 developer-focused features including presets, time picker, 
@@ -2158,7 +2158,7 @@ var document = _ndp_document;
 
 /* ─── ndp-converter-widget.js ─── */
 /**
- * NepaliDatePickerPro — ndp-converter-widget.js
+ * Universal Sambat SDK — ndp-converter-widget.js
  * Standalone AD ↔ BS date converter widget component.
  */
 (function (global) {

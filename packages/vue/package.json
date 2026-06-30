@@ -1,12 +1,26 @@
 {
-  "name": "@nepali-datepicker-studio/vue",
+  "name": "@universal-sambat-sdk/vue",
   "version": "1.2.0",
-  "description": "Vue 3 component with v-model support for Nepali DatePicker Studio.",
+  "description": "Vue 3 and Nuxt-ready bindings for Universal Sambat SDK with v-model support.",
   "main": "src/index.js",
   "module": "src/index.js",
-  "files": ["src/", "README.md"],
+  "files": [
+    "src/",
+    "README.md"
+  ],
   "license": "MIT",
   "author": "Kushal Khadka",
-  "peerDependencies": { "vue": ">=3.0.0", "nepali-datepicker-studio": ">=1.2.0" },
-  "keywords": ["nepali-datepicker", "vue", "vue3", "bikram-sambat", "nepal"]
+  "peerDependencies": {
+    "vue": ">=3.0.0",
+    "universal-sambat-sdk": ">=1.2.0"
+  },
+  "keywords": [
+    "universal-sambat-sdk",
+    "vue",
+    "vue3",
+    "nuxt",
+    "bikram-sambat",
+    "bs-calendar",
+    "nepal"
+  ]
 }

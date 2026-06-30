@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name:       Nepali DatePicker Studio
- * Plugin URI:        https://kushalkhadkaa.github.io/nepali-datepicker-studio/
- * Description:       Add Bikram Sambat (BS) Nepali date picker fields anywhere on your WordPress site using shortcodes or Gutenberg blocks.
+ * Plugin Name:       Universal Sambat SDK
+ * Plugin URI:        https://kushalkhadkaa.github.io/universal-sambat-sdk/
+ * Description:       Add Universal Sambat SDK BS date fields, BS/AD conversion, and calendar widgets to WordPress using shortcodes or Gutenberg blocks.
  * Version:           1.2.0
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Kushal Khadka
  * Author URI:        https://github.com/kushalkhadkaa
  * License:           MIT
- * Text Domain:       nepali-datepicker-studio
+ * Text Domain:       universal-sambat-sdk
  */
 
 defined('ABSPATH') || exit;
@@ -26,13 +26,13 @@ add_action('admin_enqueue_scripts', 'ndp_enqueue_assets');
 
 function ndp_enqueue_assets() {
     wp_enqueue_style(
-        'nepali-datepicker-studio',
+        'universal-sambat-sdk',
         NDP_PLUGIN_URL . 'assets/nepali-datepicker.css',
         [],
         NDP_VERSION
     );
     wp_enqueue_script(
-        'nepali-datepicker-studio',
+        'universal-sambat-sdk',
         NDP_PLUGIN_URL . 'assets/nepali-datepicker.js',
         [],
         NDP_VERSION,
@@ -136,7 +136,7 @@ add_action('init', 'ndp_register_block');
 
 function ndp_register_block() {
     if (!function_exists('register_block_type')) return;
-    register_block_type('nepali-datepicker-studio/datepicker', [
+    register_block_type('universal-sambat-sdk/datepicker', [
         'attributes' => [
             'theme'       => ['type' => 'string', 'default' => 'classic-light'],
             'lang'        => ['type' => 'string', 'default' => 'ne'],
@@ -147,10 +147,10 @@ function ndp_register_block() {
             'showAdDate'  => ['type' => 'boolean', 'default' => true],
         ],
         'render_callback' => 'ndp_block_render',
-        'editor_script'   => 'nepali-datepicker-studio-block',
+        'editor_script'   => 'universal-sambat-sdk-block',
     ]);
     wp_register_script(
-        'nepali-datepicker-studio-block',
+        'universal-sambat-sdk-block',
         NDP_PLUGIN_URL . 'assets/block.js',
         ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components'],
         NDP_VERSION
@@ -176,7 +176,7 @@ if (class_exists('WooCommerce')) {
     add_filter('woocommerce_checkout_fields', 'ndp_woo_checkout_fields');
     function ndp_woo_checkout_fields($fields) {
         $fields['billing']['billing_nepali_date'] = [
-            'label'       => __('Delivery Date (BS)', 'nepali-datepicker-studio'),
+            'label'       => __('Delivery Date (BS)', 'universal-sambat-sdk'),
             'placeholder' => 'YYYY-MM-DD',
             'type'        => 'text',
             'class'       => ['form-row-wide'],

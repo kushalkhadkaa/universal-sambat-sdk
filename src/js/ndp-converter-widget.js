@@ -1,5 +1,5 @@
 /**
- * NepaliDatePickerPro — ndp-converter-widget.js
+ * Universal Sambat SDK — ndp-converter-widget.js
  * Standalone AD ↔ BS date converter widget component.
  */
 (function (global) {

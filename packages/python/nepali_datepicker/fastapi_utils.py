@@ -1,5 +1,5 @@
 """
-FastAPI integration helpers for Nepali DatePicker Studio.
+FastAPI integration helpers for Universal Sambat SDK.
 
 Features:
   - BsDateStr  — Annotated type for use in Pydantic models / path params

@@ -1,12 +1,25 @@
 {
-  "name": "@nepali-datepicker-studio/svelte",
+  "name": "@universal-sambat-sdk/svelte",
   "version": "1.2.0",
-  "description": "Svelte 5 component for Nepali DatePicker Studio — bind:value, SvelteKit ready.",
+  "description": "Svelte bindings for Universal Sambat SDK with bind:value support for BS date workflows.",
   "svelte": "src/NepaliDatePicker.svelte",
   "main": "src/index.js",
-  "files": ["src/", "README.md"],
+  "files": [
+    "src/",
+    "README.md"
+  ],
   "license": "MIT",
   "author": "Kushal Khadka",
-  "peerDependencies": { "svelte": ">=4.0.0", "nepali-datepicker-studio": ">=1.2.0" },
-  "keywords": ["nepali-datepicker", "svelte", "sveltekit", "bikram-sambat", "nepal"]
+  "peerDependencies": {
+    "svelte": ">=4.0.0",
+    "universal-sambat-sdk": ">=1.2.0"
+  },
+  "keywords": [
+    "universal-sambat-sdk",
+    "svelte",
+    "sveltekit",
+    "bikram-sambat",
+    "bs-calendar",
+    "nepal"
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "kushal-khadka/nepali-datepicker-studio",
+  "name": "kushal-khadka/universal-sambat-sdk",
   "description": "Bikram Sambat (BS) Nepali date picker for Laravel — Blade components, validation rules, and pure PHP BS/AD conversion.",
   "type": "library",
   "license": "MIT",

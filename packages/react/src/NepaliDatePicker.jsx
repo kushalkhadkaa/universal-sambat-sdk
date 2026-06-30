@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useImperativeHandle, forwardRef } from 'react
  * Wraps the vanilla NepaliDatePicker library.
  *
  * Usage:
- *   import { NepaliDatePicker } from '@nepali-datepicker-studio/react';
+ *   import { NepaliDatePicker } from '@universal-sambat-sdk/react';
  *   <NepaliDatePicker value={date} onChange={setDate} options={{ theme: 'ocean-blue', lang: 'ne' }} />
  */
 export const NepaliDatePicker = forwardRef(function NepaliDatePicker(

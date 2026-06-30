@@ -1,11 +1,25 @@
 {
-  "name": "@nepali-datepicker-studio/angular",
+  "name": "@universal-sambat-sdk/angular",
   "version": "1.2.0",
-  "description": "Angular directive implementing ControlValueAccessor for Nepali DatePicker Studio — reactive forms compatible.",
+  "description": "Angular bindings for Universal Sambat SDK with ControlValueAccessor support for BS date inputs and validation workflows.",
   "main": "src/index.ts",
-  "files": ["src/", "README.md"],
+  "files": [
+    "src/",
+    "README.md"
+  ],
   "license": "MIT",
   "author": "Kushal Khadka",
-  "peerDependencies": { "@angular/core": ">=14.0.0", "@angular/forms": ">=14.0.0", "nepali-datepicker-studio": ">=1.2.0" },
-  "keywords": ["nepali-datepicker", "angular", "bikram-sambat", "nepal", "reactive-forms"]
+  "peerDependencies": {
+    "@angular/core": ">=14.0.0",
+    "@angular/forms": ">=14.0.0",
+    "universal-sambat-sdk": ">=1.2.0"
+  },
+  "keywords": [
+    "universal-sambat-sdk",
+    "angular",
+    "bikram-sambat",
+    "bs-calendar",
+    "nepal",
+    "reactive-forms"
+  ]
 }

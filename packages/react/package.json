@@ -1,13 +1,27 @@
 {
-  "name": "@nepali-datepicker-studio/react",
+  "name": "@universal-sambat-sdk/react",
   "version": "1.2.0",
-  "description": "React component and hooks for Nepali DatePicker Studio — BS/AD datepicker, range, multiple, TypeScript ready.",
+  "description": "React components and hooks for Universal Sambat SDK, including BS date inputs, ranges, converter widgets, and TypeScript types.",
   "main": "src/index.jsx",
   "module": "src/index.jsx",
   "types": "src/index.d.ts",
-  "files": ["src/", "README.md"],
+  "files": [
+    "src/",
+    "README.md"
+  ],
   "license": "MIT",
   "author": "Kushal Khadka",
-  "peerDependencies": { "react": ">=16.8.0", "react-dom": ">=16.8.0", "nepali-datepicker-studio": ">=1.2.0" },
-  "keywords": ["nepali-datepicker", "react", "bikram-sambat", "bs-datepicker", "nepal"]
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "universal-sambat-sdk": ">=1.2.0"
+  },
+  "keywords": [
+    "universal-sambat-sdk",
+    "react",
+    "bikram-sambat",
+    "bs-calendar",
+    "bs-ad-converter",
+    "nepal"
+  ]
 }

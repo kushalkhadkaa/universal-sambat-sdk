@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @nepali-datepicker-studio/node
+ * @universal-sambat-sdk/node
  * Server-side BS/AD conversion for Node.js — Express, Fastify, Next.js API routes.
  */
 const engine     = require('./engine');

@@ -1,12 +1,27 @@
 {
-  "name": "@nepali-datepicker-studio/react-native",
+  "name": "@universal-sambat-sdk/react-native",
   "version": "1.2.0",
-  "description": "React Native component for Nepali DatePicker Studio — iOS and Android, WebView bridge, TypeScript.",
+  "description": "React Native bindings for Universal Sambat SDK with iOS and Android WebView bridge support.",
   "main": "src/index.jsx",
   "types": "src/index.d.ts",
-  "files": ["src/", "README.md"],
+  "files": [
+    "src/",
+    "README.md"
+  ],
   "license": "MIT",
   "author": "Kushal Khadka",
-  "peerDependencies": { "react": ">=17.0.0", "react-native": ">=0.68.0", "react-native-webview": ">=11.0.0" },
-  "keywords": ["nepali-datepicker", "react-native", "ios", "android", "bikram-sambat", "nepal"]
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-native": ">=0.68.0",
+    "react-native-webview": ">=11.0.0"
+  },
+  "keywords": [
+    "universal-sambat-sdk",
+    "react-native",
+    "ios",
+    "android",
+    "bikram-sambat",
+    "bs-calendar",
+    "nepal"
+  ]
 }

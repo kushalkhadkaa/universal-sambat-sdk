@@ -6,7 +6,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 typedef OnDateChanged = void Function(Map<String, dynamic> date);
 typedef OnRangeChanged = void Function(Map<String, dynamic> start, Map<String, dynamic> end);
 
-/// Flutter Widget Bridge for Nepali DatePicker Studio
+/// Flutter Widget Bridge for Universal Sambat SDK
 /// Embeds inline BS date picking natively on iOS and Android.
 class NepaliDatePickerWidget extends StatefulWidget {
   final String theme;
@@ -25,7 +25,7 @@ class NepaliDatePickerWidget extends StatefulWidget {
     this.light = false,
     this.onChange,
     this.onRangeChange,
-    this.webviewSource = 'https://cdn.jsdelivr.net/npm/nepali-datepicker-studio/dist/mobile-webview.html',
+    this.webviewSource = 'https://cdn.jsdelivr.net/npm/universal-sambat-sdk/dist/mobile-webview.html',
   }) : super(key: key);
 
   @override

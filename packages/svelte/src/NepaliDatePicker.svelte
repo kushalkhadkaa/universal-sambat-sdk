@@ -1,7 +1,7 @@
 <script>
   /**
    * NepaliDatePicker.svelte — Svelte 5 (runes)
-   * @nepali-datepicker-studio/svelte
+   * @universal-sambat-sdk/svelte
    *
    * Usage:
    *   <NepaliDatePicker bind:value={date} options={{ theme: 'ocean-blue', lang: 'ne' }} />

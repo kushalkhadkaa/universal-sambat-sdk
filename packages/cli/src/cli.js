@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
- * create-nepali-datepicker — scaffold a new project with BS date picker pre-wired
+ * create-universal-sambat — scaffold a new project with BS date picker pre-wired
  *
  * Usage:
- *   npx create-nepali-datepicker my-app --framework react
- *   npx create-nepali-datepicker my-app --framework vue
- *   npx create-nepali-datepicker my-app --framework next
- *   npx create-nepali-datepicker my-app --framework svelte
- *   npx create-nepali-datepicker my-app --framework angular
- *   npx create-nepali-datepicker my-app --framework vanilla
+ *   npx create-universal-sambat my-app --framework react
+ *   npx create-universal-sambat my-app --framework vue
+ *   npx create-universal-sambat my-app --framework next
+ *   npx create-universal-sambat my-app --framework svelte
+ *   npx create-universal-sambat my-app --framework angular
+ *   npx create-universal-sambat my-app --framework vanilla
  */
 
 'use strict';
@@ -33,11 +33,11 @@ const lang = (args.find(a => a.startsWith('--lang='))?.split('=')[1])
 const help = args.includes('--help') || args.includes('-h');
 const version = args.includes('--version') || args.includes('-v');
 
-if (version) { console.log('create-nepali-datepicker 1.2.0'); process.exit(0); }
+if (version) { console.log('create-universal-sambat 1.2.0'); process.exit(0); }
 
 if (help) {
   console.log(`
-  create-nepali-datepicker <project-name> [options]
+  create-universal-sambat <project-name> [options]
 
   Options:
     --framework  react | vue | next | svelte | angular | vanilla  (default: react)
@@ -47,8 +47,8 @@ if (help) {
     --help       Show this help
 
   Examples:
-    npx create-nepali-datepicker my-app --framework react --theme ocean-blue
-    npx create-nepali-datepicker booking-form --framework vue --lang en
+    npx create-universal-sambat my-app --framework react --theme ocean-blue
+    npx create-universal-sambat booking-form --framework vue --lang en
   `);
   process.exit(0);
 }
@@ -93,7 +93,7 @@ console.log(`
     npm install
     npm run dev
 
-  Documentation: https://kushalkhadkaa.github.io/nepali-datepicker-studio/
+  Documentation: https://kushalkhadkaa.github.io/universal-sambat-sdk/
 `);
 
 // ── Scaffold helpers ──────────────────────────────────────────────
@@ -107,15 +107,15 @@ function scaffoldReact(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'vite', build: 'vite build', preview: 'vite preview' },
-    dependencies: { react: '^18.2.0', 'react-dom': '^18.2.0', '@nepali-datepicker-studio/react': '^1.2.0' },
+    dependencies: { react: '^18.2.0', 'react-dom': '^18.2.0', '@universal-sambat-sdk/react': '^1.2.0' },
     devDependencies: { '@vitejs/plugin-react': '^4.0.0', vite: '^5.0.0' },
   }, null, 2));
   write(dir, 'vite.config.js', `import { defineConfig } from 'vite';\nimport react from '@vitejs/plugin-react';\nexport default defineConfig({ plugins: [react()] });\n`);
   write(dir, 'index.html', indexHtml(name, '/src/main.jsx'));
   write(dir, 'src/main.jsx', `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App.jsx';\nReactDOM.createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);\n`);
   write(dir, 'src/App.jsx', `import React, { useState } from 'react';
-import { NepaliDatePicker } from '@nepali-datepicker-studio/react';
-import '@nepali-datepicker-studio/react/dist/style.css';
+import { NepaliDatePicker } from '@universal-sambat-sdk/react';
+import '@universal-sambat-sdk/react/dist/style.css';
 
 export default function App() {
   const [date, setDate] = useState('');
@@ -140,7 +140,7 @@ function scaffoldVue(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'vite', build: 'vite build' },
-    dependencies: { vue: '^3.4.0', '@nepali-datepicker-studio/vue': '^1.2.0' },
+    dependencies: { vue: '^3.4.0', '@universal-sambat-sdk/vue': '^1.2.0' },
     devDependencies: { '@vitejs/plugin-vue': '^5.0.0', vite: '^5.0.0' },
   }, null, 2));
   write(dir, 'vite.config.js', `import { defineConfig } from 'vite';\nimport vue from '@vitejs/plugin-vue';\nexport default defineConfig({ plugins: [vue()] });\n`);
@@ -156,8 +156,8 @@ function scaffoldVue(dir, name, theme, lang) {
 
 <script setup>
 import { ref } from 'vue';
-import { NepaliDatePicker } from '@nepali-datepicker-studio/vue';
-import '@nepali-datepicker-studio/vue/dist/style.css';
+import { NepaliDatePicker } from '@universal-sambat-sdk/vue';
+import '@universal-sambat-sdk/vue/dist/style.css';
 const date = ref('');
 </script>
 `);
@@ -168,14 +168,14 @@ function scaffoldNext(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'next dev', build: 'next build', start: 'next start' },
-    dependencies: { next: '^14.0.0', react: '^18.2.0', 'react-dom': '^18.2.0', '@nepali-datepicker-studio/react': '^1.2.0' },
+    dependencies: { next: '^14.0.0', react: '^18.2.0', 'react-dom': '^18.2.0', '@universal-sambat-sdk/react': '^1.2.0' },
   }, null, 2));
   write(dir, 'next.config.js', `/** @type {import('next').NextConfig} */\nmodule.exports = {};\n`);
   write(dir, 'app/layout.jsx', `export const metadata = { title: '${name}' };\nexport default function RootLayout({ children }) { return <html><body>{children}</body></html>; }\n`);
   write(dir, 'app/page.jsx', `'use client';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
-const NepaliDatePicker = dynamic(() => import('@nepali-datepicker-studio/react').then(m => m.NepaliDatePicker), { ssr: false });
+const NepaliDatePicker = dynamic(() => import('@universal-sambat-sdk/react').then(m => m.NepaliDatePicker), { ssr: false });
 
 export default function Page() {
   const [date, setDate] = useState('');
@@ -195,14 +195,14 @@ function scaffoldSvelte(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'vite', build: 'vite build' },
-    dependencies: { '@nepali-datepicker-studio/svelte': '^1.2.0' },
+    dependencies: { '@universal-sambat-sdk/svelte': '^1.2.0' },
     devDependencies: { svelte: '^5.0.0', '@sveltejs/vite-plugin-svelte': '^3.0.0', vite: '^5.0.0' },
   }, null, 2));
   write(dir, 'vite.config.js', `import { defineConfig } from 'vite';\nimport { svelte } from '@sveltejs/vite-plugin-svelte';\nexport default defineConfig({ plugins: [svelte()] });\n`);
   write(dir, 'index.html', indexHtml(name, '/src/main.js'));
   write(dir, 'src/main.js', `import App from './App.svelte';\nconst app = new App({ target: document.getElementById('app') });\nexport default app;\n`);
   write(dir, 'src/App.svelte', `<script>
-  import { NepaliDatePicker } from '@nepali-datepicker-studio/svelte';
+  import { NepaliDatePicker } from '@universal-sambat-sdk/svelte';
   let date = $state('');
 </script>
 <div style="padding:32px">
@@ -217,7 +217,7 @@ function scaffoldAngular(dir, name, theme, lang) {
   write(dir, 'package.json', JSON.stringify({
     name, version: '0.0.0', private: true,
     scripts: { dev: 'ng serve', build: 'ng build' },
-    dependencies: { '@angular/common': '^17.0.0', '@angular/core': '^17.0.0', '@angular/forms': '^17.0.0', '@angular/platform-browser': '^17.0.0', '@angular/platform-browser-dynamic': '^17.0.0', '@nepali-datepicker-studio/angular': '^1.2.0', rxjs: '^7.8.0', 'zone.js': '^0.14.0' },
+    dependencies: { '@angular/common': '^17.0.0', '@angular/core': '^17.0.0', '@angular/forms': '^17.0.0', '@angular/platform-browser': '^17.0.0', '@angular/platform-browser-dynamic': '^17.0.0', '@universal-sambat-sdk/angular': '^1.2.0', rxjs: '^7.8.0', 'zone.js': '^0.14.0' },
     devDependencies: { '@angular/cli': '^17.0.0', '@angular/compiler-cli': '^17.0.0', typescript: '~5.2.0' },
   }, null, 2));
   fs.mkdirSync(path.join(dir, 'src/app'), { recursive: true });
@@ -225,7 +225,7 @@ function scaffoldAngular(dir, name, theme, lang) {
   write(dir, 'src/index.html', `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${name}</title></head><body><app-root></app-root></body></html>\n`);
   write(dir, 'src/app/app.component.ts', `import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NepaliDatePickerDirective } from '@nepali-datepicker-studio/angular';
+import { NepaliDatePickerDirective } from '@universal-sambat-sdk/angular';
 
 @Component({
   selector: 'app-root',
@@ -254,13 +254,13 @@ function scaffoldVanilla(dir, name, theme, lang) {
 <head>
   <meta charset="UTF-8">
   <title>${name}</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nepali-datepicker-studio@latest/dist/nepali-datepicker.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/universal-sambat-sdk@latest/dist/nepali-datepicker.min.css">
 </head>
 <body style="font-family:system-ui;padding:32px">
   <h1>Nepali DatePicker — Vanilla JS</h1>
   <input id="ndp" type="text" placeholder="${lang === 'ne' ? 'मिति छान्नुहोस्' : 'Select date'}" readonly style="padding:8px;font-size:16px">
   <p id="out"></p>
-  <script src="https://cdn.jsdelivr.net/npm/nepali-datepicker-studio@latest/dist/nepali-datepicker.min.js"><\/script>
+  <script src="https://cdn.jsdelivr.net/npm/universal-sambat-sdk@latest/dist/nepali-datepicker.min.js"><\/script>
   <script>
     new NepaliDatePicker('#ndp', {
       theme: '${theme}',

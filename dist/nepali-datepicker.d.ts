@@ -1,6 +1,6 @@
 /**
- * Nepali DatePicker Studio — TypeScript Declarations
- * https://kushalkhadkaa.github.io/nepali-datepicker-studio/
+ * Universal Sambat SDK — TypeScript Declarations
+ * https://kushalkhadkaa.github.io/universal-sambat-sdk/
  */
 
 // ─── Core date objects ────────────────────────────────────────────────────────

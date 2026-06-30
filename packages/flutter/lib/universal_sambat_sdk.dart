@@ -1,12 +1,12 @@
-/// Nepali DatePicker Studio — Flutter package
+/// Universal Sambat SDK — Flutter package
 ///
-/// A comprehensive Nepali (Bikram Sambat) date picker package with:
+/// A comprehensive Nepali (Bikram Sambat) SDK package with:
 /// - Full BS/AD calendar engine (1970–2090)
 /// - Material date picker widget with 4 themes
 /// - Date range picker
 /// - Bidirectional BS ↔ AD converter widget
 /// - Bilingual support (Nepali / English)
-library nepali_datepicker_studio;
+library universal_sambat_sdk;
 
 export 'src/bs_calendar_data.dart';
 export 'src/bs_calendar_engine.dart';

@@ -1,4 +1,4 @@
-// NepaliDatePickerPro - Demo Initialization & Playground script
+// Universal Sambat SDK - Demo Initialization & Playground script
 document.addEventListener('DOMContentLoaded', function() {
   // Theme switcher click listener
   const themeSwitcher = document.getElementById('theme-switcher-btn');

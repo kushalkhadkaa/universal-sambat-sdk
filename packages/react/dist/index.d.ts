@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { DatePickerOptions, DateObject, DateRange, ConverterOptions } from 'nepali-datepicker-studio';
+import type { DatePickerOptions, DateObject, DateRange, ConverterOptions } from 'universal-sambat-sdk';
 
 // ─── Ref handles ──────────────────────────────────────────────────────────────
 

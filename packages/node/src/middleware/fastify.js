@@ -2,13 +2,13 @@
 const { bsToAd, adToBs, BS2AD, AD2BS, isValidBs } = require('../engine');
 
 /**
- * Fastify plugin for Nepali DatePicker Studio
+ * Fastify plugin for Universal Sambat SDK
  * Registers fastify.bsToAd(), fastify.adToBs(), fastify.BS2AD(), fastify.AD2BS()
  * Also adds a preHandler that auto-converts body fields ending in _bs → _ad.
  *
  * Usage:
  *   const fastify = require('fastify')();
- *   fastify.register(require('@nepali-datepicker-studio/node/middleware/fastify'));
+ *   fastify.register(require('@universal-sambat-sdk/node/middleware/fastify'));
  *
  *   fastify.post('/booking', async (req) => {
  *     const ad = fastify.BS2AD(req.body.date_bs);
@@ -45,7 +45,7 @@ function nepaliDatePickerPlugin(fastify, options, done) {
 // Support both require() and fastify-plugin wrapping
 try {
   const fp = require('fastify-plugin');
-  module.exports = fp(nepaliDatePickerPlugin, { name: 'nepali-datepicker-studio', fastify: '>=4' });
+  module.exports = fp(nepaliDatePickerPlugin, { name: 'universal-sambat-sdk', fastify: '>=4' });
 } catch {
   module.exports = nepaliDatePickerPlugin;
 }

@@ -1,5 +1,5 @@
 """
-nepali-datepicker-studio — Python/Django/Flask BS/AD conversion + form widgets
+universal-sambat-sdk — Python/Django/Flask BS/AD conversion + form widgets
 
 Quick start:
     from nepali_datepicker import bs_to_ad, ad_to_bs, today_bs
