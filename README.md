@@ -32,43 +32,25 @@ flowchart LR
 
 Use the core engine when you only need conversion and validation. Use the browser UI when you need form inputs. Use the adapters when your app already lives in a framework or native stack.
 
-## Screenshots
+## Current Project Screenshots
 
-### Datepicker Widget (Bilingual Popup)
-![Universal Sambat SDK datepicker widget](assets/screenshots/datepicker-widget.png)
-*Standard bilingual (Nepali/English) calendar popover picker with integrated active date markers and navigation controls.*
+These images are generated from the current Universal Sambat SDK repository pages: `playground.html`, `customizer.html`, and `docs.html`.
 
-### Live Theme Customizer
-![Universal Sambat SDK light customizer](assets/screenshots/customizer-light.png)
-*Real-time reactive theme designer panel allowing instant customization of CSS color properties and functional logic.*
+### Playground Home
+![Universal Sambat SDK playground home](assets/readme/home.png)
+*Current playground page showing the SDK overview, quick install path, and live calendar preview.*
 
-### Theme Gallery Card Grid
-![Universal Sambat SDK theme gallery](assets/screenshots/theme-gallery.png)
-*Visual gallery showcasing the 22 pre-designed visual themes (classic, glassmorphism, midnight, neon-cyberpunk).*
+### Live Customizer
+![Universal Sambat SDK customizer](assets/readme/customizer.png)
+*Current customizer page for theme variables, behavior options, and generated integration code.*
 
-### Custom Day Cell Renderer
-![Universal Sambat SDK custom cell renderer](assets/screenshots/custom-cell-renderer.png)
-*Interactive custom day decorator highlighting specific dates dynamically (e.g. custom markers, holidays, or business closures).*
+### API Documentation
+![Universal Sambat SDK documentation](assets/readme/docs.png)
+*Current documentation page covering setup, lifecycle, methods, options, examples, and FAQ content.*
 
-### Range Presets Sidebar
-![Universal Sambat SDK range presets](assets/screenshots/range-presets.png)
-*Range selection sidebar presenting 9 pre-configured duration ranges (this month, fiscal year, elapsed durations).*
-
-### Standalone BS ↔ AD Calendar Converter
-![Universal Sambat SDK converter widget](assets/screenshots/converter-widget.png)
-*Standalone date converter tool supporting bi-directional BS/AD transformations and difference calculations.*
-
-### Strict API Configuration Presets
-![Universal Sambat SDK strict api presets](assets/screenshots/strict-api-presets.png)
-*Live interactive code playground showing official API parameters, constraints, and disablers.*
-
-### Advanced Playground Overview
-![Universal Sambat SDK playground](assets/screenshots/playground.png)
-*Development playground showcase dashboard with code generation drawers and styling presets.*
-
-### API Documentation Panel
-![Universal Sambat SDK documentation](assets/screenshots/docs.png)
-*Fully documented API reference index outlining methods, options, callback events, and conversion formulas.*
+### Mobile Layout
+![Universal Sambat SDK mobile demo](assets/readme/mobile.png)
+*Current mobile-width playground rendering for the public demo page.*
 
 ## What It Does
 
@@ -390,14 +372,14 @@ Demo and documentation assets
   -> assets/css/
   -> assets/js/
   -> assets/fonts/
-  -> assets/screenshots/
+  -> assets/readme/
 
 Search discovery
   -> robots.txt
   -> sitemap.xml
 ```
 
-Users who only want the datepicker in their own project need the `dist/` files. Users who want to explore the full demo can open the GitHub Pages site.
+Users who only want the browser calendar SDK in their own project need the `dist/` files. Users who want to explore the full demo can open the GitHub Pages site.
 
 ## Conversion Algorithm
 

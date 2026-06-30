@@ -58,6 +58,7 @@
   },
   "files": [
     "dist/",
+    "assets/readme/",
     "packages/",
     "src/",
     "README.md",
